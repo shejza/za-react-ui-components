@@ -1,0 +1,27 @@
+import React from "react";
+import styled, { css, keyframes } from "styled-components";
+import IconSvg from "../IconSvg/IconSvg";
+
+const Rotate = keyframes` 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } `;
+const Animation = css`
+  animation: ${Rotate} 2s linear infinite;
+`;
+
+const Loader = ({$center, $size, $color}) => {
+  return (
+    <StyledIcon color={$color} width={$size} icon="loader" $center={$center} />
+  );
+};
+
+const StyledIcon = styled(IconSvg)`
+  position: relative;
+  ${({$center})=> $center && "margin: 0 auto;"}
+  ${Animation};
+`;
+
+Loader.defaultProps = {
+  $size: "20px",
+  $color: "primary700",
+};
+
+export default Loader;
