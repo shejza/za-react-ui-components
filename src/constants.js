@@ -17,6 +17,8 @@ export const breakpoints = {
 };
 
 export const colors = {
+  white: "#ffffff",
+  gray100: "#32323C",
   //Primary
   primary700: "#5FB974",
   primary600: "#58C7A9",

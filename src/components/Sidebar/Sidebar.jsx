@@ -19,6 +19,12 @@ const Sidebar = styled(
     bgColorTabs,
     selectedBg,
     sideBarWidth,
+    selectedColorText,
+    colorText,
+    heightTab,
+    fontFamily,
+    paddingTab,
+    borderBottomTab,
     ...props }) => {
     const [_selectedTab, setSelected] = useState(selectedIndex);
     const selectedTab = _selectedTab > tabClasses.length - 1 ? 0 : _selectedTab;
@@ -37,7 +43,6 @@ const Sidebar = styled(
     if (TabClass === undefined) return "tabClasses array is empty";
 
     const headerlist = headers.map((header, index) => {
-      const spacing = index === 0 ? "p-4 pl-0" : "p-4";
       const selected = selectedTab == index;
 
       return (
@@ -46,11 +51,15 @@ const Sidebar = styled(
           key={header}
           data-value={index}
           onClick={onChange}
-          semiBold
           selected={selected}
+          color={selected ? selectedColorText : colorText}
           bgColorTabs={!selected ? selectedBg : bgColorTabs}
+          heightTab={heightTab}
           sideBarWidth={sideBarWidth}
-          spacing={spacing}>
+          fontFamily={fontFamily}
+          paddingTab={paddingTab}
+          borderBottomTab={borderBottomTab}
+          >
           {header}
         </TabOption>
       );
@@ -76,24 +85,15 @@ const WrapperTabs = styled(Box)`
   display: flex;
 `
 export const TabOption = styled(Text)`
-  font-family: 'Proxima Nova';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 17px;
-  padding: 8.5px 10px !important;
-  color: ${({ theme }) => theme.colors.secondary500};
-  ${({ selected, theme }) =>
-    selected &&
-    `
-    color: ${theme.colors.tertiary0};
-    font-weight: 600;
-    background-color:${theme.colors.accent500};
-    border-radius: 5px;
-  `}
+  color: ${({ theme }) => theme.colors.white};
   background-color: ${({ bgColorTabs }) => bgColorTabs && bgColorTabs};
   width: ${({ sideBarWidth }) => sideBarWidth && sideBarWidth};
-
+  height: ${({ heightTab }) => heightTab && heightTab};
+  display: flex;
+  align-items: center;
+  padding:  ${({ paddingTab }) => paddingTab && paddingTab};
+  border-bottom:  ${({ borderBottomTab }) => borderBottomTab && borderBottomTab};
+  font-family:  ${({ fontFamily }) => fontFamily && fontFamily};
 `;
 
 const BorderedBox = styled(Box)`
@@ -101,11 +101,6 @@ const BorderedBox = styled(Box)`
   display: flex;
   min-height: 64px;
   background-color: ${({ bgColorTabs }) => bgColorTabs && bgColorTabs};
-
-  @media ${breakpoints.mobile} {
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
 `;
 
 Sidebar.defaultProps = {
@@ -114,7 +109,13 @@ Sidebar.defaultProps = {
   tabClasses: [],
   bgColorTabs: "rgba(50, 50, 60, 1)",
   selectedBg: "rgba(39, 39, 49, 0.94)",
-  sideBarWidth: "250px"
+  sideBarWidth: "250px",
+  selectedColorText: "white",
+  colorText: "white",
+  heightTab: "64px",
+  fontFamily: "Inter",
+  paddingTab: "0 0 0 24px",
+  borderBottomTab: "1px solid #32323C",
 };
 
 Sidebar.BorderedBox = BorderedBox;
