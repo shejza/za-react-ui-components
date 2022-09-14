@@ -25,6 +25,7 @@ const Sidebar = styled(
     fontFamily,
     paddingTab,
     borderBottomTab,
+    bgColorTab,
     ...props }) => {
     const [_selectedTab, setSelected] = useState(selectedIndex);
     const selectedTab = _selectedTab > tabClasses.length - 1 ? 0 : _selectedTab;
@@ -71,7 +72,7 @@ const Sidebar = styled(
 
     return (
       <WrapperTabs  className={className} {...props}>
-        <BorderedBox bgColorTabs={bgColorTabs} flex spacing={headerSpacing} gap={gapTabs}>
+        <BorderedBox bgColorTab={bgColorTab} flex spacing={headerSpacing} gap={gapTabs}>
           {headerlist}
           {extraHeaderElement}
         </BorderedBox>
@@ -100,7 +101,7 @@ const BorderedBox = styled(Box)`
   flex-direction: column;
   display: flex;
   min-height: 64px;
-  background-color: ${({ bgColorTabs }) => bgColorTabs && bgColorTabs};
+  background-color: ${({ bgColorTab }) => bgColorTab && bgColorTab};
 `;
 
 Sidebar.defaultProps = {
