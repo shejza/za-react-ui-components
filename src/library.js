@@ -36,7 +36,7 @@ import ListingCompact from "./components/ListingCompact/ListingCompact";
 import ListingCompactDetails from "./components/ListingCompactDetails/ListingCompactDetails";
 import ListingConditionsCompact from "./components/ListingConditionsCompact/ListingConditionsCompact";
 import SearchInput from "./components/SearchInput/SearchInput";
-
+import Sidebar from "./components/Sidebar/Sidebar";
 export {
   Accordion,
   AdminCard,
@@ -80,5 +80,6 @@ export {
   breakpoints,
   Tag,
   NotificationManager,
-  SearchInput
+  SearchInput,
+  Sidebar
 };
