@@ -1,10 +1,20 @@
 import { fontWeights } from "../constants";
 
+export const alignItems = ({ alignItems }) => alignItems && `align-items: ${alignItems};`;
+export const alignSelf = ({ alignSelf }) => alignSelf && `align-self: ${alignSelf};`;
+export const animation = ({ animation }) => animation && `animation: ${animation};`;
+export const backgroundFilter = ({ backgroundFilter }) => backgroundFilter && `backdrop-filter: ${backgroundFilter};`;
+export const background = ({ background }) => background && `background: ${background};`;
+export const bgColor = ({ bgColor, theme }) => bgColor && ` background-color: ${theme.colors[bgColor] || bgColor};`;
+
+
+
+
+
 export const textAlign = ({ textAlign }) => textAlign && `text-align: ${textAlign};`;
 
 export const color = ({ color, theme }) => color && `color: ${theme.colors[color] || color};`;
 
-export const bgColor = ({ bgColor, theme }) => bgColor && ` background-color: ${theme.colors[bgColor] || bgColor};`;
 
 export const pointer = ({ pointer }) => pointer && "cursor: pointer;";
 
@@ -17,7 +27,6 @@ export const justifySelf = ({ justifySelf }) => justifySelf && `justify-self: ${
 
 export const alignContent = ({ alignContent }) => alignContent && `align-content: ${alignContent};`;
 
-export const alignItems = ({ alignItems }) => alignItems && `align-items: ${alignItems};`;
 
 export const wrap = ({ wrap }) => wrap && "flex-wrap: wrap !important;";
 

@@ -22,6 +22,26 @@ export default {
   title: "Button",
   component: Button,
   argTypes: {
+    alignItems: {
+      options: ["baseline", "center", "flex-start", "flex-end", "stretch", "initial", "inherit"],
+      control: { type: "select" },
+    },
+    alignSelf: {
+      options: ["auto", "baseline", "center", "flex-start", "flex-end", "stretch", "initial", "inherit"],
+      control: { type: "select" },
+    },
+    animation: {
+      control: { type: "text" },
+    },
+    backgroundFilter: {
+      control: { type: "text" },
+    },
+    background: {
+      control: { type: "text" },
+    },
+    bgColor: {
+      control: { type: "text" },
+    },
     size: {
       options: ["md", "lg"],
       control: { type: "select" },

@@ -7,6 +7,12 @@ import useButtonVariations from "../../utils/buttonVariations";
 import widthProps from "../../utils/width-props";
 import Loader from "../Loader/Loader";
 import {
+  alignItems,
+  alignSelf,
+  animation,
+  backgroundFilter,
+  background,
+
   bgColor,
   color,
   fontWeight,
@@ -72,13 +78,21 @@ const Button = styled(({
     </button>
   );
 })`
+
+  ${alignItems}
+  ${alignSelf}
+  ${animation}
+  ${backgroundFilter}
+  ${background}
+  ${bgColor}
+  
   ${useSpacingProps}
   ${widthProps}
   ${useTypography}
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+ 
   border-width: 0px;
   border-radius: 8px;
   cursor: pointer;
@@ -91,7 +105,7 @@ const Button = styled(({
   ${({ width }) => width && `width: ${width};`}
   ${({ height }) => height && `height: ${height};`}
 
-  ${bgColor}
+
   ${color}
   ${fontWeight}
   ${grow}
@@ -154,6 +168,7 @@ Button.defaultProps = {
   kind: "solid",
   variant: "primary500",
   size: "md",
+  bgColor: "#54C1A1"
 };
 
 export default Button;
