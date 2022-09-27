@@ -5,45 +5,217 @@ import useSpacingProps from "../../utils/spacing-props";
 import useWidthProps from "../../utils/width-props";
 import useHeightProps from "../../utils/height-props";
 import {
-  alignContent,
   alignItems,
+  alignSelf,
+  alignContent,
+  animation,
+  backgroundFilter,
+  background,
+  bgColor,
+  border,
+  borderBottom,
+  borderTop,
+  borderLeft,
+  borderRight,
+  borderColor,
+  borderWidth,
+  borderRadius,
+  bottom,
+  boxShadow,
+  boxSizing,
+  clip,
+  color,
+  cursor,
   columnGap,
-  columns,
-  gap,
+  display,
+  filter,
+  float,
+  font,
+  fontFamily,
+  fontSize,
+  fontStyle,
+  fontVariant,
+  fontWeight,
+  flexWrap,
+  flexShrink,
+  flexDirection,
+  flexGrow,
   gridColumn,
+  gridTemplateColumns,
+  gridTemplateRows,
+  gridTemplate,
+  gap,
+  height,
   justifyContent,
   justifyItems,
-  rowGrap,
-  rows,
-  template,
+  justifySelf,
+  left,
+  letterSpacing,
+  lineHeight,
+  listStyle,
+  listStyleImage,
+  listStylePosition,
+  listStyleType,
+  margin,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
+  opacity,
+  order,
+  outline,
+  outlineColor,
+  outlineWidth,
+  overflow,
+  overflowX,
+  overflowY,
+  padding,
+  paddingBottom,
+  paddingTop,
+  paddingLeft,
+  paddingRight,
+  pageBreakAfter,
+  pageBreakBefore,
+  pageBreakInside,
+  pointerEvents,
+  position,
+  quotes,
+  rowGap,
+  resize,
+  right,
+  tabSize,
+  tableLayout,
   textAlign,
-  pointer,
-  bgColor,
-  borderRadius,
+  textDecoration,
+  textIndent,
+  textJustify,
+  textOverflow,
+  textShadow,
+  textTransform,
+  top,
+  transform,
+  transformOrigin,
+  transformStyle,
+  transition,
+  verticalAlign,
+  visibility,
+  whiteSpace,
+  width,
+  wordBreak,
+  wordSpacing,
+  wordWrap,
+  zIndex,
 } from "../properties";
 
 const StyledGrid = styled.div`
-  ${useSpacingProps}
-  ${useWidthProps}
-  ${useHeightProps}
-
-  display: grid;
-
-  ${pointer}
-  ${justifyContent}
-  ${justifyItems}
-  ${textAlign}
-  ${alignContent}
-  ${alignItems}
-  ${columns}
-  ${rows}
-  ${template}
-  ${gap}
-  ${rowGrap}
-  ${columnGap}
-  ${gridColumn}
-  ${bgColor}
-  ${borderRadius}
+${alignItems}
+${alignSelf}
+${alignContent}
+${animation}
+${backgroundFilter}
+${background}
+${bgColor}
+${border}
+${borderBottom}
+${borderTop}
+${borderLeft}
+${borderRight}
+${borderColor}
+${borderWidth}
+${borderRadius}
+${bottom}
+${boxShadow}
+${boxSizing}
+${clip}
+${color}
+${cursor}
+${columnGap}
+${display}
+${filter}
+${float}
+${font}
+${fontFamily}
+${fontSize}
+${fontStyle}
+${fontVariant}
+${fontWeight}
+${flexWrap}
+${flexShrink}
+${flexDirection}
+${flexGrow}
+${gridColumn}
+${gridTemplateColumns}
+${gridTemplateRows}
+${gridTemplate}
+${gap}
+${height}
+${justifyContent}
+${justifyItems}
+${justifySelf}
+${left}
+${letterSpacing}
+${lineHeight}
+${listStyle}
+${listStyleImage}
+${listStylePosition}
+${listStyleType}
+${margin}
+${marginBottom}
+${marginLeft}
+${marginRight}
+${marginTop}
+${maxHeight}
+${maxWidth}
+${minHeight}
+${minWidth}
+${opacity}
+${order}
+${outline}
+${outlineColor}
+${outlineWidth}
+${overflow}
+${overflowX}
+${overflowY}
+${padding}
+${paddingBottom}
+${paddingTop}
+${paddingLeft}
+${paddingRight}
+${pageBreakAfter}
+${pageBreakBefore}
+${pageBreakInside}
+${pointerEvents}
+${position}
+${quotes}
+${rowGap}
+${resize}
+${right}
+${tabSize}
+${tableLayout}
+${textAlign}
+${textDecoration}
+${textIndent}
+${textJustify}
+${textOverflow}
+${textShadow}
+${textTransform}
+${top}
+${transform}
+${transformOrigin}
+${transformStyle}
+${transition}
+${verticalAlign}
+${visibility}
+${whiteSpace}
+${width}
+${wordBreak}
+${wordSpacing}
+${wordWrap}
+${zIndex}
 `;
 
 const Grid = ({ children, ...props }) => <StyledGrid {...props}>{children}</StyledGrid>;

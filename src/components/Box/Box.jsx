@@ -1,102 +1,227 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import propTypes from "prop-types";
-import useSpacingProps from "../../utils/spacing-props";
-import useWidthProps from "../../utils/width-props";
-import useHeightProps from "../../utils/height-props";
-import useDiplayProps from "../../utils/display-props";
 import {
   alignItems,
+  alignSelf,
+  alignContent,
+  animation,
+  backgroundFilter,
+  background,
   bgColor,
+  border,
+  borderBottom,
+  borderTop,
+  borderLeft,
+  borderRight,
+  borderColor,
+  borderWidth,
   borderRadius,
+  bottom,
+  boxShadow,
+  boxSizing,
+  clip,
   color,
-  direction,
-  disablePointerEvents,
+  cursor,
+  columnGap,
+  display,
+  filter,
+  float,
+  font,
+  fontFamily,
+  fontSize,
+  fontStyle,
+  fontVariant,
+  fontWeight,
+  flexWrap,
+  flexShrink,
+  flexDirection,
+  flexGrow,
   gridColumn,
-  grow,
-  justifyContent,
-  justifySelf,
-  pointer,
-  relative,
-  shrink,
-  textAlign,
-  wrap,
-  hoverUnderline,
-  leaf,
+  gridTemplateColumns,
+  gridTemplateRows,
+  gridTemplate,
   gap,
+  height,
+  justifyContent,
+  justifyItems,
+  justifySelf,
+  left,
+  letterSpacing,
+  lineHeight,
+  listStyle,
+  listStyleImage,
+  listStylePosition,
+  listStyleType,
+  margin,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
+  opacity,
+  order,
+  outline,
+  outlineColor,
+  outlineWidth,
+  overflow,
+  overflowX,
+  overflowY,
+  padding,
+  paddingBottom,
+  paddingTop,
+  paddingLeft,
+  paddingRight,
+  pageBreakAfter,
+  pageBreakBefore,
+  pageBreakInside,
+  pointerEvents,
+  position,
+  quotes,
+  rowGap,
+  resize,
+  right,
+  tabSize,
+  tableLayout,
+  textAlign,
+  textDecoration,
+  textIndent,
+  textJustify,
+  textOverflow,
+  textShadow,
+  textTransform,
+  top,
+  transform,
+  transformOrigin,
+  transformStyle,
+  transition,
+  verticalAlign,
+  visibility,
+  whiteSpace,
+  width,
+  wordBreak,
+  wordSpacing,
+  wordWrap,
+  zIndex,
 } from "../properties";
 
 const Box = styled(
-  React.forwardRef(({ children, className, bgColor, borderRadius, alignItems, justifyContent, ...props }, ref) => (
+  React.forwardRef(({ children, className, ...props }, ref) => (
     <div className={className} ref={ref} {...props}>
       {children}
     </div>
   ))
 )`
-  flex-wrap: nowrap;
-  position: static;
-  color: inherit;
-  align-items: stretch;
-
-  ${useSpacingProps}
-  ${useWidthProps}
-  ${useHeightProps}
-  ${useDiplayProps}
-
-  ${gridColumn}
-  ${pointer}
-  ${alignItems}
-  ${justifyContent}
-  ${justifySelf}
-  ${wrap}
-  ${shrink}
-  ${direction}
-  ${relative}
-  ${borderRadius}
+${alignItems}
+  ${alignSelf}
+  ${alignContent}
+  ${animation}
+  ${backgroundFilter}
+  ${background}
   ${bgColor}
-  ${grow}
-  ${gap}
-
+  ${border}
+  ${borderBottom}
+  ${borderTop}
+  ${borderLeft}
+  ${borderRight}
+  ${borderColor}
+  ${borderWidth}
+  ${borderRadius}
+  ${bottom}
+  ${boxShadow}
+  ${boxSizing}
+  ${clip}
   ${color}
+  ${cursor}
+  ${columnGap}
+  ${display}
+  ${filter}
+  ${float}
+  ${font}
+  ${fontFamily}
+  ${fontSize}
+  ${fontStyle}
+  ${fontVariant}
+  ${fontWeight}
+  ${flexWrap}
+  ${flexShrink}
+  ${flexDirection}
+  ${flexGrow}
+  ${gridColumn}
+  ${gridTemplateColumns}
+  ${gridTemplateRows}
+  ${gridTemplate}
+  ${gap}
+  ${height}
+  ${justifyContent}
+  ${justifyItems}
+  ${justifySelf}
+  ${left}
+  ${letterSpacing}
+  ${lineHeight}
+  ${listStyle}
+  ${listStyleImage}
+  ${listStylePosition}
+  ${listStyleType}
+  ${margin}
+  ${marginBottom}
+  ${marginLeft}
+  ${marginRight}
+  ${marginTop}
+  ${maxHeight}
+  ${maxWidth}
+  ${minHeight}
+  ${minWidth}
+  ${opacity}
+  ${order}
+  ${outline}
+  ${outlineColor}
+  ${outlineWidth}
+  ${overflow}
+  ${overflowX}
+  ${overflowY}
+  ${padding}
+  ${paddingBottom}
+  ${paddingTop}
+  ${paddingLeft}
+  ${paddingRight}
+  ${pageBreakAfter}
+  ${pageBreakBefore}
+  ${pageBreakInside}
+  ${pointerEvents}
+  ${position}
+  ${quotes}
+  ${rowGap}
+  ${resize}
+  ${right}
+  ${tabSize}
+  ${tableLayout}
   ${textAlign}
-  ${disablePointerEvents}
-  ${hoverUnderline}
-  ${leaf}
+  ${textDecoration}
+  ${textIndent}
+  ${textJustify}
+  ${textOverflow}
+  ${textShadow}
+  ${textTransform}
+  ${top}
+  ${transform}
+  ${transformOrigin}
+  ${transformStyle}
+  ${transition}
+  ${verticalAlign}
+  ${visibility}
+  ${whiteSpace}
+  ${width}
+  ${wordBreak}
+  ${wordSpacing}
+  ${wordWrap}
+  ${zIndex}
 `;
 
-Box.propTypes = {
-  spacing: propTypes.string,
-  /** Width for the component in % */
-  width: propTypes.oneOfType([propTypes.number, propTypes.string]),
-  /** Width for the component on md (medium) breakpoint and UP in % */
-  mdWidth: propTypes.oneOfType([propTypes.number, propTypes.string]),
-  /** Width for the component on lg (large) breakpoint and UP in % */
-  lgWidth: propTypes.oneOfType([propTypes.number, propTypes.string]),
-  /** Width for the component in % */
-  height: propTypes.oneOfType([propTypes.number, propTypes.string]),
-  /** Width for the component on md (medium) breakpoint and UP in % */
-  mdHeight: propTypes.oneOfType([propTypes.number, propTypes.string]),
-  /** Width for the component on lg (large) breakpoint and UP in % */
-  lgHeight: propTypes.oneOfType([propTypes.number, propTypes.string]),
-  /** Set value of CSS align-items property */
-  alignItems: propTypes.string,
-  /** Set value of CSS justify-content property */
-  justifyContent: propTypes.string,
-  /** Set HEX code for background color (use colors from constants.js) */
-  bgColor: propTypes.string,
-  /** Set flex-wrap or not */
-  wrap: propTypes.bool,
-  /** Value for flex-shrink */
-  shrink: propTypes.number,
-  /** Value for flex-direction */
-  direction: propTypes.string,
-  /** Set Sets flex-direction to column on mobile breakpoints */
-  stackOnMobile: propTypes.bool,
-  /** Set position: relative  */
-  relative: propTypes.bool,
-  /** Set text-align or not  */
-  textAlign: propTypes.string,
-};
+
 
 Box.defaultProps = {};
 

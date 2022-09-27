@@ -1,74 +1,138 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import propTypes from "prop-types";
-import IconSvg from "../IconSvg/IconSvg";
-import useSpacingProps from "../../utils/spacing-props";
-import useButtonVariations from "../../utils/buttonVariations";
-import widthProps from "../../utils/width-props";
+import { FaBeer } from 'react-icons/fa'
 import Loader from "../Loader/Loader";
 import {
   alignItems,
   alignSelf,
+  alignContent,
   animation,
   backgroundFilter,
   background,
-
   bgColor,
-  color,
-  fontWeight,
-  grow,
-  float,
-  borderRadius,
+  border,
+  borderBottom,
+  borderTop,
+  borderLeft,
+  borderRight,
   borderColor,
-  maxWidth,
-  widthFull,
-  heightSize,
-  fontFamily,
   borderWidth,
-  disablePointerEvents
-} from "../properties";
-import fontWeigthProps from "../../utils/fontWeightProps";
-import useTypography from "../../utils/typography";
-
-const SIZE_CONFIG = {
-  lg: { padding: "19px 39px 19px 39px;", fontSize: "16px" },
-  md: { padding: "9px 16px 9px 16px", fontSize: "14px" },
-};
-
-export const TYPE_CONFIG = ["text", "outline", "solid"];
-
-const Button = styled(({
-  children,
-  leftIcon,
-  rightIcon,
-  loading,
-  disablePointerEvents: dpe,
+  borderRadius,
+  bottom,
+  boxShadow,
+  boxSizing,
+  clip,
   color,
-  iconWidth = "16px",
-  ...props
-}) => {
+  cursor,
+  columnGap,
+  display,
+  filter,
+  float,
+  font,
+  fontFamily,
+  fontSize,
+  fontStyle,
+  fontVariant,
+  fontWeight,
+  flexWrap,
+  flexShrink,
+  flexDirection,
+  flexGrow,
+  gridColumn,
+  gridTemplateColumns,
+  gridTemplateRows,
+  gridTemplate,
+  gap,
+  height,
+  justifyContent,
+  justifyItems,
+  justifySelf,
+  left,
+  letterSpacing,
+  lineHeight,
+  listStyle,
+  listStyleImage,
+  listStylePosition,
+  listStyleType,
+  margin,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
+  opacity,
+  order,
+  outline,
+  outlineColor,
+  outlineWidth,
+  overflow,
+  overflowX,
+  overflowY,
+  padding,
+  paddingBottom,
+  paddingTop,
+  paddingLeft,
+  paddingRight,
+  pageBreakAfter,
+  pageBreakBefore,
+  pageBreakInside,
+  pointerEvents,
+  position,
+  quotes,
+  rowGap,
+  resize,
+  right,
+  tabSize,
+  tableLayout,
+  textAlign,
+  textDecoration,
+  textIndent,
+  textJustify,
+  textOverflow,
+  textShadow,
+  textTransform,
+  top,
+  transform,
+  transformOrigin,
+  transformStyle,
+  transition,
+  verticalAlign,
+  visibility,
+  whiteSpace,
+  width,
+  wordBreak,
+  wordSpacing,
+  wordWrap,
+  zIndex,
+} from "../properties";
+
+const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidth = "16px", ...props }) => {
   let content;
   const [width, setWidth] = useState();
   const ref = useRef();
-  const style = loading ? {width} : null;
+  const style = loading ? { width } : null;
 
   if (loading) {
     content = <Loader $color={color} $size="18px" />;
   } else {
     content = (
       <>
-        {leftIcon && <IconSvg width={iconWidth}  icon={leftIcon} spacing="mr-2" />}
+        {leftIcon && <FaBeer />}
 
         {children}
 
-        {rightIcon && <IconSvg width={iconWidth} icon={rightIcon} spacing="ml-2" />}
+        {rightIcon &&<FaBeer />}
       </>
     );
   }
 
   useEffect(() => {
     if (ref.current.getBoundingClientRect().width) {
-      setWidth(ref.current.getBoundingClientRect().width+ "px");
+      setWidth(ref.current.getBoundingClientRect().width + "px");
     }
   }, [loading]);
 
@@ -78,59 +142,114 @@ const Button = styled(({
     </button>
   );
 })`
-
   ${alignItems}
   ${alignSelf}
+  ${alignContent}
   ${animation}
   ${backgroundFilter}
   ${background}
   ${bgColor}
-  
-  ${useSpacingProps}
-  ${widthProps}
-  ${useTypography}
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
- 
-  border-width: 0px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
-  line-height: 1.5em;
-  font-family: 'Proxima Nova';
-
-  ${useButtonVariations}
-
-  ${({ width }) => width && `width: ${width};`}
-  ${({ height }) => height && `height: ${height};`}
-
-
-  ${color}
-  ${fontWeight}
-  ${grow}
-  ${float}
-  ${borderRadius}
+  ${border}
+  ${borderBottom}
+  ${borderTop}
+  ${borderLeft}
+  ${borderRight}
   ${borderColor}
-  ${maxWidth}
-  ${widthFull}
-  ${heightSize}
-  ${fontFamily}
   ${borderWidth}
-  ${disablePointerEvents}
-
-  ${({ size }) =>
-    size &&
-    `
-    padding: ${SIZE_CONFIG[size].padding};
-    font-size: ${SIZE_CONFIG[size].fontSize};
-  `}
-
-  ${fontWeigthProps}
+  ${borderRadius}
+  ${bottom}
+  ${boxShadow}
+  ${boxSizing}
+  ${clip}
+  ${color}
+  ${cursor}
+  ${columnGap}
+  ${display}
+  ${filter}
+  ${float}
+  ${font}
+  ${fontFamily}
+  ${fontSize}
+  ${fontStyle}
+  ${fontVariant}
+  ${fontWeight}
+  ${flexWrap}
+  ${flexShrink}
+  ${flexDirection}
+  ${flexGrow}
+  ${gridColumn}
+  ${gridTemplateColumns}
+  ${gridTemplateRows}
+  ${gridTemplate}
+  ${gap}
+  ${height}
+  ${justifyContent}
+  ${justifyItems}
+  ${justifySelf}
+  ${left}
+  ${letterSpacing}
+  ${lineHeight}
+  ${listStyle}
+  ${listStyleImage}
+  ${listStylePosition}
+  ${listStyleType}
+  ${margin}
+  ${marginBottom}
+  ${marginLeft}
+  ${marginRight}
+  ${marginTop}
+  ${maxHeight}
+  ${maxWidth}
+  ${minHeight}
+  ${minWidth}
+  ${opacity}
+  ${order}
+  ${outline}
+  ${outlineColor}
+  ${outlineWidth}
+  ${overflow}
+  ${overflowX}
+  ${overflowY}
+  ${padding}
+  ${paddingBottom}
+  ${paddingTop}
+  ${paddingLeft}
+  ${paddingRight}
+  ${pageBreakAfter}
+  ${pageBreakBefore}
+  ${pageBreakInside}
+  ${pointerEvents}
+  ${position}
+  ${quotes}
+  ${rowGap}
+  ${resize}
+  ${right}
+  ${tabSize}
+  ${tableLayout}
+  ${textAlign}
+  ${textDecoration}
+  ${textIndent}
+  ${textJustify}
+  ${textOverflow}
+  ${textShadow}
+  ${textTransform}
+  ${top}
+  ${transform}
+  ${transformOrigin}
+  ${transformStyle}
+  ${transition}
+  ${verticalAlign}
+  ${visibility}
+  ${whiteSpace}
+  ${width}
+  ${wordBreak}
+  ${wordSpacing}
+  ${wordWrap}
+  ${zIndex}
 
 &&& {
     ${({ theme, disabled }) =>
-      disabled &&
+    disabled &&
       `
     background: ${theme.colors.tertiary300};
     color: ${theme.colors.tertiary0};
@@ -144,31 +263,16 @@ const Button = styled(({
 Button.propTypes = {
   /** Disable button */
   disabled: propTypes.bool,
-  kind: propTypes.oneOf(TYPE_CONFIG),
-  /** Spacing property (see Layout component) */
-  spacing: propTypes.string,
   /** Func to execute on click */
   onClick: propTypes.func,
-  /** Name of icon to go on the right of button content */
-  rightIcon: propTypes.string,
-  /** Name of icon to go on the left of button content */
-  leftIcon: propTypes.string,
-  /** Sets a min-width of 100px */
-  minWidth: propTypes.bool,
-  widthFull: propTypes.bool,
-  heightSize: propTypes.string,
-  /** Prevent wrapping lines & truncate with ... */
-  noWrap: propTypes.bool,
-  /** Button sizes */
-  size: propTypes.oneOf(["md", "lg"]),
-  grow: propTypes.number
 };
 
 Button.defaultProps = {
-  kind: "solid",
-  variant: "primary500",
-  size: "md",
-  bgColor: "#54C1A1"
+  bgColor: "#54C1A1",
+  color: "white",
+  height: "40px",
+  width: "auto",
+  border: "none"
 };
 
 export default Button;

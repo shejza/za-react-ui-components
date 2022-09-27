@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import useSpacingProps from "../../utils/spacing-props";
-import { color, pointer } from "../properties";
+import { color } from "../properties";
 
 import { ReactComponent as flag } from "../assets/flag.svg";
 import { ReactComponent as user } from "../assets/user.svg";
@@ -289,7 +289,6 @@ const IconSvg = styled(({ spacing, icon, width, height, color, className, onClic
 })`
   ${useSpacingProps}
   ${color}
-  ${pointer}
 
   ${({ width, height }) =>
     width &&

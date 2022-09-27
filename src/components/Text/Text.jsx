@@ -1,28 +1,217 @@
 import React from "react";
 import styled from "styled-components";
-import useTypography from "../../utils/typography";
-import useFontProps from "../../utils/font-props";
-import useSpacingProps from "../../utils/spacing-props";
-import useWidthProps from "../../utils/width-props";
-import useHeightProps from "../../utils/height-props";
-import { gridColumn, justifySelf, pointer, underline, fontFamily, lineHeight, fontWeight } from "../properties";
+import {
+  alignItems,
+  alignSelf,
+  alignContent,
+  animation,
+  backgroundFilter,
+  background,
+  bgColor,
+  border,
+  borderBottom,
+  borderTop,
+  borderLeft,
+  borderRight,
+  borderColor,
+  borderWidth,
+  borderRadius,
+  bottom,
+  boxShadow,
+  boxSizing,
+  clip,
+  color,
+  cursor,
+  columnGap,
+  display,
+  filter,
+  float,
+  font,
+  fontFamily,
+  fontSize,
+  fontStyle,
+  fontVariant,
+  fontWeight,
+  flexWrap,
+  flexShrink,
+  flexDirection,
+  flexGrow,
+  gridColumn,
+  gridTemplateColumns,
+  gridTemplateRows,
+  gridTemplate,
+  gap,
+  height,
+  justifyContent,
+  justifyItems,
+  justifySelf,
+  left,
+  letterSpacing,
+  lineHeight,
+  listStyle,
+  listStyleImage,
+  listStylePosition,
+  listStyleType,
+  margin,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
+  opacity,
+  order,
+  outline,
+  outlineColor,
+  outlineWidth,
+  overflow,
+  overflowX,
+  overflowY,
+  padding,
+  paddingBottom,
+  paddingTop,
+  paddingLeft,
+  paddingRight,
+  pageBreakAfter,
+  pageBreakBefore,
+  pageBreakInside,
+  pointerEvents,
+  position,
+  quotes,
+  rowGap,
+  resize,
+  right,
+  tabSize,
+  tableLayout,
+  textAlign,
+  textDecoration,
+  textIndent,
+  textJustify,
+  textOverflow,
+  textShadow,
+  textTransform,
+  top,
+  transform,
+  transformOrigin,
+  transformStyle,
+  transition,
+  verticalAlign,
+  visibility,
+  whiteSpace,
+  width,
+  wordBreak,
+  wordSpacing,
+  wordWrap,
+  zIndex,
+} from "../properties";
 
 const Text = styled.div`
-  ${useSpacingProps}
-  ${useFontProps}
-  ${useTypography}
-  ${useWidthProps}
-  ${useHeightProps}
-  ${pointer}
-  ${gridColumn}
-  ${underline}
-  ${justifySelf}
-  ${fontFamily}
-  ${lineHeight}
-  ${fontWeight}
-  ${({ onClick }) => onClick && "cursor: pointer;"}
-  ${({ center }) => center && "display: flex; justify-content: center; align-items: center;"}
-  ${({ centerItems }) => centerItems && "display: flex; align-items: center;"}
+${alignItems}
+${alignSelf}
+${alignContent}
+${animation}
+${backgroundFilter}
+${background}
+${bgColor}
+${border}
+${borderBottom}
+${borderTop}
+${borderLeft}
+${borderRight}
+${borderColor}
+${borderWidth}
+${borderRadius}
+${bottom}
+${boxShadow}
+${boxSizing}
+${clip}
+${color}
+${cursor}
+${columnGap}
+${display}
+${filter}
+${float}
+${font}
+${fontFamily}
+${fontSize}
+${fontStyle}
+${fontVariant}
+${fontWeight}
+${flexWrap}
+${flexShrink}
+${flexDirection}
+${flexGrow}
+${gridColumn}
+${gridTemplateColumns}
+${gridTemplateRows}
+${gridTemplate}
+${gap}
+${height}
+${justifyContent}
+${justifyItems}
+${justifySelf}
+${left}
+${letterSpacing}
+${lineHeight}
+${listStyle}
+${listStyleImage}
+${listStylePosition}
+${listStyleType}
+${margin}
+${marginBottom}
+${marginLeft}
+${marginRight}
+${marginTop}
+${maxHeight}
+${maxWidth}
+${minHeight}
+${minWidth}
+${opacity}
+${order}
+${outline}
+${outlineColor}
+${outlineWidth}
+${overflow}
+${overflowX}
+${overflowY}
+${padding}
+${paddingBottom}
+${paddingTop}
+${paddingLeft}
+${paddingRight}
+${pageBreakAfter}
+${pageBreakBefore}
+${pageBreakInside}
+${pointerEvents}
+${position}
+${quotes}
+${rowGap}
+${resize}
+${right}
+${tabSize}
+${tableLayout}
+${textAlign}
+${textDecoration}
+${textIndent}
+${textJustify}
+${textOverflow}
+${textShadow}
+${textTransform}
+${top}
+${transform}
+${transformOrigin}
+${transformStyle}
+${transition}
+${verticalAlign}
+${visibility}
+${whiteSpace}
+${width}
+${wordBreak}
+${wordSpacing}
+${wordWrap}
+${zIndex}
 `;
 
 export default Text;

@@ -33,9 +33,6 @@ export default {
       options: ["center", "start", "end", "flex-start", "flex-end", "left", "right", "normal", "space-between", "space-around", "space-evenly", "stretch"],
       control: { type: "select" },
     },
-    pointer: {
-      control: "boolean"
-    },
     relative: {
       control: "boolean"
     },
@@ -45,9 +42,6 @@ export default {
     textAlign: {
       options: ["start", "end", "left", "right", "center", "justify", "justify-all", "match-parent"],
       control: { type: "select" },
-    },
-    wrap: {
-      control: { type: "boolean" },
     },
 	hide: {
 		control: "boolean"

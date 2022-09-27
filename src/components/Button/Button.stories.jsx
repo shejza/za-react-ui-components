@@ -89,27 +89,3 @@ Default.args = {
   borderRadius: "8px",
   onClick,
 };
-
-export const Example1 = Template.bind({});
-
-Example1.args = {
-  leftIcon: "plus-circle",
-  rightIcon: "plus-circle",
-};
-
-export const Example2 = (args) => {
-  const [loading, setLoading] = useState(false);
-  const toggle = () => {
-    setLoading(!loading);
-  };
-
-  return (
-    <Button loading={loading} onClick={toggle} {...args}>
-      Click here to toggle loading.
-    </Button>
-  );
-};
-
-Example2.args = {
-  title: "loading button",
-};
