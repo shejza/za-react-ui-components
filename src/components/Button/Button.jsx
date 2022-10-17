@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import propTypes from "prop-types";
-import { FaBeer } from 'react-icons/fa'
 import Loader from "../Loader/Loader";
 import {
   alignItems,
@@ -121,11 +120,12 @@ const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidt
   } else {
     content = (
       <>
-        {leftIcon && <FaBeer />}
+       {/*{leftIcon && <IconSvg width={iconWidth}  icon={leftIcon} spacing="mr-2" />}*/}
+      
 
         {children}
 
-        {rightIcon &&<FaBeer />}
+        {/*{rightIcon &&<FaBeer />}*/}
       </>
     );
   }

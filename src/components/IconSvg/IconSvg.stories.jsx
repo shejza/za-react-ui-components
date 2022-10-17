@@ -21,8 +21,8 @@ const Template = (args) => <IconSvg {...args} />;
 export const Example = Template.bind({});
 
 Example.args = {
-  icon: "checked-circle",
-  color: "green",
+  icon: "AiTwotoneWarning",
+  color: "black",
   width: "24px",
 };
 
@@ -38,6 +38,6 @@ export const All = (args) => (
 );
 
 All.args = {
-  color: "green",
+  color: "black",
   width: "24px",
 };
