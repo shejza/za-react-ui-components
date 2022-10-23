@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button, { TYPE_CONFIG } from "./Button";
-import { iconNames } from "../IconSvg/IconSvg";
+import { iconNames } from "../Icon/Icon";
 import { colors } from "../../constants";
 import { fontFamily } from "./../../constants";
 import { mapToBoolean, mapToText } from "../storyTools";

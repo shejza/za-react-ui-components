@@ -120,7 +120,7 @@ const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidt
   } else {
     content = (
       <>
-       {/*{leftIcon && <IconSvg width={iconWidth}  icon={leftIcon} spacing="mr-2" />}*/}
+       {/*{leftIcon && <Icon width={iconWidth}  icon={leftIcon} spacing="mr-2" />}*/}
       
 
         {children}

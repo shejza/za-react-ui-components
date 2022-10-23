@@ -1,4 +1,4 @@
-import IconSvg from "./components/IconSvg/IconSvg";
+import Icon from "./components/Icon/Icon";
 import Box from "./components/Box/Box";
 import Text from "./components/Text/Text";
 import TabsContainer, { TabOption } from "./components/TabsContainer/TabsContainer";
@@ -11,7 +11,7 @@ export {
   Box,
   Button,
   Grid,
-  IconSvg,
+  Icon,
   Loader,
   TabOption,
   TabsContainer,

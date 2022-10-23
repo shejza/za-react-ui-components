@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
-import IconSvg from "../IconSvg/IconSvg";
+import Icon from "../Icon/Icon";
 
 const Rotate = keyframes` 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } `;
 const Animation = css`
@@ -13,7 +13,7 @@ const Loader = ({$center, $size, $color}) => {
   );
 };
 
-const StyledIcon = styled(IconSvg)`
+const StyledIcon = styled(Icon)`
   position: relative;
   ${({$center})=> $center && "margin: 0 auto;"}
   ${Animation};

@@ -1,13 +1,14 @@
 import React from "react";
 
-import IconSvg, { availableIcons } from "./IconSvg";
+import { allAvailableIcons } from "./allAvailableIcons";
+import Icon from "./Icon";
 import Box from "../Box/Box";
 
-const keys = Object.keys(availableIcons);
+const keys = Object.keys(allAvailableIcons);
 
 export default {
-  title: "Example/IconSvg",
-  component: IconSvg,
+  title: "Example/Icon",
+  component: Icon,
   argTypes: {
     icon: {
       options: keys,
@@ -16,12 +17,12 @@ export default {
   },
 };
 
-const Template = (args) => <IconSvg {...args} />;
+const Template = (args) => <Icon {...args} />;
 
 export const Example = Template.bind({});
 
 Example.args = {
-  icon: "AiTwotoneWarning",
+  icon: "BsFillAlarmFill",
   color: "black",
   width: "24px",
 };
@@ -31,7 +32,7 @@ export const All = (args) => (
     {keys.map((key) => (
       <Box spacing="p-4">
         <p>{key}</p>
-        <IconSvg {...args} key={key} icon={key} />
+        <Icon {...args} key={key} icon={key} />
       </Box>
     ))}
   </Box>
