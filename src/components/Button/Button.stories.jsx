@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import Button, { TYPE_CONFIG } from "./Button";
+import React from "react";
+import Button from "./Button";
 import { iconNames } from "../Icon/Icon";
-import { colors } from "../../constants";
 import { fontFamily } from "./../../constants";
 import { mapToBoolean, mapToText } from "../storyTools";
-import { FONT_CONFIG } from "../../utils/typography";
 
 const textProperties = ["bgColor", "color", "borderRadius", "borderColor", "maxWidth", "heightSize"];
 const booleanProperties = [
@@ -42,14 +40,6 @@ export default {
     bgColor: {
       control: { type: "text" },
     },
-    size: {
-      options: ["md", "lg"],
-      control: { type: "select" },
-    },
-    kind: {
-      options: TYPE_CONFIG,
-      control: { type: "select" },
-    },
     leftIcon: {
       options: iconNames,
       control: { type: "select" },
@@ -58,16 +48,8 @@ export default {
       options: iconNames,
       control: { type: "select" },
     },
-    variant: {
-      options: Object.keys(colors),
-      control: { type: "select" },
-    },
     fontFamily: {
       options: Object.keys(fontFamily),
-      control: { type: "select" },
-    },
-    typography: {
-      options: Object.keys(FONT_CONFIG),
       control: { type: "select" },
     },
     ...mapToText(textProperties),
@@ -82,10 +64,8 @@ export const Default = Template.bind({});
 const onClick = () => alert("you have clicked this button");
 
 Default.args = {
-  title: "Example one",
-  leftIcon: "plus-circle",
-  bold: false,
-  semiBold: false,
+  title: "Default",
+  leftIcon: "FaBeer",
   borderRadius: "8px",
   onClick,
 };

@@ -2,7 +2,7 @@ export const alignItems = ({ alignItems }) => alignItems && `align-items: ${alig
 export const alignSelf = ({ alignSelf }) => alignSelf && `align-self: ${alignSelf};`;
 export const alignContent = ({ alignContent }) => alignContent && `align-content: ${alignContent};`;
 export const animation = ({ animation }) => animation && `animation: ${animation};`;
-export const backgroundFilter = ({ backgroundFilter }) => backgroundFilter && `backdrop-filter: ${backgroundFilter};`;
+export const backdropFilter = ({ backdropFilter }) => backdropFilter && `backdrop-filter: ${backdropFilter};`;
 export const background = ({ background }) => background && `background: ${background};`;
 export const bgColor = ({ bgColor, theme }) => bgColor && ` background-color: ${theme.colors[bgColor] || bgColor};`;
 export const border = ({ border }) => border && `border: ${border};`;

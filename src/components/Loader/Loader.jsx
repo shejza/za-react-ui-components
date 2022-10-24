@@ -7,9 +7,9 @@ const Animation = css`
   animation: ${Rotate} 2s linear infinite;
 `;
 
-const Loader = ({$center, $size, $color}) => {
+const Loader = ({$center, $size, $color, icon}) => {
   return (
-    <StyledIcon color={$color} width={$size} icon="loader" $center={$center} />
+    <StyledIcon color={$color} width={$size} icon={icon} $center={$center} />
   );
 };
 
@@ -22,6 +22,7 @@ const StyledIcon = styled(Icon)`
 Loader.defaultProps = {
   $size: "20px",
   $color: "primary700",
+  icon: "BiLoader"
 };
 
 export default Loader;

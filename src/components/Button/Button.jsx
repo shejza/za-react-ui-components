@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import propTypes from "prop-types";
 import Loader from "../Loader/Loader";
+import Icon from "../Icon/Icon";
 import {
   alignItems,
   alignSelf,
   alignContent,
   animation,
-  backgroundFilter,
+  backdropFilter,
   background,
   bgColor,
   border,
@@ -120,12 +121,9 @@ const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidt
   } else {
     content = (
       <>
-       {/*{leftIcon && <Icon width={iconWidth}  icon={leftIcon} spacing="mr-2" />}*/}
-      
-
+        {leftIcon && <Icon width={iconWidth}  icon={leftIcon}  />}
         {children}
-
-        {/*{rightIcon &&<FaBeer />}*/}
+        {rightIcon && <Icon width={iconWidth}  icon={rightIcon}  />}
       </>
     );
   }
@@ -146,7 +144,7 @@ const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidt
   ${alignSelf}
   ${alignContent}
   ${animation}
-  ${backgroundFilter}
+  ${backdropFilter}
   ${background}
   ${bgColor}
   ${border}
@@ -251,11 +249,11 @@ const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidt
     ${({ theme, disabled }) =>
     disabled &&
       `
-    background: ${theme.colors.tertiary300};
-    color: ${theme.colors.tertiary0};
+    background: "#D9D9D9";
+    color: "#fff";
     cursor: default;
     pointer-events: none;
-    border-color: ${theme.colors.tertiary300};
+    border-color: "#D9D9D9";
 `}
   }
 `;
@@ -268,6 +266,11 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+  padding: "8px",
+  cursor: "pointer",
   bgColor: "#54C1A1",
   color: "white",
   height: "40px",
