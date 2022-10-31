@@ -4,7 +4,7 @@ import Text from "./components/Text/Text";
 import TabsContainer, { TabOption } from "./components/TabsContainer/TabsContainer";
 import Button from "./components/Button/Button";
 import Grid from "./components/Grid/Grid";
-import MarkdownText from "./components/MarkdownText";
+import MarkdownText from "./components/MarkdownText/MarkdownText";
 import { theme, breakpoints } from "./constants";
 
 import Loader from "./components/Loader/Loader";
