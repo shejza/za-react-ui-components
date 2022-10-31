@@ -8,10 +8,10 @@ import useWidthProps from "../../utils/width-props";
 import useHeightProps from "../../utils/height-props";
 import { gridColumn, justifySelf, pointer, underline, fontFamily, lineHeight, fontWeight } from "../properties";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 
-const MarkdownText = styled(({text,   ...props }) => {
+const MarkdownText = styled(({ ...props }) => {
   return (
     <Markdown
       components={{
@@ -20,7 +20,7 @@ const MarkdownText = styled(({text,   ...props }) => {
 
           return !inline && match ? (
             <SyntaxHighlighter
-              style={materialLight}
+              style={oneDark}
               PreTag="div"
               language={match[1]}
               children={String(children).replace(/\n$/, "")}
