@@ -9,6 +9,7 @@ import useHeightProps from "../../utils/height-props";
 import { gridColumn, justifySelf, pointer, underline, fontFamily, lineHeight, fontWeight } from "../properties";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import remarkGfm from 'remark-gfm'
 
 const CodeBlock = {
   code({ node, inline, className, children, ...props }) {
@@ -33,6 +34,7 @@ const CodeBlock = {
 const MarkdownText = styled(({children, ...props }) => {
   return (
     <Markdown
+    remarkPlugins={[remarkGfm]} 
       components={CodeBlock}
     >
       {children}
