@@ -13,5 +13,10 @@ const Template = ({text, ...args}) => <MarkdownText {...args}>{text}</MarkdownTe
 export const Default = Template.bind({});
 
 Default.args = {
-  text: "[This is a link to google](www.google.com)",
+  text: `
+  \`\`\`js
+  import React from "react";
+  function () {}
+  \`\`\`
+  `,
 };
