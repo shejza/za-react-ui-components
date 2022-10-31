@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Markdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
 import useTypography from "../../utils/typography";
 import useFontProps from "../../utils/font-props";
 import useSpacingProps from "../../utils/spacing-props";
@@ -11,34 +11,30 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from 'remark-gfm'
 
-const CodeBlock = {
-  code({ node, inline, className, children, ...props }) {
-    const match = /language-(\w+)/.exec(className || "");
 
-    return !inline && match ? (
-      <SyntaxHighlighter
-        style={oneDark}
-        PreTag="div"
-        language={match[1]}
-        children={String(children).replace(/\n$/, "")}
-        {...props}
-      />
-    ) : (
-      <code className={className ? className : ""} {...props}>
-        {children}
-      </code>
-    );
-  }
-}
-
-const MarkdownText = styled(({children, ...props }) => {
+const MarkdownText = styled(({ ...props }) => {
   return (
-    <Markdown
-    remarkPlugins={[remarkGfm]} 
-      components={CodeBlock}
-    >
-      {children}
-    </Markdown>
+    <ReactMarkdown
+    children={props.children}
+    components={{
+      code({node, inline, className, children, ...props}) {
+        const match = /language-(\w+)/.exec(className || '')
+        return !inline && match ? (
+          <SyntaxHighlighter
+            children={String(children).replace(/\n$/, '')}
+            style={oneDark}
+            language={match[1]}
+            PreTag="div"
+            {...props}
+          />
+        ) : (
+          <code className={className} {...props}>
+            {children}
+          </code>
+        )
+      }
+    }}
+  />
   );
 })`
   ${useSpacingProps}
