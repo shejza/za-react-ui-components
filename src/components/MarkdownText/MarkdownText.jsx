@@ -11,30 +11,21 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from 'remark-gfm'
 
+const CodeRenderer = (props: any) => {
+  return <SyntaxHighlighter language={'js'} style={oneDark}>
+    {props.children}
+  </SyntaxHighlighter>;
+};
 
 const MarkdownText = styled(({ ...props }) => {
   return (
     <ReactMarkdown
     children={props.children}
     components={{
-      code({node, inline, className, children, ...props}) {
-        const match = /language-(\w+)/.exec(className || '')
-        return !inline && match ? (
-          <SyntaxHighlighter
-            children={String(children).replace(/\n$/, '')}
-            style={oneDark}
-            language={match[1]}
-            PreTag="div"
-            {...props}
-          />
-        ) : (
-          <code className={className} {...props}>
-            {children}
-          </code>
-        )
-      }
-    }}
-  />
+      // @ts-ignore
+      // eslint-disable-next-line react/display-name
+      code: ({ node, ...props }) => <CodeRenderer {...props} />,
+    }}/>
   );
 })`
   ${useSpacingProps}
