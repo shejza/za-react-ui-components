@@ -10,31 +10,32 @@ import { gridColumn, justifySelf, pointer, underline, fontFamily, lineHeight, fo
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+const CodeBlock = {
+  code({ node, inline, className, children, ...props }) {
+    const match = /language-(\w+)/.exec(className || "");
 
-const MarkdownText = styled(({ ...props }) => {
+    return !inline && match ? (
+      <SyntaxHighlighter
+        style={oneDark}
+        PreTag="div"
+        language={match[1]}
+        children={String(children).replace(/\n$/, "")}
+        {...props}
+      />
+    ) : (
+      <code className={className ? className : ""} {...props}>
+        {children}
+      </code>
+    );
+  }
+}
+
+const MarkdownText = styled(({children, ...props }) => {
   return (
     <Markdown
-      components={{
-        code({ node, inline, className, children, ...props }) {
-          const match = /language-(\w+)/.exec(className || "");
-
-          return !inline && match ? (
-            <SyntaxHighlighter
-              style={oneDark}
-              PreTag="div"
-              language={match[1]}
-              children={String(children).replace(/\n$/, "")}
-              {...props}
-            />
-          ) : (
-            <code className={className ? className : ""} {...props}>
-              {children}
-            </code>
-          );
-        }
-      }}
+      components={CodeBlock}
     >
-      {props.children}
+      {children}
     </Markdown>
   );
 })`
