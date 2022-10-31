@@ -113,8 +113,6 @@
     ]
   },
   "dependencies": {
-    "react-icons": "^4.4.0",
-    "rehype-raw": "^6.1.1",
-    "remark-gfm": "^3.0.1"
+    "react-icons": "^4.6.0"
   }
 }

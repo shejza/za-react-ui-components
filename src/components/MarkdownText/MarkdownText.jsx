@@ -6,7 +6,7 @@ import useFontProps from "../../utils/font-props";
 import useSpacingProps from "../../utils/spacing-props";
 import useWidthProps from "../../utils/width-props";
 import useHeightProps from "../../utils/height-props";
-import { gridColumn, justifySelf, pointer, underline, fontFamily, lineHeight, fontWeight } from "../properties";
+import { gridColumn, justifySelf, fontFamily, lineHeight, fontWeight } from "../properties";
 import Highlighter from './../Highlighter/Highlighter';
 
 
@@ -27,9 +27,7 @@ const MarkdownText = styled(({ ...props }) => {
   ${useTypography}
   ${useWidthProps}
   ${useHeightProps}
-  ${pointer}
   ${gridColumn}
-  ${underline}
   ${justifySelf}
   ${fontFamily}
   ${lineHeight}

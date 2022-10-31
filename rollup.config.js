@@ -1,61 +1,66 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
-import image from '@rollup/plugin-image';
-import url from '@rollup/plugin-url';
-import svgr from '@svgr/rollup';
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import babel from "@rollup/plugin-babel";
+import image from "@rollup/plugin-image";
+import url from "@rollup/plugin-url";
+import svgr from "@svgr/rollup";
+import json from "@rollup/plugin-json";
 
-const packageJson = require('./package.json');
+const packageJson = require("./package.json");
 
 const external = [
-  'react',
-  'prop-types',
-  'styled-components',
+  "react",
+  "prop-types",
+  "styled-components",
 ];
 
 const globals = {
-  react: 'React',
-  'styled-components': 'styled',
-  'prop-types': 'propTypes'
-}
+  react: "React",
+  "styled-components": "styled",
+  "prop-types": "propTypes"
+};
 
 export default {
   external: external,
-  input: 'src/library.js',
-
+  input: "src/library.js",
+ 
   output: [
     {
       file: packageJson.main,
       sourcemap: true,
-      format: 'cjs',
+      format: "cjs",
     },
     {
       file: packageJson.module,
       sourcemap: true,
-      format: 'esm',
+      format: "esm",
     },
     {
-      name: 'thc-ui-library',
+      name: "thc-ui-library",
       file: packageJson.umd,
       sourcemap: true,
-      format: 'umd',
+      format: "umd",
     },
   ],
   plugins: [
     // externals(),
+    json({
+      compact: true,
+    }),
     url({
-      include: ['**/*.ttf'],
+      include: ["**/*.ttf"],
       limit: Infinity,
     }),
     svgr(),
     image(),
     resolve({
-      extensions: ['.js', '.ttf', '.jsx'],
+      extensions: [".js", ".ttf", ".jsx"],
     }),
     commonjs(),
     babel({
-      presets: ['@babel/preset-react'],
-      plugins: ["@babel/plugin-proposal-optional-chaining"]
+      presets: ["@babel/preset-react"],
+      plugins: ["@babel/plugin-proposal-optional-chaining"],
+      exclude: 'node_modules/**',
     }),
   ],
 };

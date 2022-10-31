@@ -5,7 +5,7 @@ import {
   alignSelf,
   alignContent,
   animation,
-  backgroundFilter,
+  backdropFilter,
   background,
   bgColor,
   border,
@@ -112,7 +112,7 @@ ${alignItems}
 ${alignSelf}
 ${alignContent}
 ${animation}
-${backgroundFilter}
+${backdropFilter}
 ${background}
 ${bgColor}
 ${border}

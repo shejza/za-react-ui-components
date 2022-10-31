@@ -31,7 +31,7 @@ export default {
     animation: {
       control: { type: "text" },
     },
-    backgroundFilter: {
+    backdropFilter: {
       control: { type: "text" },
     },
     background: {

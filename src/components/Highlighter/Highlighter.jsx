@@ -5,7 +5,7 @@ import useFontProps from "../../utils/font-props";
 import useSpacingProps from "../../utils/spacing-props";
 import useWidthProps from "../../utils/width-props";
 import useHeightProps from "../../utils/height-props";
-import { gridColumn, justifySelf, pointer, underline, fontFamily, lineHeight, fontWeight } from "../properties";
+import { gridColumn, justifySelf, fontFamily, lineHeight, fontWeight } from "../properties";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -21,9 +21,8 @@ const Highlighter = styled(({ ...props }) => {
   ${useTypography}
   ${useWidthProps}
   ${useHeightProps}
-  ${pointer}
+
   ${gridColumn}
-  ${underline}
   ${justifySelf}
   ${fontFamily}
   ${lineHeight}
