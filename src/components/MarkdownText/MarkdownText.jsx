@@ -9,10 +9,10 @@ import useHeightProps from "../../utils/height-props";
 import { gridColumn, justifySelf, pointer, underline, fontFamily, lineHeight, fontWeight } from "../properties";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import remarkGfm from 'remark-gfm'
+import remarkGfm from "remark-gfm";
 
-const CodeRenderer = (props: any) => {
-  return <SyntaxHighlighter language={'js'} style={oneDark}>
+const CodeRenderer = (props) => {
+  return <SyntaxHighlighter language={"js"} style={oneDark}>
     {props.children}
   </SyntaxHighlighter>;
 };
@@ -20,12 +20,10 @@ const CodeRenderer = (props: any) => {
 const MarkdownText = styled(({ ...props }) => {
   return (
     <ReactMarkdown
-    children={props.children}
-    components={{
-      // @ts-ignore
-      // eslint-disable-next-line react/display-name
-      code: ({ node, ...props }) => <CodeRenderer {...props} />,
-    }}/>
+      children={props.children}
+      components={{
+        code: ({ node, ...props }) => <CodeRenderer {...props} />,
+      }}/>
   );
 })`
   ${useSpacingProps}
