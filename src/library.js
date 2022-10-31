@@ -6,8 +6,9 @@ import Button from "./components/Button/Button";
 import Grid from "./components/Grid/Grid";
 import MarkdownText from "./components/MarkdownText/MarkdownText";
 import { theme, breakpoints } from "./constants";
-
 import Loader from "./components/Loader/Loader";
+import Highlighter from './components/Highlighter/Highlighter';
+
 export {
   Box,
   Button,
@@ -19,5 +20,6 @@ export {
   Text,
   theme,
   breakpoints,
-  MarkdownText
+  MarkdownText,
+  Highlighter
 };

@@ -1,25 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import ReactMarkdown from "react-markdown";
 import useTypography from "../../utils/typography";
 import useFontProps from "../../utils/font-props";
 import useSpacingProps from "../../utils/spacing-props";
 import useWidthProps from "../../utils/width-props";
 import useHeightProps from "../../utils/height-props";
 import { gridColumn, justifySelf, pointer, underline, fontFamily, lineHeight, fontWeight } from "../properties";
-import Highlighter from './../Highlighter/Highlighter';
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-
-
-
-const MarkdownText = styled(({ ...props }) => {
+const Highlighter = styled(({ ...props }) => {
   return (
-    <ReactMarkdown
-      children={props.children}
-      components={{
-        code: ({ node, ...props }) => <Highlighter {...props} />,
-      }}
-    />
+    <SyntaxHighlighter language={"js"} style={oneDark}>
+      {props.children}
+    </SyntaxHighlighter>
   );
 })`
   ${useSpacingProps}
@@ -39,4 +33,4 @@ const MarkdownText = styled(({ ...props }) => {
   ${({ centerItems }) => centerItems && "display: flex; align-items: center;"}
 `;
 
-export default MarkdownText;
+export default Highlighter;
