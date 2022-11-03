@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "./Button";
 import { iconNames } from "../Icon/Icon";
-import { fontFamily } from "./../../constants";
 import { mapToBoolean, mapToText } from "../storyTools";
 
 const textProperties = ["bgColor", "color", "borderRadius", "borderColor", "maxWidth", "heightSize"];
@@ -46,10 +45,6 @@ export default {
     },
     rightIcon: {
       options: iconNames,
-      control: { type: "select" },
-    },
-    fontFamily: {
-      options: Object.keys(fontFamily),
       control: { type: "select" },
     },
     ...mapToText(textProperties),

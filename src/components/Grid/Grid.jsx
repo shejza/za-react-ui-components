@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import useSpacingProps from "../../utils/spacing-props";
-import useWidthProps from "../../utils/width-props";
-import useHeightProps from "../../utils/height-props";
 import {
   alignItems,
   alignSelf,

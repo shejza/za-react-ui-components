@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { breakpoints } from "../../constants";
 import Box from "../Box/Box";
 import Text from "../Text/Text";
+import { bgColor } from "../properties";
 
 const TabsContainer = styled(
   ({
@@ -16,7 +17,21 @@ const TabsContainer = styled(
     onChangeIndex,
     currentIndex,
     extraHeaderElement,
-    ...props }) => {
+    tabPadding,
+    colorTab,
+    bgColorTab,
+    selectedBgColorTab,
+    fontWeightTab,
+    selectedFontWeightTab,
+    fontSizeTab,
+    fontFamilyTab,
+    fontStyleTab,
+    fontLineHeightTab,
+    displayTab,
+    minWidthTab,
+    borderTab,
+    ...props
+  }) => {
     const [_selectedTab, setSelected] = useState(selectedIndex);
     const selectedTab = _selectedTab > tabClasses.length - 1 ? 0 : _selectedTab;
     const TabClass = tabClasses[selectedTab];
@@ -26,7 +41,7 @@ const TabsContainer = styled(
     };
 
     useEffect(() => {
-      if(currentIndex !== _selectedTab) {
+      if (currentIndex !== _selectedTab) {
         setSelected(currentIndex);
       }
     }, [currentIndex]);
@@ -34,7 +49,6 @@ const TabsContainer = styled(
     if (TabClass === undefined) return "tabClasses array is empty";
 
     const headerlist = headers.map((header, index) => {
-      const spacing = index === 0 ? "p-4 pl-0" : "p-4";
       const selected = selectedTab == index;
 
       return (
@@ -44,8 +58,21 @@ const TabsContainer = styled(
           data-value={index}
           onClick={onChange}
           semiBold
+          bgColorTab={bgColorTab}
           selected={selected}
-          spacing={spacing}>
+          tabPadding={tabPadding}
+          colorTab={colorTab}
+          selectedBgColorTab={selectedBgColorTab}
+          fontWeightTab={fontWeightTab}
+          selectedFontWeightTab={selectedFontWeightTab}
+          fontSizeTab={fontSizeTab}
+          fontFamilyTab={fontFamilyTab}
+          fontStyleTab={fontStyleTab}
+          fontLineHeightTab={fontLineHeightTab}
+          displayTab={displayTab}
+          minWidthTab={minWidthTab}
+          borderTab={borderTab}
+        >
           {header}
         </TabOption>
       );
@@ -56,8 +83,8 @@ const TabsContainer = styled(
     }, [selectedIndex]);
 
     return (
-      <Box className={className} {...props}>
-        <BorderedBox flex spacing={headerSpacing} gap={gapTabs}>
+      <Box display="flex" flexDirection="row" className={className} {...props}>
+        <BorderedBox>
           {headerlist}
           {extraHeaderElement}
         </BorderedBox>
@@ -68,51 +95,48 @@ const TabsContainer = styled(
 )``;
 
 export const TabOption = styled(Text)`
-  font-family: 'Proxima Nova';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 17px;
-  padding: 8.5px 10px !important;
-  color: ${({ theme }) => theme.colors.secondary500};
-  ${({ selected, theme }) =>
+  font-family: ${({ fontFamilyTab }) => fontFamilyTab && fontFamilyTab};
+  font-style: ${({ fontStyleTab }) => fontStyleTab && fontStyleTab};
+  font-weight: ${({ fontWeightTab }) => fontWeightTab && fontWeightTab};
+  line-height: ${({ fontLineHeightTab }) => fontLineHeightTab && fontLineHeightTab};
+  display: ${({ displayTab }) => displayTab && displayTab};
+  color: ${({ colorTab }) => colorTab && colorTab};
+  background-color: ${({ bgColorTab, theme }) => theme.colors[bgColorTab] || bgColorTab};
+  padding: ${({ tabPadding }) => tabPadding && tabPadding};
+  min-width: ${({ minWidthTab }) => minWidthTab && minWidthTab}; 
+  font-size: ${({ fontSizeTab }) => fontSizeTab && fontSizeTab};
+  cursor: pointer;
+  border-bottom: 1px solid rgba(50, 50, 60, 1);
+  border: ${({ borderTab }) => borderTab && borderTab};
+  ${({ selected, theme, selectedBgColorTab, selectedFontWeightTab }) =>
     selected &&
     `
-    color: ${theme.colors.tertiary0};
-    font-weight: 600;
-    background-color:${theme.colors.accent500};
-    border-radius: 5px;
+    background-color: ${theme.colors[selectedBgColorTab] || selectedBgColorTab};
+    font-weight: ${selectedFontWeightTab}
   `}
-
-  @media ${breakpoints.tablet} {
-    padding: 5px 10px !important;
-    font-size: 16px;
-    line-height: 24px;
-    font-family: "Proxima Nova";
-  };
-
-  @media ${breakpoints.mobile} {
-    white-space: nowrap;
-
-    &:first-child {
-      margin-left: 16px;
-    }
-  }
 `;
 
 const BorderedBox = styled(Box)`
-  gap: 2.5rem;
-
-  @media ${breakpoints.mobile} {
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 TabsContainer.defaultProps = {
   selectedIndex: 0,
   headers: [],
   tabClasses: [],
+  tabPadding: "24px",
+  colorTab: "white",
+  bgColorTab: "blueGray1000",
+  selectedBgColorTab: "blueGray2000",
+  fontWeightTab: "400",
+  selectedFontWeightTab: "600",
+  fontSizeTab: "1rem",
+  fontFamilyTab: "Proxima Nova",
+  fontStyleTab: "normal",
+  fontLineHeightTab: "1.5",
+  displayTab: "inline-block",
+  minWidthTab: "256px",
 };
 
 TabsContainer.BorderedBox = BorderedBox;
