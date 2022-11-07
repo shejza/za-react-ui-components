@@ -223,7 +223,6 @@ const Box = styled(
 
 Box.defaultProps = {
   bgColor: "white",
-  border: "1px solid black"
 };
 
 export default Box;

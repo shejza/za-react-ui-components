@@ -84,7 +84,7 @@ const TabsContainer = styled(
 
     return (
       <Box display="flex" flexDirection="row" className={className} {...props}>
-        <BorderedBox>
+        <BorderedBox  bgColorTab={bgColorTab}>
           {headerlist}
           {extraHeaderElement}
         </BorderedBox>
@@ -119,6 +119,7 @@ export const TabOption = styled(Text)`
 const BorderedBox = styled(Box)`
   display: flex;
   flex-direction: column;
+  background-color: ${({ bgColorTab, theme }) => theme.colors[bgColorTab] || bgColorTab};
 `;
 
 TabsContainer.defaultProps = {
