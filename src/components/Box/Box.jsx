@@ -115,7 +115,7 @@ const Box = styled(
     </div>
   ))
 )`
-${alignItems}
+  ${alignItems}
   ${alignSelf}
   ${alignContent}
   ${animation}
@@ -221,26 +221,9 @@ ${alignItems}
   ${zIndex}
 `;
 
-
-
-Box.defaultProps = {};
-
-const Panel = styled(Box)`
-  background: ${({ bgColor }) => bgColor};
-  box-sizing: border-box;
-  ${({ shadows }) =>
-    shadows &&
-    `
-    border: 1px solid ${({ theme }) => theme.colors.secondary100};
-    box-shadow: 0px 3px 8px rgba(31, 32, 41, 0.08);
-  `}
-`;
-
-Panel.defaultProps = {
-  bgColor: "#FFFFFF",
-  borderRadius: "1.5em",
+Box.defaultProps = {
+  bgColor: "white",
+  border: "1px solid black"
 };
-
-export { Panel };
 
 export default Box;

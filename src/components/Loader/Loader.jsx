@@ -21,7 +21,7 @@ const StyledIcon = styled(Icon)`
 
 Loader.defaultProps = {
   $size: "20px",
-  $color: "primary700",
+  $color: "blue",
   icon: "BiLoader"
 };
 

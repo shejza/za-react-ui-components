@@ -249,11 +249,11 @@ const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidt
     ${({ theme, disabled }) =>
     disabled &&
       `
-    background: "#D9D9D9";
-    color: "#fff";
+    background:  ${theme.colors.gray100};
+    color: ${theme.colors.black};
     cursor: default;
     pointer-events: none;
-    border-color: "#D9D9D9";
+    border-color: ${theme.colors.gray100};
 `}
   }
 `;

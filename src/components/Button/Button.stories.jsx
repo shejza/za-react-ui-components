@@ -63,4 +63,5 @@ Default.args = {
   leftIcon: "FaBeer",
   borderRadius: "8px",
   onClick,
+  disabled: true
 };

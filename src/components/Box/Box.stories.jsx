@@ -1,14 +1,7 @@
 import React from "react";
 import { mapToText } from "../storyTools";
-import Box, { TYPE_CONFIG } from "./Box";
+import Box from "./Box";
 
-const textProperties = [
-  "bgColor",
-  "borderRadius",
-  "color",
-  "gridColumn",
-  "shrink",
-]
 
 export default {
   title: "Box",
@@ -18,7 +11,6 @@ export default {
       options: ["normal", "stretch", "center" , "start" , "end" , "flex-start" , "flex-end" , "baseline", "first baseline", "last baseline", "safe center", "unsafe center", "inherit", "initial", "revert", "unset", ],
       control: { type: "select" },
     },
-    ...mapToText(textProperties),
     direction: {
       options: ["row", "row-reverse", "column", "column-reverse"],
       control: { type: "select" },
