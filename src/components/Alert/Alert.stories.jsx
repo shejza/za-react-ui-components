@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AlertList from "./AlertList";
+import Alert from "./Alert";
 import Button from "../Button/Button";
 import Box from "../Box/Box";
 import Grid from "../Grid/Grid";
@@ -7,7 +7,7 @@ import Text from "../Text/Text";
 
 export default {
   title: "Alert",
-  component: AlertList,
+  component: Alert,
 };
 
 const BUTTON_PROPS = [
@@ -137,8 +137,8 @@ const Template = () => {
           </select>
         </div>
       </div>
-
-      <AlertList list={list} removeByID={removeByID} position={position} dismissTime={dismissTime} />
+      {console.log(list)}
+      <Alert content={MESSAGES.success} id={1} type="success" onClick={() => alert('this button was clicked')} removeByID={removeByID} position={position} dismissTime={dismissTime} />
     </Box>
   );
 };

@@ -8,7 +8,7 @@ import MarkdownText from "./components/MarkdownText/MarkdownText";
 import { theme } from "./constants";
 import Loader from "./components/Loader/Loader";
 import Highlighter from './components/Highlighter/Highlighter';
-import AlertList from './components/Alert/AlertList';
+import Alert from './components/Alert/Alert';
 
 export {
   Box,
@@ -22,5 +22,5 @@ export {
   theme,
   MarkdownText,
   Highlighter,
-  AlertList
+  Alert
 };
