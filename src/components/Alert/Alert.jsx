@@ -153,6 +153,7 @@ const Alert = ({
   buttonFontWeight,
   buttonFontSize,
   buttonBorder,
+  buttonContent,
   ...props
 }) => {
   const icon = ICONS_BY_TYPE[type];
@@ -194,13 +195,14 @@ const Alert = ({
         buttonBorder={buttonBorder}
         onClick={_onClick}
       >
-        x
+        {buttonContent}
       </ButtonRight>
     </Container>
   );
 };
 
 const Container = styled.div`
+  ${positionProp}
   ${({ theme, $type }) => $type && `background-color:  ${theme.colors[COLORS_BY_TYPE[$type]] || $type}`};
   ${({ theme, $type }) => $type && `color:  ${theme.colors[COLORS_TEXT_BY_TYPE[$type]] || $type}`};
   ${alignItems}
@@ -307,9 +309,6 @@ const Container = styled.div`
   ${wordSpacing}
   ${wordWrap}
   ${zIndex} 
-
-
-  ${positionProp}
 `;
 const Message = styled.div`
   ${({ messageTextAlign }) => messageTextAlign && `text-align:  ${messageTextAlign}`};
@@ -356,6 +355,8 @@ Alert.defaultProps = {
   buttonBackground: "transparent",
   buttonBorder: "none",
   buttonMargin: "0 0 0 auto",
+  transition: "transform 0.3s ease-in-out",
+  buttonContent: "x"
 };
 
 export default Alert;

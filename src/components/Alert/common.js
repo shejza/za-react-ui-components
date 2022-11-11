@@ -32,14 +32,14 @@ const FromBottom = keyframes`
 
 const TopRight = css`
   top: 12px;
-  right: 12px;
+  right: -12px;
   transition: transform 0.6s ease-in-out;
   animation: ${FromRight} 0.7s;
 `;
 
 const BottomRight = css`
   bottom: 12px;
-  right: 12px;
+  right: -12px;
   transition: transform 0.6s ease-in-out;
   animation: ${FromRight} 0.7s;
 `;
