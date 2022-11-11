@@ -42,10 +42,10 @@ const BUTTON_PROPS = [
 ];
 
 const MESSAGES = {
-  success: "This is a success toast component",
-  danger: "This is a error toast component",
-  info: "This is an info toast component",
-  warning: "This is a warning toast component",
+  success: "This is a success alert — check it out!",
+  danger: "This is an error alert — check it out!",
+  info: "This is an info alert — check it out!",
+  warning: "This is a warning alert — check it out!",
 };
 
 const Template = () => {

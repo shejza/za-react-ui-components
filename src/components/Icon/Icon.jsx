@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { color } from "../properties";
 import { allAvailableIcons } from './allAvailableIcons';
 
-
-console.log( Object.keys(allAvailableIcons))
 export const iconNames = Object.keys(allAvailableIcons);
 const Icon = styled(({ icon, width, height, color, className, onClick }) => {
   const Icon = allAvailableIcons[icon];

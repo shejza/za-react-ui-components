@@ -108,6 +108,7 @@ import {
   wordWrap,
   zIndex,
 } from "../properties";
+import Icon from "../Icon/Icon";
 
 const COLORS_BY_TYPE = {
   success: "green100",
@@ -116,9 +117,18 @@ const COLORS_BY_TYPE = {
   warning: "orange100",
 };
 
+const COLORS_TEXT_BY_TYPE = {
+  success: "green900",
+  danger: "red900",
+  info: "blue900",
+  warning: "orange900",
+};
+
 const ICONS_BY_TYPE = {
-  success: "success-check",
-  danger: "remove-danger",
+  success: "MdCheckCircleOutline",
+  danger: "MdOutlineDangerous",
+  info: "MdOutlineInfo",
+  warning: "MdWarningAmber",
 };
 
 const Alert = ({
@@ -128,10 +138,21 @@ const Alert = ({
   onClick,
   type,
   dismissTime,
-  btnText,
-  btnDetailsLink,
-  btnBgColor,
-  colorBtn,
+  iconColor,
+  iconWidth,
+  messageFontSize,
+  messageTextAlign,
+  messageMargin,
+  messagePadding,
+  messageColor,
+  messageFontWeight,
+  buttonMargin,
+  buttonPadding,
+  buttonColor,
+  buttonBackground,
+  buttonFontWeight,
+  buttonFontSize,
+  buttonBorder,
   ...props
 }) => {
   const icon = ICONS_BY_TYPE[type];
@@ -149,20 +170,39 @@ const Alert = ({
     };
   }, [dismissTime, id, onClick]);
 
- 
   return (
     <Container position={position} $type={type} {...props}>
-      {/*{icon && <IconSvg width="21px" icon= {icon} />}*/}
-      {/*<Message>{content}</Message>*/}
+      {icon && <StyledIcon width={iconWidth} icon={icon} iconColor={iconColor} />}
+      <Message
+        messageTextAlign={messageTextAlign}
+        messageFontSize={messageFontSize}
+        messageMargin={messageMargin}
+        messagePadding={messagePadding}
+        messageColor={messageColor}
+        messageFontWeight={messageFontWeight}
+      >
+        {content}
+      </Message>
 
-      {/*<Button  onClick={_onClick}>
-        <IconSvg width="12px" icon="x"  color="tertiary0"/>
-      </Button>*/}
+      <ButtonRight
+        buttonMargin={buttonMargin}
+        buttonPadding={buttonPadding}
+        buttonColor={buttonColor}
+        buttonBackground={buttonBackground}
+        buttonFontWeight={buttonFontWeight}
+        buttonFontSize={buttonFontSize}
+        buttonBorder={buttonBorder}
+        onClick={_onClick}
+      >
+        x
+      </ButtonRight>
     </Container>
   );
 };
 
 const Container = styled.div`
+  ${({ theme, $type }) => $type && `background-color:  ${theme.colors[COLORS_BY_TYPE[$type]] || $type}`};
+  ${({ theme, $type }) => $type && `color:  ${theme.colors[COLORS_TEXT_BY_TYPE[$type]] || $type}`};
   ${alignItems}
   ${alignSelf}
   ${alignContent}
@@ -269,17 +309,31 @@ const Container = styled.div`
   ${zIndex} 
 
 
- 
-  ${({ theme, $type }) => $type && `background-color:  ${theme.colors[COLORS_BY_TYPE[$type]] || $type}`};
   ${positionProp}
 `;
 const Message = styled.div`
-  flex: 1;
-  margin: 0;
-  text-align: left;
-  font-size: 18px;
-  line-height: 21px;
-  color: ${({ theme }) => theme.colors["white"]};
+  ${({ messageTextAlign }) => messageTextAlign && `text-align:  ${messageTextAlign}`};
+  ${({ messageFontSize }) => messageFontSize && `font-size:  ${messageFontSize}`};
+  ${({ messageMargin }) => messageMargin && `margin:  ${messageMargin}`};
+  ${({ messagePadding }) => messagePadding && `padding:  ${messagePadding}`};
+  ${({ messageColor }) => messageColor && `color:  ${messageColor}`};
+  ${({ messageFontWeight }) => messageFontWeight && `font-weight:  ${messageFontWeight}`};
+`;
+
+const StyledIcon = styled(Icon)`
+  ${({ iconWidth }) => iconWidth && `width:  ${iconWidth}`};
+  ${({ iconColor }) => iconColor && `color:  ${iconColor}`};
+`;
+
+const ButtonRight = styled.button`
+  cursor: pointer;
+  ${({ buttonMargin }) => buttonMargin && `margin:  ${buttonMargin}`};
+  ${({ buttonPadding }) => buttonPadding && `padding:  ${buttonPadding}`};
+  ${({ buttonColor }) => buttonColor && `color:  ${buttonColor}`};
+  ${({ buttonBackground }) => buttonBackground && `background:  ${buttonBackground}`};
+  ${({ buttonFontWeight }) => buttonFontWeight && `font-weight:  ${buttonFontWeight}`};
+  ${({ buttonFontSize }) => buttonFontSize && `font-size:  ${buttonFontSize}`};
+  ${({ buttonBorder }) => buttonBorder && `border:  ${buttonBorder}`};
 `;
 
 Alert.propTypes = {
@@ -290,12 +344,18 @@ Alert.propTypes = {
 };
 
 Alert.defaultProps = {
-  btnBgColor: "rgb(253, 237, 237)",
-  colorBtn: "#fff",
   width: "768px",
-  height: "48px",
-  padding: "8px 16px",
+  height: "32px",
+  padding: "8px 16px 8px 16px",
   borderRadius: "4px",
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+  iconWidth: "20px",
+  messageFontSize: "14px",
+  buttonBackground: "transparent",
+  buttonBorder: "none",
+  buttonMargin: "0 0 0 auto",
 };
 
 export default Alert;
