@@ -9,6 +9,7 @@ import { theme } from "./constants";
 import Loader from "./components/Loader/Loader";
 import Highlighter from './components/Highlighter/Highlighter';
 import Alert from './components/Alert/Alert';
+import Accordion from './components/Accordion/Accordion';
 
 export {
   Box,
@@ -22,5 +23,6 @@ export {
   theme,
   MarkdownText,
   Highlighter,
-  Alert
+  Alert,
+  Accordion
 };
