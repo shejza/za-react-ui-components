@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import Icon from "../Icon/Icon";
 
-
-
-const Carousel = ({slides, ...props }) => {
+const Carousel = ({ slides, arrowIcons, arrowsColor, ...props }) => {
   const [active, setActive] = useState(0);
   const [autoplay, setAutoplay] = useState(0);
   const max = slides.length;
@@ -71,18 +70,8 @@ const Carousel = ({slides, ...props }) => {
   const renderArrows = () => {
     return (
       <>
-        <Arrows className="prev" onClick={() => prevOne()}>
-          <svg fill="#FFFFFF" width="50" height="50" viewBox="0 0 24 24">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-            <path d="M0 0h24v24H0z" fill="none" />
-          </svg>
-        </Arrows>
-        <Arrows className="next" onClick={() => nextOne()}>
-          <svg fill="#FFFFFF" height="50" viewBox="0 0 24 24" width="50">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-            <path d="M0 0h24v24H0z" fill="none" />
-          </svg>
-        </Arrows>
+        <Arrows icon={arrowIcons} arrowsColor={arrowsColor} transform="rotate(180deg)" className="prev" onClick={() => prevOne()}></Arrows>
+        <Arrows icon={arrowIcons} arrowsColor={arrowsColor} className="next" onClick={() => nextOne()}></Arrows>
       </>
     );
   };
@@ -177,7 +166,7 @@ const EachSlide = styled.div`
   background-color: transparent;
 `;
 
-const Arrows = styled.button`
+const Arrows = styled(Icon)`
   position: absolute;
   top: 50%;
   background: none;
@@ -186,6 +175,8 @@ const Arrows = styled.button`
   cursor: pointer;
   transition: ease 0.3s all;
   outline: none;
+  ${({ transformIcon }) => transformIcon && `transform:  ${transformIcon}`};
+  ${({ arrowsColor }) => arrowsColor && `color:  ${arrowsColor}`};
 
   &.prev {
     left: 0;
@@ -205,6 +196,9 @@ const Arrows = styled.button`
     }
   }
 `;
-Carousel.defaultProps = {};
+Carousel.defaultProps = {
+  arrowIcons: "MdKeyboardArrowRight",
+  arrowsColor: "white",
+};
 
 export default Carousel;
