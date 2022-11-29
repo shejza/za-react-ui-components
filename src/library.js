@@ -10,6 +10,7 @@ import Loader from "./components/Loader/Loader";
 import Highlighter from './components/Highlighter/Highlighter';
 import Alert from './components/Alert/Alert';
 import Accordion from './components/Accordion/Accordion';
+import Carousel from './components/Carousel/Carousel';
 
 export {
   Box,
@@ -24,5 +25,6 @@ export {
   MarkdownText,
   Highlighter,
   Alert,
-  Accordion
+  Accordion,
+  Carousel
 };

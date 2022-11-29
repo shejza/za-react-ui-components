@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import Icon from "../Icon/Icon";
 
-const Carousel = ({ slides, arrowIcons, arrowsColor, ...props }) => {
+const Carousel = ({ slides, arrowIcons, ...props }) => {
   const [active, setActive] = useState(0);
   const [autoplay, setAutoplay] = useState(0);
   const max = slides.length;
@@ -70,21 +70,18 @@ const Carousel = ({ slides, arrowIcons, arrowsColor, ...props }) => {
   const renderArrows = () => {
     return (
       <>
-        <Arrows
+        <ArrowPrev
           {...props}
           icon={arrowIcons}
-          arrowsColor={arrowsColor}
-          transform="rotate(180deg)"
           className="prev"
           onClick={() => prevOne()}
-        ></Arrows>
-        <Arrows
+        ></ArrowPrev>
+        <ArrowNext
           {...props}
           icon={arrowIcons}
-          arrowsColor={arrowsColor}
           className="next"
           onClick={() => nextOne()}
-        ></Arrows>
+        ></ArrowNext>
       </>
     );
   };
@@ -181,34 +178,42 @@ const EachSlide = styled.div`
   ${({ slideBackgroundColor }) => slideBackgroundColor && `background-color:  ${slideBackgroundColor}`};
 `;
 
-const Arrows = styled(Icon)`
-${({ arrowsPostion }) => arrowsPostion && `position:  ${arrowsPostion}`};
-${({ arrowsTop }) => arrowsTop && `top:  ${arrowsTop}`};
-${({ arrowsBackground }) => arrowsBackground && `background:  ${arrowsBackground}`};
-${({ arrowsHeight }) => arrowsHeight && `height:  ${arrowsHeight}`};
-${({ arrowsBorder }) => arrowsBorder && `border:  ${arrowsBorder}`};
-${({ arrowsCursor }) => arrowsCursor && `cursor:  ${arrowsCursor}`};
-${({ arrowsTransition }) => arrowsTransition && `transition:  ${arrowsTransition}`};
-${({ arrowsOutline }) => arrowsOutline && `outline:  ${arrowsOutline}`};
-${({ arrowsTransform }) => arrowsTransform && `transform:  ${arrowsTransform}`};
-${({ arrowsColor }) => arrowsColor && `color:  ${arrowsColor}`};
 
-  &.prev {
-    left: 0;
+const ArrowPrev = styled(Icon)`
+${({ arrowPrevPosition }) => arrowPrevPosition && `position:  ${arrowPrevPosition}`};
+${({ arrowPrevTop }) => arrowPrevTop && `top:  ${arrowPrevTop}`};
+${({ arrowPrevBackground }) => arrowPrevBackground && `background:  ${arrowPrevBackground}`};
+${({ arrowPrevHeight }) => arrowPrevHeight && `height:  ${arrowPrevHeight}`};
+${({ arrowPrevBorder }) => arrowPrevBorder && `border:  ${arrowPrevBorder}`};
+${({ arrowPrevCursor }) => arrowPrevCursor && `cursor:  ${arrowPrevCursor}`};
+${({ arrowPrevTransition }) => arrowPrevTransition && `transition:  ${arrowPrevTransition}`};
+${({ arrowPrevOutline }) => arrowPrevOutline && `outline:  ${arrowPrevOutline}`};
+${({ arrowPrevTransform }) => arrowPrevTransform && `transform:  ${arrowPrevTransform}`};
+${({ arrowPrevColor }) => arrowPrevColor && `color:  ${arrowPrevColor}`};
+${({ arrowPrevLeft }) => arrowPrevLeft && `left:  ${arrowPrevLeft}`};
 
-    &:hover {
-      opacity: 0.7;
-      left: -10px;
-    }
+  &:hover {
+    ${({ arrowPrevHoverOpacity }) => arrowPrevHoverOpacity && `opacity:  ${arrowPrevHoverOpacity}`};
+    ${({ arrowPrevLeftHover }) => arrowPrevLeftHover && `left:  ${arrowPrevLeftHover}`};
   }
+`;
 
-  &.next {
-    right: 0;
+const ArrowNext = styled(Icon)`
+${({ arrowNextPosition }) => arrowNextPosition && `position:  ${arrowNextPosition}`};
+${({ arrowNextTop }) => arrowNextTop && `top:  ${arrowNextTop}`};
+${({ arrowNextBackground }) => arrowNextBackground && `background:  ${arrowNextBackground}`};
+${({ arrowNextHeight }) => arrowNextHeight && `height:  ${arrowNextHeight}`};
+${({ arrowNextBorder }) => arrowNextBorder && `border:  ${arrowNextBorder}`};
+${({ arrowNextCursor }) => arrowNextCursor && `cursor:  ${arrowNextCursor}`};
+${({ arrowNextTransition }) => arrowNextTransition && `transition:  ${arrowNextTransition}`};
+${({ arrowNextOutline }) => arrowNextOutline && `outline:  ${arrowNextOutline}`};
+${({ arrowNextTransform }) => arrowNextTransform && `transform:  ${arrowNextTransform}`};
+${({ arrowNextColor }) => arrowNextColor && `color:  ${arrowNextColor}`};
+${({ arrowNextRight}) => arrowNextRight && `right:  ${arrowNextRight}`};
 
-    &:hover {
-      right: -10px;
-      opacity: 0.7;
-    }
+  &:hover {
+    ${({ arrowNextHoverOpacity }) => arrowNextHoverOpacity && `opacity:  ${arrowNextHoverOpacity}`};
+    ${({ arrowNextRightHover }) => arrowNextRightHover && `right:  ${arrowNextRightHover}`};
   }
 `;
 
@@ -229,15 +234,34 @@ Carousel.defaultProps = {
   slideBackgroundColor: "transparent",
 
   arrowIcons: "MdKeyboardArrowRight",
-  arrowsColor: "white",
-  arrowsPostion: "absolute",
-  arrowsTop: "50%",
-  arrowsBackground: "none",
-  arrowsHeight: "60px",
-  arrowsBorder: "0",
-  arrowsCursor: "pointer",
-  arrowsTransition: "ease 0.3s all",
-  arrowsOutline: "none",
+  arrowPrevColor: "white!important",
+  arrowPrevPosition: "absolute",
+  arrowPrevTop: "50%",
+  arrowPrevBackground: "none",
+  arrowPrevHeight: "60px",
+  arrowPrevBorder: "0",
+  arrowPrevCursor: "pointer",
+  arrowPrevTransition: "ease 0.3s all",
+  arrowPrevOutline: "none",
+  arrowPrevLeft: "0",
+  arrowPrevHoverOpacity: "0.7",
+  arrowPrevLeftHover: "-10px",
+  arrowPrevTransform: "rotate(180deg)",
+
+
+  arrowNextColor: "white!important",
+  arrowNextPosition: "absolute",
+  arrowNextTop: "50%",
+  arrowNextBackground: "none",
+  arrowNextHeight: "60px",
+  arrowNextBorder: "0",
+  arrowNextCursor: "pointer",
+  arrowNextTransition: "ease 0.3s all",
+  arrowNextOutline: "none",
+  arrowNextRight: "0",
+  arrowNextHoverOpacity: "0.7",
+  arrowNextRightHover: "-10px",
+  arrowNextTransform: "unset",
 
   dotsContainerHeight: "auto",
   dotsContainerMargin: "0",
