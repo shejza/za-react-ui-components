@@ -122,10 +122,11 @@ const DotsContainer = styled.ul`
   ${({ dotsContainerWidth }) => dotsContainerWidth && `width:  ${dotsContainerWidth}`};
   ${({ dotsContainerTextAlign }) => dotsContainerTextAlign && `text-align:  ${dotsContainerTextAlign}`};
   ${({ dotsContainerLeft }) => dotsContainerLeft && `left:  ${dotsContainerLeft}`};
-  ${({ dotsContainerBottom }) => dotsContainerBottom && `width:  ${dotsContainerBottom}`};
+  ${({ dotsContainerBottom }) => dotsContainerBottom && `bottom:  ${dotsContainerBottom}`};
   ${({ dotsContainerTransform }) => dotsContainerTransform && `transform:  ${dotsContainerTransform}`};
   ${({ dotsContainerZIndex }) => dotsContainerZIndex && `z-index:  ${dotsContainerZIndex}`};
-  ${({ dotsContainerListStyleType }) => dotsContainerListStyleType && `width:  ${dotsContainerListStyleType}`};
+  ${({ dotsContainerListStyleType }) =>
+    dotsContainerListStyleType && `list-style-type:  ${dotsContainerListStyleType}`};
 `;
 
 const Dot = styled.li`
@@ -138,14 +139,14 @@ const Dot = styled.li`
   }
 
   button {
-    color: #fff;
-    background-color: transparent;
-    border: none;
+    ${({ dotColor }) => dotColor && `color:  ${dotColor}`};
+    ${({ dotBackgroundColor }) => dotBackgroundColor && `background-color:  ${dotBackgroundColor}`};
+    ${({ dotBorder }) => dotBorder && `border:  ${dotBorder}`};
 
     &:hover {
-      text-decoration: none;
-      opacity: 0.7;
-      cursor: pointer;
+      ${({ dotHoverTextDecoration }) => dotHoverTextDecoration && `text-decoration:  ${dotHoverTextDecoration}`};
+      ${({ dotHoverOpacity }) => dotHoverOpacity && `opacity:  ${dotHoverOpacity}`};
+      ${({ dotHoverCursor }) => dotHoverCursor && `cursor:  ${dotHoverCursor}`};
     }
   }
 `;
@@ -181,16 +182,16 @@ const EachSlide = styled.div`
 `;
 
 const Arrows = styled(Icon)`
-  position: absolute;
-  top: 50%;
-  background: none;
-  height: 60px;
-  border: 0;
-  cursor: pointer;
-  transition: ease 0.3s all;
-  outline: none;
-  ${({ transformIcon }) => transformIcon && `transform:  ${transformIcon}`};
-  ${({ arrowsColor }) => arrowsColor && `color:  ${arrowsColor}`};
+${({ arrowsPostion }) => arrowsPostion && `position:  ${arrowsPostion}`};
+${({ arrowsTop }) => arrowsTop && `top:  ${arrowsTop}`};
+${({ arrowsBackground }) => arrowsBackground && `background:  ${arrowsBackground}`};
+${({ arrowsHeight }) => arrowsHeight && `height:  ${arrowsHeight}`};
+${({ arrowsBorder }) => arrowsBorder && `border:  ${arrowsBorder}`};
+${({ arrowsCursor }) => arrowsCursor && `cursor:  ${arrowsCursor}`};
+${({ arrowsTransition }) => arrowsTransition && `transition:  ${arrowsTransition}`};
+${({ arrowsOutline }) => arrowsOutline && `outline:  ${arrowsOutline}`};
+${({ arrowsTransform }) => arrowsTransform && `transform:  ${arrowsTransform}`};
+${({ arrowsColor }) => arrowsColor && `color:  ${arrowsColor}`};
 
   &.prev {
     left: 0;
@@ -229,6 +230,14 @@ Carousel.defaultProps = {
 
   arrowIcons: "MdKeyboardArrowRight",
   arrowsColor: "white",
+  arrowsPostion: "absolute",
+  arrowsTop: "50%",
+  arrowsBackground: "none",
+  arrowsHeight: "60px",
+  arrowsBorder: "0",
+  arrowsCursor: "pointer",
+  arrowsTransition: "ease 0.3s all",
+  arrowsOutline: "none",
 
   dotsContainerHeight: "auto",
   dotsContainerMargin: "0",
@@ -245,6 +254,12 @@ Carousel.defaultProps = {
   dotDisplay: "inline-block",
   dotPadding: "5px",
   dotActiveColor: "#00d8ff",
+  dotColor: "#fff",
+  dotBackgroundColor: "transparent",
+  dotBorder: "none",
+  dotHoverTextDecoration: "none",
+  dotHoverOpacity: "0.7",
+  dotHoverCursor: "pointer",
 
   togglePlayBackground: "transparent",
   togglePlayBorder: "none",
