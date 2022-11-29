@@ -41,11 +41,11 @@ const Carousel = ({ slides, arrowIcons, arrowsColor, ...props }) => {
     slides.map((silde, index) => {
       return (
         // check index
-        <li className={isActive(index) + " dots"} key={index}>
+        <Dot className={isActive(index) + " dots"} key={index}>
           <button onClick={() => setActive(index)}>
             <span>&#9679;</span>
           </button>
-        </li>
+        </Dot>
       );
     });
 
@@ -70,27 +70,33 @@ const Carousel = ({ slides, arrowIcons, arrowsColor, ...props }) => {
   const renderArrows = () => {
     return (
       <>
-        <Arrows icon={arrowIcons} arrowsColor={arrowsColor} transform="rotate(180deg)" className="prev" onClick={() => prevOne()}></Arrows>
+        <Arrows
+          icon={arrowIcons}
+          arrowsColor={arrowsColor}
+          transform="rotate(180deg)"
+          className="prev"
+          onClick={() => prevOne()}
+        ></Arrows>
         <Arrows icon={arrowIcons} arrowsColor={arrowsColor} className="next" onClick={() => nextOne()}></Arrows>
       </>
     );
   };
 
   return (
-    <Slider>
+    <SliderContainer {...props}>
       <Wrapper style={setSliderStyles()}>{renderSlides()}</Wrapper>
       {renderArrows()}
       <DotsContainer>{renderDots()}</DotsContainer>
       <TogglePlay onClick={toggleAutoPlay}>{renderPlayStop()}</TogglePlay>
-    </Slider>
+    </SliderContainer>
   );
 };
 
-const Slider = styled.section`
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
+const SliderContainer = styled.section`
+  ${({ sliderContainerWidth }) => sliderContainerWidth && `width:  ${sliderContainerWidth}`};
+  ${({ sliderContainerHeight }) => sliderContainerHeight && `height:  ${sliderContainerHeight}`};
+  ${({ sliderContainerOverflow }) => sliderContainerOverflow && `overflow:  ${sliderContainerOverflow}`};
+  ${({ sliderContainerPosition }) => sliderContainerPosition && `position:  ${sliderContainerPosition}`};
 `;
 
 const Wrapper = styled.div`
@@ -100,70 +106,70 @@ const Wrapper = styled.div`
 `;
 
 const DotsContainer = styled.ul`
-  height: auto;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: auto;
-  text-align: center;
-  left: 50%;
-  bottom: 9px;
-  transform: translateX(-50%);
-  z-index: 10;
-  list-style-type: none;
+  ${({ dotsContainerHeight }) => dotsContainerHeight && `height:  ${dotsContainerHeight}`};
+  ${({ dotsContainerMargin }) => dotsContainerMargin && `margin:  ${dotsContainerMargin}`};
+  ${({ dotsContainerPadding }) => dotsContainerPadding && `padding:  ${dotsContainerPadding}`};
+  ${({ dotsContainerPosition }) => dotsContainerPosition && `position:  ${dotsContainerPosition}`};
+  ${({ dotsContainerWidth }) => dotsContainerWidth && `width:  ${dotsContainerWidth}`};
+  ${({ dotsContainerTextAlign }) => dotsContainerTextAlign && `text-align:  ${dotsContainerTextAlign}`};
+  ${({ dotsContainerLeft }) => dotsContainerLeft && `left:  ${dotsContainerLeft}`};
+  ${({ dotsContainerBottom }) => dotsContainerBottom && `width:  ${dotsContainerBottom}`};
+  ${({ dotsContainerTransform }) => dotsContainerTransform && `transform:  ${dotsContainerTransform}`};
+  ${({ dotsContainerZIndex }) => dotsContainerZIndex && `z-index:  ${dotsContainerZIndex}`};
+  ${({ dotsContainerListStyleType }) => dotsContainerListStyleType && `width:  ${dotsContainerListStyleType}`};
+`;
 
-  li {
-    display: inline-block;
-    padding: 5px;
+const Dot = styled.li`
+  display: inline-block;
+  padding: 5px;
 
-    &.active {
-      button {
-        color: #00d8ff;
-      }
-    }
-
+  &.active {
     button {
-      color: #fff;
-      background-color: transparent;
-      border: none;
+      color: #00d8ff;
+    }
+  }
 
-      &:hover {
-        text-decoration: none;
-        opacity: 0.7;
-        cursor: pointer;
-      }
+  button {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      text-decoration: none;
+      opacity: 0.7;
+      cursor: pointer;
     }
   }
 `;
 
 const TogglePlay = styled.button`
-  background: transparent;
-  border: none;
-  height: auto;
-  position: absolute;
-  width: auto;
-  right: 5%;
-  bottom: 9px;
-  color: #3d3d3d;
-  z-index: 1000000;
+  ${({ togglePlayBackground }) => togglePlayBackground && `background:  ${togglePlayBackground}`};
+  ${({ togglePlayBorder }) => togglePlayBorder && `border:  ${togglePlayBorder}`};
+  ${({ togglePlayHeight }) => togglePlayHeight && `height:  ${togglePlayHeight}`};
+  ${({ togglePlayPosition }) => togglePlayPosition && `position:  ${togglePlayPosition}`};
+  ${({ togglePlayWidth }) => togglePlayWidth && `width:  ${togglePlayWidth}`};
+  ${({ togglePlayRight }) => togglePlayRight && `right:  ${togglePlayRight}`};
+  ${({ togglePlayBottom }) => togglePlayBottom && `bottom:  ${togglePlayBottom}`};
+  ${({ togglePlayColor }) => togglePlayColor && `color:  ${togglePlayColor}`};
+  ${({ togglePlayZIndex }) => togglePlayZIndex && `z-index:  ${togglePlayZIndex}`};
 
   &:hover {
-    text-decoration: none;
-    opacity: 0.7;
-    cursor: pointer;
+    ${({ togglePlayTextDecoration }) => togglePlayTextDecoration && `text-decoration:  ${togglePlayTextDecoration}`};
+    ${({ togglePlayOpacity }) => togglePlayOpacity && `opacity:  ${togglePlayOpacity}`};
+    ${({ togglePlayCursor }) => togglePlayCursor && `cursor:  ${togglePlayCursor}`};
   }
 `;
 
 const EachSlide = styled.div`
-  width: 100vw;
-  height: 100vh;
-  float: left;
-  line-height: 100vh;
-  font-size: 40vh;
-  text-align: center;
-  background-size: cover;
-  background-position: center center;
-  background-color: transparent;
+  ${({ slideWidth }) => slideWidth && `width:  ${slideWidth}`};
+  ${({ slideHeight }) => slideHeight && `height:  ${slideHeight}`};
+  ${({ slideFloat }) => slideFloat && `float:  ${slideFloat}`};
+  ${({ slideLineHeight }) => slideLineHeight && `line-height:  ${slideLineHeight}`};
+  ${({ slideFontSize }) => slideFontSize && `font-size:  ${slideFontSize}`};
+  ${({ slideTextAlign }) => slideTextAlign && `text-align:  ${slideTextAlign}`};
+  ${({ slideBackgroundSize }) => slideBackgroundSize && ` background-size:  ${slideBackgroundSize}`};
+  ${({ slideBackgroundPosition }) => slideBackgroundPosition && `background-position:  ${slideBackgroundPosition}`};
+  ${({ slideBackgroundColor }) => slideBackgroundColor && `background-color:  ${slideBackgroundColor}`};
 `;
 
 const Arrows = styled(Icon)`
@@ -196,9 +202,50 @@ const Arrows = styled(Icon)`
     }
   }
 `;
+
 Carousel.defaultProps = {
+  sliderContainerWidth: "100vw",
+  sliderContainerHeight: "100vh",
+  sliderContainerOverflow: "hidden",
+  sliderContainerPosition: "relative",
+
+  slideWidth: "100vw",
+  slideHeight: "100vh",
+  slideFloat: "left",
+  slideLineHeight: "100vh",
+  slideFontSize: "40vh",
+  slideTextAlign: "center",
+  slideBackgroundSize: "cover",
+  slideBackgroundPosition: "center center",
+  slideBackgroundColor: "transparent",
+
   arrowIcons: "MdKeyboardArrowRight",
   arrowsColor: "white",
+
+  dotsContainerHeight: "auto",
+  dotsContainerMargin: "0",
+  dotsContainerPadding: "0",
+  dotsContainerPosition: "absolute",
+  dotsContainerWidth: "auto",
+  dotsContainerTextAlign: "center",
+  dotsContainerLeft: "50%",
+  dotsContainerBottom: "9px",
+  dotsContainerTransform: "translateX(-50%)",
+  dotsContainerZIndex: "10",
+  dotsContainerListStyleType: "none",
+
+  togglePlayBackground: "transparent",
+  togglePlayBorder: "none",
+  togglePlayHeight: "auto",
+  togglePlayPosition: "absolute",
+  togglePlayWidth: "auto",
+  togglePlayRight: "5%",
+  togglePlayBottom: "9px",
+  togglePlayColor: "#3d3d3d",
+  togglePlayZIndex: "1000000",
+  togglePlayTextDecoration: "none",
+  togglePlayOpacity: "0.7",
+  togglePlayCursor: "pointer",
 };
 
 export default Carousel;
