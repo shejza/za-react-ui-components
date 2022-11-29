@@ -34,14 +34,14 @@ const Carousel = ({ slides, arrowIcons, arrowsColor, ...props }) => {
 
   const renderSlides = () =>
     slides.map((item, index) => {
-      return <EachSlide key={index} style={{ backgroundImage: item.eachSlide }}></EachSlide>;
+      return <EachSlide {...props} key={index} style={{ backgroundImage: item.eachSlide }}></EachSlide>;
     });
 
   const renderDots = () =>
     slides.map((silde, index) => {
       return (
         // check index
-        <Dot className={isActive(index) + " dots"} key={index}>
+        <Dot {...props} className={isActive(index) + " dots"} key={index}>
           <button onClick={() => setActive(index)}>
             <span>&#9679;</span>
           </button>
@@ -71,13 +71,20 @@ const Carousel = ({ slides, arrowIcons, arrowsColor, ...props }) => {
     return (
       <>
         <Arrows
+          {...props}
           icon={arrowIcons}
           arrowsColor={arrowsColor}
           transform="rotate(180deg)"
           className="prev"
           onClick={() => prevOne()}
         ></Arrows>
-        <Arrows icon={arrowIcons} arrowsColor={arrowsColor} className="next" onClick={() => nextOne()}></Arrows>
+        <Arrows
+          {...props}
+          icon={arrowIcons}
+          arrowsColor={arrowsColor}
+          className="next"
+          onClick={() => nextOne()}
+        ></Arrows>
       </>
     );
   };
@@ -86,8 +93,10 @@ const Carousel = ({ slides, arrowIcons, arrowsColor, ...props }) => {
     <SliderContainer {...props}>
       <Wrapper style={setSliderStyles()}>{renderSlides()}</Wrapper>
       {renderArrows()}
-      <DotsContainer>{renderDots()}</DotsContainer>
-      <TogglePlay onClick={toggleAutoPlay}>{renderPlayStop()}</TogglePlay>
+      <DotsContainer {...props}>{renderDots()}</DotsContainer>
+      <TogglePlay {...props} onClick={toggleAutoPlay}>
+        {renderPlayStop()}
+      </TogglePlay>
     </SliderContainer>
   );
 };
@@ -120,12 +129,11 @@ const DotsContainer = styled.ul`
 `;
 
 const Dot = styled.li`
-  display: inline-block;
-  padding: 5px;
-
+  ${({ dotDisplay }) => dotDisplay && `display:  ${dotDisplay}`};
+  ${({ dotPadding }) => dotPadding && `padding:  ${dotPadding}`};
   &.active {
     button {
-      color: #00d8ff;
+      ${({ dotActiveColor }) => dotActiveColor && `color:  ${dotActiveColor}`};
     }
   }
 
@@ -233,6 +241,10 @@ Carousel.defaultProps = {
   dotsContainerTransform: "translateX(-50%)",
   dotsContainerZIndex: "10",
   dotsContainerListStyleType: "none",
+
+  dotDisplay: "inline-block",
+  dotPadding: "5px",
+  dotActiveColor: "#00d8ff",
 
   togglePlayBackground: "transparent",
   togglePlayBorder: "none",
