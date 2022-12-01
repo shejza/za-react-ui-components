@@ -224,7 +224,7 @@ Carousel.defaultProps = {
   sliderContainerPosition: "relative",
 
   slideWidth: "100vw",
-  slideHeight: "100vh",
+  slideHeight: "inherit",
   slideFloat: "left",
   slideLineHeight: "100vh",
   slideFontSize: "40vh",
