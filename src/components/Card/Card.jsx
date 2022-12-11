@@ -42,6 +42,9 @@ const Card = ({
           borderBottomLeftRadius={!isActive ? "12px" : 0}
         >
           <ContainerInside>
+            <WrapperShareBtn>
+            <ShareButton/>
+            </WrapperShareBtn>
           <StyledImage src={image_url} />
         <BottomPart>
           <TextPart>
@@ -64,6 +67,12 @@ const Card = ({
     </CardWrapper>
   );
 };
+
+const ShareButton = (onClickShare, iconName, text) => (
+  <WrapperTextAccordion onClick={onClickShare}>
+    <Icon color="white" icon={"MdShare"}/>
+  </WrapperTextAccordion>
+);
 
 const ToggleTextIcon = (toggle, iconName, text) => (
   <WrapperTextAccordion onClick={toggle}>
@@ -154,7 +163,6 @@ const CardWrapperInside = styled.div`
 const ContainerInside = styled.div`
   display: flex;
   flex-direction: column;
-
 `
 
 const BottomPart = styled.div`
@@ -172,7 +180,17 @@ const ContainerCardsInside = styled.div`
   padding: 24px 24px 24px 38px;
   flex-direction: column;
   border: 1px solid ${({ theme }) => theme.colors.gray200};
-  bordere-top: none;
+  border-top: none;
+  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  min-height: 0px;
+  height: auto;
+  transition-duration: 300ms;
+`;
+
+const WrapperShareBtn = styled.div`
+  position: absolute;
+  top: 16px; 
+  right: 16px;
 `;
 
 Card.defaultProps = {
