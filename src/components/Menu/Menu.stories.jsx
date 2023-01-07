@@ -10,12 +10,17 @@ export default {
     },
   },
 };
-
-
+const onClick = (event)=> window.alert(`you clicked: ${event.target.innerText}`);
 
 const Template = ({ ...args }) => (
   <div>
-      <Menu {...args}/>
+      <Menu {...args}>
+      <ul>
+          <li  onClick={onClick}>Facebook</li>
+          <li  onClick={onClick}>Twitter</li>
+          <li  onClick={onClick}>Linkedin</li>
+        </ul>
+      </Menu>
   </div>
 );
 

@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
 import ImagePlaceholder from "../../assets/placeholders/photo.png";
-import useClickOutsideCallback from "../hooks/useClickOutsideCallback";
+import useClickOutsideCallback from "../../hooks/useClickOutsideCallback";
 import Box from "../Box/Box";
 import Button from "../Button/Button";
 
-const Menu = ({ children, active, onToggle, icon, ...props }) => {
+const Menu = ({ children, active, onToggle, icon, iconColor, menuMinWidth, ...props }) => {
   const ref = useRef();
   const [isActive, setActive] = useState(active);
   const toggle = () => {
@@ -15,23 +15,21 @@ const Menu = ({ children, active, onToggle, icon, ...props }) => {
     onToggle && onToggle(!isActive);
   };
   const close = () => setActive(false);
+  useClickOutsideCallback(ref, close);
 
   return (
-    <MenuWrapper>
+    <MenuWrapper ref={ref}>
       {!icon &&
       <Button cursor={"pointer"} onClick={toggle} fontWeight="bold">Open Menu</Button>
 }
-     {icon && <StyledIcon  onClick={toggle} icon={icon}/>}
+     {icon && <StyledIcon iconColor={iconColor}  onClick={toggle} icon={icon}/>}
       <Container opacityContainer={isActive ? "1" : "0"}
         transformContainer={isActive ? "none" : " scale(0.75, 0.5625)"}
         transitionContainer={isActive ? "opacity 287ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 191ms cubic-bezier(0.4, 0, 0.2, 1) 0ms" : "opacity 251ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 167ms cubic-bezier(0.4, 0, 0.2, 1) 84ms"}
         visibilityContainer={isActive ? "visible" : "hidden"}
+        menuMinWidth={menuMinWidth}
       >
-        <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-        </ul>
+      {children}
       </Container>
 
     </MenuWrapper>
@@ -51,7 +49,7 @@ const Container = styled.div`
   background-image: none;
   position: absolute;
   overflow: hidden auto;
-  min-width: 16px;
+  ${({ menuMinWidth }) => menuMinWidth && `min-width:  ${menuMinWidth}`};;
   min-height: 90px;
   max-width: calc(100% - 32px);
   max-height: 200px;
@@ -106,7 +104,8 @@ ${({ transitionContainer }) => transitionContainer && `transition:  ${transition
 const StyledIcon = styled(Icon)`
   cursor: pointer;
   border-radius: 50%;
-  color: rgba(76, 78, 100, 0.54);
+  ${({ iconColor }) => iconColor && `color:  ${iconColor}`};
+  ${({ iconColor }) => iconColor && `fill:  ${iconColor}`};
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   &:hover{
     background-color: rgba(76, 78, 100, 0.05);
@@ -115,7 +114,9 @@ const StyledIcon = styled(Icon)`
 
 
 
-Menu.defaultProps = {};
+Menu.defaultProps = {
+  iconColor: "rgba(76, 78, 100, 0.54)"
+};
 
 
 export default Menu;

@@ -6,6 +6,7 @@ import ImagePlaceholder from "../../assets/placeholders/photo.png";
 import useClickOutsideCallback from "../hooks/useClickOutsideCallback";
 import Box from "../Box/Box";
 import Button from "../Button/Button";
+import Menu from "../Menu/Menu";
 
 const Card = ({
   children,
@@ -67,10 +68,19 @@ const Card = ({
     </CardWrapper>
   );
 };
+const onClickShare = (event)=> window.alert(`you clicked: ${event.target.innerText}`);
 
-const ShareButton = (onClickShare, iconName, text) => (
-  <WrapperTextAccordion onClick={onClickShare}>
-    <Icon color="white" icon={"MdShare"}/>
+
+const ShareButton = (iconName, text) => (
+  <WrapperTextAccordion >
+    <Menu menuMinWidth="200px"  icon="MdShare" iconColor="white">
+    <ul>
+          <li  onClick={onClickShare}>Item 1</li>
+          <li  onClick={onClickShare}>Item 2</li>
+          <li  onClick={onClickShare}>Item 3</li>
+        </ul>
+        </Menu>
+   
   </WrapperTextAccordion>
 );
 

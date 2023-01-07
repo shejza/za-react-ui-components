@@ -11,7 +11,7 @@ import Highlighter from './components/Highlighter/Highlighter';
 import Alert from './components/Alert/Alert';
 import Accordion from './components/Accordion/Accordion';
 import Carousel from './components/Carousel/Carousel';
-
+import Menu from './components/Menu/Menu';
 export {
   Box,
   Button,
@@ -26,5 +26,6 @@ export {
   Highlighter,
   Alert,
   Accordion,
-  Carousel
+  Carousel,
+  Menu
 };
