@@ -12,6 +12,8 @@ import Alert from './components/Alert/Alert';
 import Accordion from './components/Accordion/Accordion';
 import Carousel from './components/Carousel/Carousel';
 import Menu from './components/Menu/Menu';
+import Card from './components/Card/Card';
+
 export {
   Box,
   Button,
@@ -27,5 +29,6 @@ export {
   Alert,
   Accordion,
   Carousel,
-  Menu
+  Menu,
+  Card
 };
