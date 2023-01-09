@@ -430,6 +430,7 @@ const CardWrapperInside = styled.div`
   background: ${({ theme }) => theme.colors.tertiary750};
   position: relative;
   z-index: 9;
+  background; white;
 `;
 
 const ContainerInside = styled.div`
@@ -442,6 +443,8 @@ const BottomPart = styled.div`
   background-color: white;
   padding: 16px;
   width:  ${(props) => props.widthBottomPart};
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 `;
 const TextPart = styled.div``;
 const ButtonsPart = styled.div`
@@ -459,6 +462,7 @@ const ContainerCardsInside = styled.div`
   min-height: 0px;
   height: auto;
   transition-duration: 300ms;
+  border-radius: 16px;
 `;
 
 const WrapperShareBtn = styled.div`
