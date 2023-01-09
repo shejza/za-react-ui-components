@@ -7,6 +7,112 @@ import useClickOutsideCallback from "../hooks/useClickOutsideCallback";
 import Box from "../Box/Box";
 import Button from "../Button/Button";
 import Menu from "../Menu/Menu";
+import {
+  alignItems,
+  alignSelf,
+  alignContent,
+  animation,
+  backdropFilter,
+  background,
+  bgColor,
+  border,
+  borderBottom,
+  borderTop,
+  borderLeft,
+  borderRight,
+  borderColor,
+  borderWidth,
+  borderRadius,
+  bottom,
+  boxShadow,
+  boxSizing,
+  clip,
+  color,
+  cursor,
+  columnGap,
+  display,
+  filter,
+  float,
+  font,
+  fontFamily,
+  fontSize,
+  fontStyle,
+  fontVariant,
+  fontWeight,
+  flexWrap,
+  flexShrink,
+  flexDirection,
+  flexGrow,
+  gridColumn,
+  gridTemplateColumns,
+  gridTemplateRows,
+  gridTemplate,
+  gap,
+  height,
+  justifyContent,
+  justifyItems,
+  justifySelf,
+  left,
+  letterSpacing,
+  lineHeight,
+  listStyle,
+  listStyleImage,
+  listStylePosition,
+  listStyleType,
+  margin,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  maxHeight,
+  maxWidth,
+  minHeight,
+  minWidth,
+  opacity,
+  order,
+  outline,
+  outlineColor,
+  outlineWidth,
+  overflow,
+  overflowX,
+  overflowY,
+  padding,
+  paddingBottom,
+  paddingTop,
+  paddingLeft,
+  paddingRight,
+  pageBreakAfter,
+  pageBreakBefore,
+  pageBreakInside,
+  pointerEvents,
+  position,
+  quotes,
+  rowGap,
+  resize,
+  right,
+  tabSize,
+  tableLayout,
+  textAlign,
+  textDecoration,
+  textIndent,
+  textJustify,
+  textOverflow,
+  textShadow,
+  textTransform,
+  top,
+  transform,
+  transformOrigin,
+  transformStyle,
+  transition,
+  verticalAlign,
+  visibility,
+  whiteSpace,
+  width,
+  wordBreak,
+  wordSpacing,
+  wordWrap,
+  zIndex,
+} from "../properties";
 
 const Card = ({
   children,
@@ -18,6 +124,33 @@ const Card = ({
   title,
   subtitle,
   description,
+  ShareButtonList,
+  borderImgTopLeftRadius,
+  borderImgTopRightRadius,
+  cardButtonPrimaryText,
+  cardButtonPrimaryOnClick,
+  cardButtonPrimaryColor,
+  cardButtonPrimaryWeight,
+  cardButtonPrimaryPadding,
+  cardButtonPrimaryHeight,
+  cardButtonPrimaryBgColor,
+  cardButtonPrimaryMargin,
+  cardButtonSecondaryText,
+  cardButtonSecondaryOnClick,
+  cardButtonSecondaryColor,
+  cardButtonSecondaryWeight,
+  cardButtonSecondaryPadding,
+  cardButtonSecondaryHeight,
+  cardButtonSecondaryBgColor,
+  cardButtonSecondaryMargin,
+  cardButtonsGap,
+  CardHeader,
+  cardHorizontal,
+  flexDirection,
+  cardImageHeight,
+  cardImageWidth,
+  cardMaxWidth,
+  cardHideExpandable,
   ...props
 }) => {
   const ref = useRef();
@@ -35,69 +168,198 @@ const Card = ({
   //useClickOutsideCallback(ref, disableOutsideClick ? () => {} : close);
 
   return (
-    <CardWrapper {...props} ref={ref}>
+    <CardWrapper cardMaxWidth={cardHorizontal ? "100%" : cardMaxWidth}  {...props} ref={ref}>
       <CardWrapperInside>
         <Container
           isActive={isActive}
           borderBottomRightRadius={!isActive ? "12px" : 0}
           borderBottomLeftRadius={!isActive ? "12px" : 0}
         >
-          <ContainerInside>
+          <ContainerInside flexDirection={cardHorizontal ? "row" : flexDirection}>
+            {CardHeader && <CardHeader/>}
+            <ButtonImageWrapper>
+            {ShareButtonList &&
             <WrapperShareBtn>
-            <ShareButton/>
+              <ShareButton ShareButtonList={ShareButtonList} />
             </WrapperShareBtn>
-          <StyledImage src={image_url} />
-        <BottomPart>
-          <TextPart>
-            <Title>{title}</Title>
-            <SubTitle>{subtitle}</SubTitle>
-            <Description>{description}</Description>
-            </TextPart>
-            <ButtonsPart>
-              <Button bgColor={"transparent"} padding="0" color="green300" fontWeight="bold" height="auto">BUTTON </Button>
-              {AccordionElement}
-            </ButtonsPart>
-          
+}
+            <StyledImage
+              src={image_url}
+              borderImgTopLeftRadius={borderImgTopLeftRadius}
+              borderImgTopRightRadius={borderImgTopRightRadius}
+              cardImageHeight={cardHorizontal ? "100%" : cardImageHeight }
+              cardImageWidth={cardHorizontal ? "200px" : cardImageWidth }
+            />
+             </ButtonImageWrapper>
+            <BottomPart widthBottomPart={cardHorizontal && "100%"}>
+              <TextPart>
+                <Title>{title}</Title>
+                <SubTitle>{subtitle}</SubTitle>
+                <Description>{description}</Description>
+              </TextPart>
+              <ButtonsPart gap={cardButtonsGap}>
+                {cardButtonPrimaryText && (
+                  <Button
+                    bgColor={cardButtonPrimaryBgColor}
+                    padding={cardButtonPrimaryPadding}
+                    color={cardButtonPrimaryColor}
+                    fontWeight={cardButtonPrimaryWeight}
+                    height={cardButtonPrimaryHeight}
+                    margin={cardButtonPrimaryMargin}
+                    onClick={cardButtonPrimaryOnClick}
+                  >
+                    {cardButtonPrimaryText}
+                  </Button>
+                )}
+                {cardButtonSecondaryText && (
+                  <Button
+                    bgColor={cardButtonSecondaryBgColor}
+                    padding={cardButtonSecondaryPadding}
+                    color={cardButtonSecondaryColor}
+                    fontWeight={cardButtonSecondaryWeight}
+                    height={cardButtonSecondaryHeight}
+                    margin={cardButtonSecondaryMargin}
+                    onClick={cardButtonSecondaryOnClick}
+                  >
+                    {cardButtonSecondaryText}
+                  </Button>
+                )}
+                {!cardHideExpandable && AccordionElement}
+              </ButtonsPart>
             </BottomPart>
-            </ContainerInside>
-      
+          </ContainerInside>
         </Container>
         {isActive && <ContainerCardsInside>{children}</ContainerCardsInside>}
-
       </CardWrapperInside>
     </CardWrapper>
   );
 };
-const onClickShare = (event)=> window.alert(`you clicked: ${event.target.innerText}`);
 
-
-const ShareButton = (iconName, text) => (
-  <WrapperTextAccordion >
-    <Menu menuMinWidth="200px"  icon="MdShare" iconColor="white">
-    <ul>
-          <li  onClick={onClickShare}>Item 1</li>
-          <li  onClick={onClickShare}>Item 2</li>
-          <li  onClick={onClickShare}>Item 3</li>
-        </ul>
-        </Menu>
-   
+const ShareButton = ({ ShareButtonList }) => (
+  <WrapperTextAccordion>
+    <Menu menuMinWidth="200px" icon="MdShare" iconColor="white">
+      <ShareButtonList />
+    </Menu>
   </WrapperTextAccordion>
 );
 
 const ToggleTextIcon = (toggle, iconName, text) => (
   <WrapperTextAccordion onClick={toggle}>
-    {text &&
-    <Text color="accent450" extraBold size="16px">
-      {text}
-    </Text>
-    }
+    {text && (
+      <Text color="accent450" extraBold size="16px">
+        {text}
+      </Text>
+    )}
     <Icon color="accent450" icon={iconName} width={"21px"} />
   </WrapperTextAccordion>
 );
 
 const CardWrapper = styled.div`
-  max-width: 300px;
-`;  
+  ${alignItems}
+  ${alignSelf}
+  ${alignContent}
+  ${animation}
+  ${backdropFilter}
+  ${background}
+  ${bgColor}
+  ${border}
+  ${borderBottom}
+  ${borderTop}
+  ${borderLeft}
+  ${borderRight}
+  ${borderColor}
+  ${borderWidth}
+  ${borderRadius}
+  ${bottom}
+  ${boxShadow}
+  ${boxSizing}
+  ${clip}
+  ${color}
+  ${cursor}
+  ${columnGap}
+  ${display}
+  ${filter}
+  ${float}
+  ${font}
+  ${fontFamily}
+  ${fontSize}
+  ${fontStyle}
+  ${fontVariant}
+  ${fontWeight}
+  ${flexWrap}
+  ${flexShrink}
+  ${flexDirection}
+  ${flexGrow}
+  ${gridColumn}
+  ${gridTemplateColumns}
+  ${gridTemplateRows}
+  ${gridTemplate}
+  ${gap}
+  ${height}
+  ${justifyContent}
+  ${justifyItems}
+  ${justifySelf}
+  ${left}
+  ${letterSpacing}
+  ${lineHeight}
+  ${listStyle}
+  ${listStyleImage}
+  ${listStylePosition}
+  ${listStyleType}
+  ${margin}
+  ${marginBottom}
+  ${marginLeft}
+  ${marginRight}
+  ${marginTop}
+  ${maxHeight}
+  ${maxWidth}
+  ${minHeight}
+  ${minWidth}
+  ${opacity}
+  ${order}
+  ${outline}
+  ${outlineColor}
+  ${outlineWidth}
+  ${overflow}
+  ${overflowX}
+  ${overflowY}
+  ${padding}
+  ${paddingBottom}
+  ${paddingTop}
+  ${paddingLeft}
+  ${paddingRight}
+  ${pageBreakAfter}
+  ${pageBreakBefore}
+  ${pageBreakInside}
+  ${pointerEvents}
+  ${position}
+  ${quotes}
+  ${rowGap}
+  ${resize}
+  ${right}
+  ${tabSize}
+  ${tableLayout}
+  ${textAlign}
+  ${textDecoration}
+  ${textIndent}
+  ${textJustify}
+  ${textOverflow}
+  ${textShadow}
+  ${textTransform}
+  ${top}
+  ${transform}
+  ${transformOrigin}
+  ${transformStyle}
+  ${transition}
+  ${verticalAlign}
+  ${visibility}
+  ${whiteSpace}
+  ${width}
+  ${wordBreak}
+  ${wordSpacing}
+  ${wordWrap}
+  ${zIndex}
+`;
 
 const Container = styled.div`
   display: flex;
@@ -110,7 +372,6 @@ const Container = styled.div`
   border-top-left-radius: 12px;
   border-bottom-left-radius: ${(props) => props.borderBottomLeftRadius};
   border-bottom-right-radius: ${(props) => props.borderBottomRightRadius};
-  overflow: hidden;
 
   &.challenge-previous {
     padding-left: 32px;
@@ -126,11 +387,12 @@ const Container = styled.div`
 `;
 
 const StyledImage = styled.img`
-  width: 100%;
-  height: 200px;
-  border-top-right-radius: 12px;
-  border-top-left-radius: 12px;
+  width: ${(props) => props.cardImageWidth};
+  height: ${(props) => props.cardImageHeight};
   border: 1px solid ${({ theme }) => theme.colors.gray200};
+  border-top-left-radius: ${(props) => props.borderImgTopLeftRadius};
+  border-top-right-radius: ${(props) => props.borderImgTopRightRadius};
+  
 `;
 
 const WrapperTextAccordion = styled.div`
@@ -172,18 +434,19 @@ const CardWrapperInside = styled.div`
 
 const ContainerInside = styled.div`
   display: flex;
-  flex-direction: column;
-`
+  flex-direction:  ${(props) => props.flexDirection};
+  width: 100%;
+`;
 
 const BottomPart = styled.div`
-padding: 16px;
-`
-const TextPart = styled.div`
-
-`
+  padding: 16px;
+  width:  ${(props) => props.widthBottomPart};
+`;
+const TextPart = styled.div``;
 const ButtonsPart = styled.div`
   display: flex;
-`
+  gap:  ${(props) => props.gap};
+`;
 const ContainerCardsInside = styled.div`
   display: flex;
   align-items: center;
@@ -199,12 +462,37 @@ const ContainerCardsInside = styled.div`
 
 const WrapperShareBtn = styled.div`
   position: absolute;
-  top: 16px; 
+  top: 16px;
   right: 16px;
 `;
+const ButtonImageWrapper = styled.div`
+  position: relative;
+`;
+
 
 Card.defaultProps = {
-  hideAccordion: true
+  hideAccordion: true,
+  maxWidth: "300px",
+  borderImgTopLeftRadius: "12px",
+  borderImgTopRightRadius: "12px",
+  cardButtonPrimaryText: "BUTTON",
+  cardButtonPrimaryOnClick: () => alert("Button clicked!"),
+  cardButtonPrimaryColor: "green300",
+  cardButtonPrimaryBgColor: "transparent",
+  cardButtonPrimaryWeight: "bold",
+  cardButtonPrimaryPadding: "0",
+  cardButtonPrimaryHeight: "auto",
+  cardButtonSecondaryText: "BUTTON 2",
+  cardButtonSecondaryOnClick: () => alert("Button 2 clicked!"),
+  cardButtonSecondaryColor: "green300",
+  cardButtonSecondaryBgColor: "transparent",
+  cardButtonSecondaryWeight: "bold",
+  cardButtonSecondaryPadding: "0",
+  cardButtonSecondaryHeight: "auto",
+  cardButtonsGap: "8px",
+  flexDirection: "column",
+  cardImageHeight: "200px",
+  cardImageWidth: "100%"
 };
 
 export default Card;
