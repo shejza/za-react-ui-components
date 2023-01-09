@@ -439,6 +439,7 @@ const ContainerInside = styled.div`
 `;
 
 const BottomPart = styled.div`
+  background-color: white;
   padding: 16px;
   width:  ${(props) => props.widthBottomPart};
 `;
@@ -471,6 +472,12 @@ const ButtonImageWrapper = styled.div`
 
 
 Card.defaultProps = {
+  image_url:
+  "https://images.unsplash.com/photo-1554424944-d72b391975b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80",
+  title: "Title goes here",
+subtitle: "Subtitle goes here",
+description:
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
   hideAccordion: true,
   maxWidth: "300px",
   borderImgTopLeftRadius: "12px",
