@@ -16,11 +16,11 @@ import { IonIcons4 } from "./IonIcons4";
 import { IonIcons5 } from "./IonIcons5";
 import { MaterialDesignIcons } from "./MaterialDesignIcons";
 import { RemixIcons } from "./RemixIcons";
-import { SimpleIcons } from "./SimpleIcons";
-import { TablerIcons } from "./TablerIcons";
-import { TypiIcons } from "./TypiIcons";
-import { VsCodeIcons } from "./VsCodeIcons";
-import { WeatherIcons } from "./WeatherIcons";
+// import { SimpleIcons } from "./SimpleIcons";
+// import { TablerIcons } from "./TablerIcons";
+// import { TypiIcons } from "./TypiIcons";
+// import { VsCodeIcons } from "./VsCodeIcons";
+// import { WeatherIcons } from "./WeatherIcons";
 
 
 export const allAvailableIcons = {
@@ -41,10 +41,10 @@ export const allAvailableIcons = {
   ...IonIcons5,
   ...MaterialDesignIcons,
   ...RemixIcons,
-  ...SimpleIcons,
-  ...TablerIcons,
-  ...TypiIcons,
-  ...VsCodeIcons,
-  ...WeatherIcons
+  // ...SimpleIcons,
+  // ...TablerIcons,
+  // ...TypiIcons,
+  // ...VsCodeIcons,
+  // ...WeatherIcons
 
 };

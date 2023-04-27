@@ -7,112 +7,7 @@ import useClickOutsideCallback from "../hooks/useClickOutsideCallback";
 import Box from "../Box/Box";
 import Button from "../Button/Button";
 import Menu from "../Menu/Menu";
-import {
-  alignItems,
-  alignSelf,
-  alignContent,
-  animation,
-  backdropFilter,
-  background,
-  bgColor,
-  border,
-  borderBottom,
-  borderTop,
-  borderLeft,
-  borderRight,
-  borderColor,
-  borderWidth,
-  borderRadius,
-  bottom,
-  boxShadow,
-  boxSizing,
-  clip,
-  color,
-  cursor,
-  columnGap,
-  display,
-  filter,
-  float,
-  font,
-  fontFamily,
-  fontSize,
-  fontStyle,
-  fontVariant,
-  fontWeight,
-  flexWrap,
-  flexShrink,
-  flexDirection,
-  flexGrow,
-  gridColumn,
-  gridTemplateColumns,
-  gridTemplateRows,
-  gridTemplate,
-  gap,
-  height,
-  justifyContent,
-  justifyItems,
-  justifySelf,
-  left,
-  letterSpacing,
-  lineHeight,
-  listStyle,
-  listStyleImage,
-  listStylePosition,
-  listStyleType,
-  margin,
-  marginBottom,
-  marginLeft,
-  marginRight,
-  marginTop,
-  maxHeight,
-  maxWidth,
-  minHeight,
-  minWidth,
-  opacity,
-  order,
-  outline,
-  outlineColor,
-  outlineWidth,
-  overflow,
-  overflowX,
-  overflowY,
-  padding,
-  paddingBottom,
-  paddingTop,
-  paddingLeft,
-  paddingRight,
-  pageBreakAfter,
-  pageBreakBefore,
-  pageBreakInside,
-  pointerEvents,
-  position,
-  quotes,
-  rowGap,
-  resize,
-  right,
-  tabSize,
-  tableLayout,
-  textAlign,
-  textDecoration,
-  textIndent,
-  textJustify,
-  textOverflow,
-  textShadow,
-  textTransform,
-  top,
-  transform,
-  transformOrigin,
-  transformStyle,
-  transition,
-  verticalAlign,
-  visibility,
-  whiteSpace,
-  width,
-  wordBreak,
-  wordSpacing,
-  wordWrap,
-  zIndex,
-} from "../properties";
+import { MainWrapper, maxWidth, width } from "../properties";
 
 const Card = ({
   children,
@@ -149,8 +44,18 @@ const Card = ({
   flexDirection,
   cardImageHeight,
   cardImageWidth,
-  cardMaxWidth,
   cardHideExpandable,
+  borderImgBottomLeftRadius,
+  borderImgBottomRightRadius,
+  borderBottomPartTopLeftRadius,
+  borderBottomPartTopRightRadius,
+  borderBottomPartBottomLeftRadius,
+  borderBottomPartBottomRightRadius,
+  maxWidth,
+  borderDetailsPartTopLeftRadius,
+  borderDetailsPartTopRightRadius,
+  borderDetailsPartBottomLeftRadius,
+  borderDetailsPartBottomRightRadius,
   ...props
 }) => {
   const ref = useRef();
@@ -164,34 +69,97 @@ const Card = ({
   //const { isDesktop, isTablet, isMobile} = useMedias();
   const iconElement = ToggleTextIcon(toggle, iconName);
   const AccordionElement = hideAccordion ? iconElement : null;
+  const cardDefault = {
+    _flexDirection: flexDirection,
+    _borderImgTopLeftRadius: borderImgTopLeftRadius,
+    _borderImgTopRightRadius: borderImgTopRightRadius,
+    _borderImgBottomLeftRadius: borderImgBottomLeftRadius,
+    _borderImgBottomRightRadius: borderImgBottomRightRadius,
+    _borderBottomPartTopLeftRadius: borderBottomPartTopLeftRadius,
+    _borderBottomPartTopRightRadius: borderBottomPartTopRightRadius,
+    _borderBottomPartBottomLeftRadius: borderBottomPartBottomLeftRadius,
+    _borderBottomPartBottomRightRadius: borderBottomPartBottomRightRadius,
+    _maxWidth: maxWidth,
+    _borderDetailsPartTopLeftRadius: borderDetailsPartTopLeftRadius,
+    _borderDetailsPartTopRightRadius: borderDetailsPartTopRightRadius,
+    _borderDetailsPartBottomLeftRadius: borderDetailsPartBottomLeftRadius,
+    _borderDetailsPartBottomRightRadius: borderDetailsPartBottomRightRadius,
+  };
+
+  const CONFIG = {
+    cardDefault,
+    cardHorizontal: {
+      _flexDirection: "row",
+      _borderImgTopLeftRadius: "12px",
+      _borderImgTopRightRadius: "0",
+      _borderImgBottomLeftRadius: "12px",
+      _borderImgBottomRightRadius: "0",
+      _borderBottomPartTopLeftRadius: "0",
+      _borderBottomPartTopRightRadius: "12px",
+      _borderBottomPartBottomLeftRadius: "0",
+      _borderBottomPartBottomRightRadius: "12px",
+      _maxWidth: "unset",
+      _width: "100%",
+      _borderDetailsPartTopLeftRadius: borderDetailsPartTopLeftRadius,
+      _borderDetailsPartTopRightRadius: borderDetailsPartTopRightRadius,
+      _borderDetailsPartBottomLeftRadius: borderDetailsPartBottomLeftRadius,
+      _borderDetailsPartBottomRightRadius: borderDetailsPartBottomRightRadius,
+    },
+  };
+
+  const {
+    _flexDirection,
+    _borderImgTopLeftRadius,
+    _borderImgTopRightRadius,
+    _borderImgBottomLeftRadius,
+    _borderImgBottomRightRadius,
+    _borderBottomPartTopLeftRadius,
+    _borderBottomPartTopRightRadius,
+    _borderBottomPartBottomLeftRadius,
+    _borderBottomPartBottomRightRadius,
+    _maxWidth,
+    _width,
+    _borderDetailsPartTopLeftRadius,
+    _borderDetailsPartTopRightRadius,
+    _borderDetailsPartBottomLeftRadius,
+    _borderDetailsPartBottomRightRadius,
+  } = CONFIG[cardHorizontal ? "cardHorizontal" : "cardDefault"];
 
   //useClickOutsideCallback(ref, disableOutsideClick ? () => {} : close);
 
   return (
-    <CardWrapper cardMaxWidth={cardHorizontal ? "100%" : cardMaxWidth}  {...props} ref={ref}>
+    <MainWrapper {...props} maxWidth={_maxWidth} width={_width} ref={ref}>
       <CardWrapperInside>
         <Container
           isActive={isActive}
           borderBottomRightRadius={!isActive ? "12px" : 0}
           borderBottomLeftRadius={!isActive ? "12px" : 0}
         >
-          <ContainerInside flexDirection={cardHorizontal ? "row" : flexDirection}>
-            {CardHeader && <CardHeader/>}
+          <ContainerInside flexDirection={_flexDirection}>
+            {CardHeader && <CardHeader />}
             <ButtonImageWrapper>
-            {ShareButtonList &&
-            <WrapperShareBtn>
-              <ShareButton ShareButtonList={ShareButtonList} />
-            </WrapperShareBtn>
-}
-            <StyledImage
-              src={image_url}
-              borderImgTopLeftRadius={borderImgTopLeftRadius}
-              borderImgTopRightRadius={borderImgTopRightRadius}
-              cardImageHeight={cardHorizontal ? "100%" : cardImageHeight }
-              cardImageWidth={cardHorizontal ? "200px" : cardImageWidth }
-            />
-             </ButtonImageWrapper>
-            <BottomPart widthBottomPart={cardHorizontal && "100%"}>
+              {ShareButtonList && (
+                <WrapperShareBtn>
+                  <ShareButton ShareButtonList={ShareButtonList} />
+                </WrapperShareBtn>
+              )}
+              <StyledImage
+                src={image_url}
+                borderImgTopLeftRadius={_borderImgTopLeftRadius}
+                borderImgTopRightRadius={_borderImgTopRightRadius}
+                borderImgBottomLeftRadius={isActive ? 0 : _borderImgBottomLeftRadius}
+                borderImgBottomRightRadius={_borderImgBottomRightRadius}
+                cardImageHeight={cardHorizontal ? "100%" : cardImageHeight}
+                cardImageWidth={cardHorizontal ? "200px" : cardImageWidth}
+              />
+            </ButtonImageWrapper>
+            <BottomPart
+              borderBottomPartTopLeftRadius={_borderBottomPartTopLeftRadius}
+              borderBottomPartTopRightRadius={_borderBottomPartTopRightRadius}
+              borderBottomPartBottomLeftRadius={_borderBottomPartBottomLeftRadius}
+              borderBottomPartBottomRightRadius={_borderBottomPartBottomRightRadius}
+              widthBottomPart={cardHorizontal && "100%"}
+            >
               <TextPart>
                 <Title>{title}</Title>
                 <SubTitle>{subtitle}</SubTitle>
@@ -229,9 +197,18 @@ const Card = ({
             </BottomPart>
           </ContainerInside>
         </Container>
-        {isActive && <ContainerCardsInside>{children}</ContainerCardsInside>}
+        {isActive && (
+          <ContainerCardsInside
+            _borderDetailsPartTopLeftRadius={_borderDetailsPartTopLeftRadius}
+            _borderDetailsPartTopRightRadius={_borderDetailsPartTopRightRadius}
+            _borderDetailsPartBottomLeftRadius={_borderDetailsPartBottomLeftRadius}
+            _borderDetailsPartBottomRightRadius={_borderDetailsPartBottomRightRadius}
+          >
+            {children}
+          </ContainerCardsInside>
+        )}
       </CardWrapperInside>
-    </CardWrapper>
+    </MainWrapper>
   );
 };
 
@@ -253,113 +230,6 @@ const ToggleTextIcon = (toggle, iconName, text) => (
     <Icon color="accent450" icon={iconName} width={"21px"} />
   </WrapperTextAccordion>
 );
-
-const CardWrapper = styled.div`
-  ${alignItems}
-  ${alignSelf}
-  ${alignContent}
-  ${animation}
-  ${backdropFilter}
-  ${background}
-  ${bgColor}
-  ${border}
-  ${borderBottom}
-  ${borderTop}
-  ${borderLeft}
-  ${borderRight}
-  ${borderColor}
-  ${borderWidth}
-  ${borderRadius}
-  ${bottom}
-  ${boxShadow}
-  ${boxSizing}
-  ${clip}
-  ${color}
-  ${cursor}
-  ${columnGap}
-  ${display}
-  ${filter}
-  ${float}
-  ${font}
-  ${fontFamily}
-  ${fontSize}
-  ${fontStyle}
-  ${fontVariant}
-  ${fontWeight}
-  ${flexWrap}
-  ${flexShrink}
-  ${flexDirection}
-  ${flexGrow}
-  ${gridColumn}
-  ${gridTemplateColumns}
-  ${gridTemplateRows}
-  ${gridTemplate}
-  ${gap}
-  ${height}
-  ${justifyContent}
-  ${justifyItems}
-  ${justifySelf}
-  ${left}
-  ${letterSpacing}
-  ${lineHeight}
-  ${listStyle}
-  ${listStyleImage}
-  ${listStylePosition}
-  ${listStyleType}
-  ${margin}
-  ${marginBottom}
-  ${marginLeft}
-  ${marginRight}
-  ${marginTop}
-  ${maxHeight}
-  ${maxWidth}
-  ${minHeight}
-  ${minWidth}
-  ${opacity}
-  ${order}
-  ${outline}
-  ${outlineColor}
-  ${outlineWidth}
-  ${overflow}
-  ${overflowX}
-  ${overflowY}
-  ${padding}
-  ${paddingBottom}
-  ${paddingTop}
-  ${paddingLeft}
-  ${paddingRight}
-  ${pageBreakAfter}
-  ${pageBreakBefore}
-  ${pageBreakInside}
-  ${pointerEvents}
-  ${position}
-  ${quotes}
-  ${rowGap}
-  ${resize}
-  ${right}
-  ${tabSize}
-  ${tableLayout}
-  ${textAlign}
-  ${textDecoration}
-  ${textIndent}
-  ${textJustify}
-  ${textOverflow}
-  ${textShadow}
-  ${textTransform}
-  ${top}
-  ${transform}
-  ${transformOrigin}
-  ${transformStyle}
-  ${transition}
-  ${verticalAlign}
-  ${visibility}
-  ${whiteSpace}
-  ${width}
-  ${wordBreak}
-  ${wordSpacing}
-  ${wordWrap}
-  ${zIndex}
-`;
 
 const Container = styled.div`
   display: flex;
@@ -392,7 +262,8 @@ const StyledImage = styled.img`
   border: 1px solid ${({ theme }) => theme.colors.gray200};
   border-top-left-radius: ${(props) => props.borderImgTopLeftRadius};
   border-top-right-radius: ${(props) => props.borderImgTopRightRadius};
-  
+  border-bottom-left-radius: ${(props) => props.borderImgBottomLeftRadius};
+  border-bottom-right-radius: ${(props) => props.borderImgBottomRightRadius};
 `;
 
 const WrapperTextAccordion = styled.div`
@@ -435,21 +306,23 @@ const CardWrapperInside = styled.div`
 
 const ContainerInside = styled.div`
   display: flex;
-  flex-direction:  ${(props) => props.flexDirection};
+  flex-direction: ${(props) => props.flexDirection};
   width: 100%;
 `;
 
 const BottomPart = styled.div`
   background-color: white;
   padding: 16px;
-  width:  ${(props) => props.widthBottomPart};
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+  width: ${(props) => props.widthBottomPart};
+  border-top-left-radius: ${(props) => props.borderBottomPartTopLeftRadius};
+  border-top-right-radius: ${(props) => props.borderBottomPartTopRightRadius};
+  border-bottom-left-radius: ${(props) => props.borderBottomPartBottomLeftRadius};
+  border-bottom-right-radius: ${(props) => props.borderBottomPartBottomRightRadius};
 `;
 const TextPart = styled.div``;
 const ButtonsPart = styled.div`
   display: flex;
-  gap:  ${(props) => props.gap};
+  gap: ${(props) => props.gap};
 `;
 const ContainerCardsInside = styled.div`
   display: flex;
@@ -462,7 +335,10 @@ const ContainerCardsInside = styled.div`
   min-height: 0px;
   height: auto;
   transition-duration: 300ms;
-  border-radius: 16px;
+  border-top-left-radius: ${(props) => props.borderDetailsPartTopLeftRadius};
+  border-top-right-radius: ${(props) => props.borderDetailsPartTopRightRadius};
+  border-bottom-left-radius: ${(props) => props.borderDetailsPartBottomLeftRadius};
+  border-bottom-right-radius: ${(props) => props.borderDetailsPartBottomRightRadius};
 `;
 
 const WrapperShareBtn = styled.div`
@@ -474,18 +350,23 @@ const ButtonImageWrapper = styled.div`
   position: relative;
 `;
 
-
 Card.defaultProps = {
   image_url:
-  "https://images.unsplash.com/photo-1554424944-d72b391975b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80",
+    "https://images.unsplash.com/photo-1554424944-d72b391975b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80",
   title: "Title goes here",
-subtitle: "Subtitle goes here",
-description:
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+  subtitle: "Subtitle goes here",
+  description:
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
   hideAccordion: true,
   maxWidth: "300px",
   borderImgTopLeftRadius: "12px",
   borderImgTopRightRadius: "12px",
+  borderImgBottomLeftRadius: "0",
+  borderImgBottomRightRadius: "0",
+  borderBottomPartTopLeftRadius: "16px",
+  borderBottomPartTopRightRadius: "16px",
+  borderBottomPartBottomLeftRadius: "16px",
+  borderBottomPartBottomRightRadius: "16px",
   cardButtonPrimaryText: "BUTTON",
   cardButtonPrimaryOnClick: () => alert("Button clicked!"),
   cardButtonPrimaryColor: "green300",
@@ -503,7 +384,11 @@ description:
   cardButtonsGap: "8px",
   flexDirection: "column",
   cardImageHeight: "200px",
-  cardImageWidth: "100%"
+  cardImageWidth: "100%",
+  borderDetailsPartTopLeftRadius: "16px",
+  borderDetailsPartTopRightRadius: "16px",
+  borderDetailsPartBottomLeftRadius: "16px",
+  borderDetailsPartBottomRightRadius: "16px",
 };
 
 export default Card;

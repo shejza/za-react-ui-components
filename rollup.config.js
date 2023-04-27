@@ -4,26 +4,21 @@ import babel from "@rollup/plugin-babel";
 import image from "@rollup/plugin-image";
 import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
-import json from "@rollup/plugin-json";
 
 const packageJson = require("./package.json");
 
-const external = [
-  "react",
-  "prop-types",
-  "styled-components",
-];
+const external = ["react", "prop-types", "styled-components"];
 
 const globals = {
   react: "React",
   "styled-components": "styled",
-  "prop-types": "propTypes"
+  "prop-types": "propTypes",
 };
 
 export default {
   external: external,
   input: "src/library.js",
- 
+
   output: [
     {
       file: packageJson.main,
@@ -44,14 +39,11 @@ export default {
   ],
   plugins: [
     // externals(),
-    json({
-      compact: true,
-    }),
     url({
       include: ["**/*.ttf"],
       limit: Infinity,
     }),
-    svgr(),
+    svgr({  dimensions: false }),
     image(),
     resolve({
       extensions: [".js", ".ttf", ".jsx"],
@@ -60,7 +52,6 @@ export default {
     babel({
       presets: ["@babel/preset-react"],
       plugins: ["@babel/plugin-proposal-optional-chaining"],
-      exclude: 'node_modules/**',
     }),
   ],
 };
