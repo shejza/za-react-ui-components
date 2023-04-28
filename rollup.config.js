@@ -4,6 +4,7 @@ import babel from "@rollup/plugin-babel";
 import image from "@rollup/plugin-image";
 import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
+import json from '@rollup/plugin-json';
 
 const packageJson = require("./package.json");
 
@@ -39,6 +40,7 @@ export default {
   ],
   plugins: [
     // externals(),
+     json(),
     url({
       include: ["**/*.ttf"],
       limit: Infinity,
@@ -54,4 +56,7 @@ export default {
       plugins: ["@babel/plugin-proposal-optional-chaining"],
     }),
   ],
+  external: [
+    '@mdx-js/react'
+  ]
 };
