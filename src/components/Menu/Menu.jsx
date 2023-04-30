@@ -1,13 +1,10 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Icon from "../Icon/Icon";
-import Text from "../Text/Text";
-import ImagePlaceholder from "../../assets/placeholders/photo.png";
 import useClickOutsideCallback from "../../hooks/useClickOutsideCallback";
-import Box from "../Box/Box";
 import Button from "../Button/Button";
 
-const Menu = ({ children, active, onToggle, icon, iconColor, menuMinWidth, ...props }) => {
+const Menu = ({ children, active, onToggle, icon, iconColor, menuMinWidth, menuText, ...props }) => {
   const ref = useRef();
   const [isActive, setActive] = useState(active);
   const toggle = () => {
@@ -20,7 +17,7 @@ const Menu = ({ children, active, onToggle, icon, iconColor, menuMinWidth, ...pr
   return (
     <MenuWrapper ref={ref}>
       {!icon &&
-      <Button cursor={"pointer"} onClick={toggle} fontWeight="bold">Open Menu</Button>
+      <Button cursor={"pointer"} onClick={toggle} fontWeight="bold">{menuText}</Button>
 }
      {icon && <StyledIcon iconColor={iconColor}  onClick={toggle} icon={icon}/>}
       <Container opacityContainer={isActive ? "1" : "0"}
@@ -58,9 +55,9 @@ const Container = styled.div`
   transform-origin: 0px 0px;
   box-shadow: rgb(76 78 100 / 20%) 0px 5px 5px -3px, rgb(76 78 100 / 14%) 0px 8px 10px 1px, rgb(76 78 100 / 12%) 0px 3px 14px 2px;
   ${({ opacityContainer }) => opacityContainer && `opacity:  ${opacityContainer}`};
-${({ transformContainer }) => transformContainer && `transform:  ${transformContainer}`};
-${({ transitionContainer }) => transitionContainer && `transition:  ${transitionContainer}`};
- ${({ visibilityContainer }) => visibilityContainer && `visibility:  ${visibilityContainer}`};
+  ${({ transformContainer }) => transformContainer && `transform:  ${transformContainer}`};
+  ${({ transitionContainer }) => transitionContainer && `transition:  ${transitionContainer}`};
+  ${({ visibilityContainer }) => visibilityContainer && `visibility:  ${visibilityContainer}`};
 
  ul {
   list-style: none;
@@ -115,7 +112,8 @@ const StyledIcon = styled(Icon)`
 
 
 Menu.defaultProps = {
-  iconColor: "rgba(76, 78, 100, 0.54)"
+  iconColor: "rgba(76, 78, 100, 0.54)",
+  menuText: "Open Menu"
 };
 
 

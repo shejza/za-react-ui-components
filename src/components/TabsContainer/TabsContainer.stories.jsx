@@ -25,6 +25,7 @@ Default.args = {
   headers: ["Tab 1", "Tab 2", "Tab 3"],
   tabClasses: [Tab1, Tab2, Tab3],
   selectedIndex: 0,
+  onChangeIndex: () => {},
 };
 
 export const Example1 = Template.bind({});
