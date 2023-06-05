@@ -78,12 +78,12 @@ const BottomCenter = css`
 
 
 export const POSITIONS = {
-    "top-right": TopRight,
-    "top-left": TopLeft,
-    "bottom-left": BottomLeft,
-    "bottom-right": BottomRight,
-    "center": Center,
-    "bottom-center": BottomCenter
+  "top-right": TopRight,
+  "top-left": TopLeft,
+  "bottom-left": BottomLeft,
+  "bottom-right": BottomRight,
+  "center": Center,
+  "bottom-center": BottomCenter
 };
 
 export const positionProp = ({ position }) => position && POSITIONS[position];

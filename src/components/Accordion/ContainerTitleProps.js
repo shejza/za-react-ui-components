@@ -1,3 +1,4 @@
+import styled from "styled-components";
 export const alignItemsTitleContainer = ({ alignItemsTitleContainer }) => alignItemsTitleContainer && `align-items: ${alignItemsTitleContainer};`;
 export const alignSelfTitleContainer = ({ alignSelfTitleContainer }) => alignSelfTitleContainer && `align-self: ${alignSelfTitleContainer};`;
 export const alignContentTitleContainer = ({ alignContentTitleContainer }) => alignContentTitleContainer && `align-content: ${alignContentTitleContainer};`;
@@ -104,3 +105,111 @@ export const wordBreakTitleContainer = ({ wordBreakTitleContainer }) => wordBrea
 export const wordSpacingTitleContainer = ({ wordSpacingTitleContainer }) => wordSpacingTitleContainer && `word-spacing: ${wordSpacingTitleContainer};`;
 export const wordWrapTitleContainer = ({ wordWrapTitleContainer }) => wordWrapTitleContainer && `word-wrap: ${wordWrapTitleContainer};`;
 export const zIndexTitleContainer = ({ zIndexTitleContainer }) => zIndexTitleContainer && `z-index: ${zIndexTitleContainer};`;
+
+
+export const Container = styled.div`
+  ${alignItemsTitleContainer}
+  ${alignSelfTitleContainer}
+${alignContentTitleContainer}
+${animationTitleContainer}
+${backdropFilterTitleContainer}
+${backgroundTitleContainer}
+${bgColorTitleContainer}
+${borderTitleContainer}
+${borderBottomTitleContainer}
+${borderTopTitleContainer}
+${borderLeftTitleContainer}
+${borderRightTitleContainer}
+${borderColorTitleContainer}
+${borderWidthTitleContainer}
+${borderRadiusTitleContainer}
+${bottomTitleContainer}
+${boxShadowTitleContainer}
+${boxSizingTitleContainer}
+${clipTitleContainer}
+${colorTitleContainer}
+${cursorTitleContainer}
+${columnGapTitleContainer}
+${displayTitleContainer}
+${filterTitleContainer}
+${floatTitleContainer}
+${fontTitleContainer}
+${fontFamilyTitleContainer}
+${fontSizeTitleContainer}
+${fontStyleTitleContainer}
+${fontVariantTitleContainer}
+${fontWeightTitleContainer}
+${flexWrapTitleContainer}
+${flexShrinkTitleContainer}
+${flexDirectionTitleContainer}
+${flexGrowTitleContainer}
+${gridColumnTitleContainer}
+${gridTemplateColumnsTitleContainer}
+${gridTemplateRowsTitleContainer}
+${gridTemplateTitleContainer}
+${gapTitleContainer}
+${heightTitleContainer}
+${justifyContentTitleContainer}
+${justifyItemsTitleContainer}
+${justifySelfTitleContainer}
+${leftTitleContainer}
+${letterSpacingTitleContainer}
+${lineHeightTitleContainer}
+${listStyleTitleContainer}
+${listStyleImageTitleContainer}
+${listStylePositionTitleContainer}
+${listStyleTypeTitleContainer}
+${marginTitleContainer}
+${marginBottomTitleContainer}
+${marginLeftTitleContainer}
+${marginRightTitleContainer}
+${marginTopTitleContainer}
+${maxHeightTitleContainer}
+${maxWidthTitleContainer}
+${minHeightTitleContainer}
+${minWidthTitleContainer}
+${opacityTitleContainer}
+${orderTitleContainer}
+${outlineTitleContainer}
+${outlineColorTitleContainer}
+${outlineWidthTitleContainer}
+${overflowTitleContainer}
+${overflowXTitleContainer}
+${overflowYTitleContainer}
+${paddingTitleContainer}
+${paddingBottomTitleContainer}
+${paddingTopTitleContainer}
+${paddingLeftTitleContainer}
+${paddingRightTitleContainer}
+${pageBreakAfterTitleContainer}
+${pageBreakBeforeTitleContainer}
+${pageBreakInsideTitleContainer}
+${pointerEventsTitleContainer}
+${positionTitleContainer}
+${quotesTitleContainer}
+${rowGapTitleContainer}
+${resizeTitleContainer}
+${rightTitleContainer}
+${tabSizeTitleContainer}
+${tableLayoutTitleContainer}
+${textAlignTitleContainer}
+${textDecorationTitleContainer}
+${textIndentTitleContainer}
+${textJustifyTitleContainer}
+${textOverflowTitleContainer}
+${textShadowTitleContainer}
+${textTransformTitleContainer}
+${topTitleContainer}
+${transformTitleContainer}
+${transformOriginTitleContainer}
+${transformStyleTitleContainer}
+${transitionTitleContainer}
+${verticalAlignTitleContainer}
+${visibilityTitleContainer}
+${whiteSpaceTitleContainer}
+${widthTitleContainer}
+${wordBreakTitleContainer}
+${wordSpacingTitleContainer}
+${wordWrapTitleContainer}
+${zIndexTitleContainer}
+`;

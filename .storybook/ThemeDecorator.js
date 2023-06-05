@@ -1,13 +1,18 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../src/constants';
+import { lightTheme, darkTheme } from '../src/constants';
 import GlobalStyles from '../src/GlobalStyles';
 
-const ThemeDecorator = (Story) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    <Story />
-  </ThemeProvider>
-);
+const ThemeDecorator = (Story, context) => {
+  const theme = context.parameters.theme || context.globals.theme
+  const storyTheme = theme === 'light' ? lightTheme : darkTheme;
+
+  return (
+    <ThemeProvider theme={storyTheme}>
+      <GlobalStyles />
+      <Story />
+    </ThemeProvider>
+  )
+};
 
 export default ThemeDecorator;

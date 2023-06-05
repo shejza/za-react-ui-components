@@ -272,7 +272,7 @@ Button.defaultProps = {
   padding: "8px",
   cursor: "pointer",
   bgColor: "green5000",
-  color: "white",
+  color: "01Primary0",
   height: "40px",
   width: "auto",
   border: "none"
