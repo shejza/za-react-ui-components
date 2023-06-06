@@ -21,6 +21,7 @@ const TabsContainer = styled(
     colorTab,
     bgColorTab,
     selectedBgColorTab,
+    selectedColorTab,
     fontWeightTab,
     selectedFontWeightTab,
     fontSizeTab,
@@ -30,6 +31,7 @@ const TabsContainer = styled(
     displayTab,
     minWidthTab,
     borderTab,
+    tabBorderColor,
     ...props
   }) => {
     const [_selectedTab, setSelected] = useState(selectedIndex);
@@ -72,6 +74,8 @@ const TabsContainer = styled(
           displayTab={displayTab}
           minWidthTab={minWidthTab}
           borderTab={borderTab}
+          selectedColorTab={selectedColorTab}
+          tabBorderColor={tabBorderColor}
         >
           {header}
         </TabOption>
@@ -100,19 +104,20 @@ export const TabOption = styled(Text)`
   font-weight: ${({ fontWeightTab }) => fontWeightTab && fontWeightTab};
   line-height: ${({ fontLineHeightTab }) => fontLineHeightTab && fontLineHeightTab};
   display: ${({ displayTab }) => displayTab && displayTab};
-  color: ${({ colorTab }) => colorTab && colorTab};
-  background-color: ${({ bgColorTab, theme }) => theme.colors[bgColorTab] || bgColorTab};
+  color: ${({ colorTab, theme }) => colorTab && theme.colors[colorTab]};
+  background-color: ${({ bgColorTab, theme }) => bgColorTab && theme.colors[bgColorTab]};
   padding: ${({ tabPadding }) => tabPadding && tabPadding};
   min-width: ${({ minWidthTab }) => minWidthTab && minWidthTab}; 
   font-size: ${({ fontSizeTab }) => fontSizeTab && fontSizeTab};
   cursor: pointer;
-  border-bottom: 1px solid rgba(50, 50, 60, 1);
+  border-bottom: 1px solid ${({ tabBorderColor, theme }) => tabBorderColor && theme.colors[tabBorderColor]};;
   border: ${({ borderTab }) => borderTab && borderTab};
-  ${({ selected, theme, selectedBgColorTab, selectedFontWeightTab }) =>
+  ${({ selected, theme, selectedBgColorTab, selectedFontWeightTab, selectedColorTab }) =>
     selected &&
     `
     background-color: ${theme.colors[selectedBgColorTab] || selectedBgColorTab};
-    font-weight: ${selectedFontWeightTab}
+    font-weight: ${selectedFontWeightTab};
+    color: ${theme.colors[selectedColorTab] || selectedColorTab};
   `}
 `;
 
@@ -127,9 +132,10 @@ TabsContainer.defaultProps = {
   headers: [],
   tabClasses: [],
   tabPadding: "24px",
-  colorTab: "white",
-  bgColorTab: "blueGray1000",
-  selectedBgColorTab: "blueGray2000",
+  colorTab: "tabColor",
+  bgColorTab: "tabBgColor",
+  selectedBgColorTab: "tabActiveBgColor",
+  selectedColorTab: "tabActiveColor",
   fontWeightTab: "400",
   selectedFontWeightTab: "600",
   fontSizeTab: "1rem",
@@ -138,6 +144,7 @@ TabsContainer.defaultProps = {
   fontLineHeightTab: "1.5",
   displayTab: "inline-block",
   minWidthTab: "256px",
+  tabBorderColor: "tabBorderColor"
 };
 
 TabsContainer.BorderedBox = BorderedBox;
