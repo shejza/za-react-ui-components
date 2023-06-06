@@ -13,6 +13,7 @@ import Accordion from './components/Accordion/Accordion';
 import Carousel from './components/Carousel/Carousel';
 import Menu from './components/Menu/Menu';
 import Card from './components/Card/Card';
+import Select from "./components/Select/Select";
 
 export {
   Box,
@@ -31,5 +32,6 @@ export {
   Accordion,
   Carousel,
   Menu,
-  Card
+  Card,
+  Select
 };

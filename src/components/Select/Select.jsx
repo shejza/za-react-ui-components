@@ -18,7 +18,11 @@ const Select = ({
   hideX,
   placeholder,
   showImage,
+  color = "01Primary700",
   bgColor = "01Primary110",
+  optionsBgColor = "01Primary0",
+  hoverColor = optionsBgColor,
+  borderColor = "01Primary300",
   ...props
 }) => {
   const ref = useRef(null);
@@ -70,8 +74,8 @@ const Select = ({
   }, [value, options]);
 
   return (
-    <Box ref={ref} relative>
-      <StyledBox spacing="px-2" bgColor={bgColor} open={open} flex>
+    <Box ref={ref} position="relative">
+      <StyledBox spacing="px-2" bgColor={bgColor} open={open} display="flex" borderColor={borderColor}>
         {showImage && !!selected && !!selected?.[image] && <TopImage src={selected[image]} />}
         <StyledInput
           value={search || placeholder}
@@ -83,23 +87,24 @@ const Select = ({
           onClear={onClearSearch}
           hideX={hideClear}
           disabled={disabled}
+          color={color}
           {...props}
         />
       </StyledBox>
       {hideClear && (
         <ArrowBox>
-          <Icon color="01Primary700" icon={open ? "MdKeyboardArrowUp" : "MdKeyboardArrowDown"} />
+          <Icon color={color} icon={open ? "MdKeyboardArrowUp" : "MdKeyboardArrowDown"}  />
         </ArrowBox>
       )}
       {open && (
-        <OptionsWrapper bgColor="01Primary0">
+        <OptionsWrapper bgColor={optionsBgColor}>
           {filteredOptions.map((opt, index) => (
-            <Option key={index} onClick={() => onSelect(opt)}>
+            <Option key={index} onClick={() => onSelect(opt)} hoverColor={hoverColor}>
               {!!image && <Box width="23px">{!!opt?.[image] && <Image src={opt[image]} />}</Box>}
-              <Text color="01Primary700">{opt?.[label]}</Text>
-              {/* {selected?.[valueKey] === opt?.[valueKey] && (
-                <IconSvg spacing="ml-a" icon="check" color="03Primary500" width="23px" />
-              )} */}
+              <Text color={color}>{opt?.[label]}</Text>
+              {selected?.[valueKey] === opt?.[valueKey] && (
+                <Icon spacing="ml-a" icon="check" color="03Primary500" width="23px" />
+              )}
             </Option>
           ))}
         </OptionsWrapper>
@@ -109,7 +114,7 @@ const Select = ({
 };
 
 const StyledBox = styled(Box)`
-  border: 1px solid ${({ theme }) => theme.colors["01Primary300"]};
+  border: 1px solid ${({ theme, borderColor }) => theme.colors[borderColor]};
   border-radius: ${({ open }) => (open ? "12px 12px 0 0" : "12px")};
 `;
 
@@ -117,12 +122,10 @@ const StyledInput = styled(Input)`
   & > div > input {
     border: none;
     padding-left: 8px;
-
     &:focus,
     &:hover {
       border: none;
     }
-
     &:read-only {
       cursor: pointer;
     }
@@ -148,6 +151,13 @@ const Option = styled(Box)`
   cursor: pointer;
   gap: 12px;
 
+  ${({ hoverColor, theme }) =>
+    hoverColor &&
+    `
+    &:hover {
+      background: ${theme.colors[hoverColor] || hoverColor};
+    }
+  `}
   &:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors["01Primary300"]};
   }
@@ -171,7 +181,6 @@ const ArrowBox = styled(Box)`
   position: absolute;
   top: 18px;
   right: 20px;
-
   pointer-events: none;
 `;
 
