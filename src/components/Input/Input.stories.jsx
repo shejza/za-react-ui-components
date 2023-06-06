@@ -3,6 +3,7 @@ import Input from "./Input";
 import { iconNames } from "../Icon/Icon";
 import {  mapToText } from "../storyTools";
 import Box from "../Box/Box";
+import Text from "../Text/Text";
 
 const textProperties = ["value", "name", "label", "labelIcon", "validationText", "helperText"];
 
@@ -35,10 +36,17 @@ export const Default = Template.bind({});
 
 export const ListAllInputs = (args) => {
   return (
-    <Box flex direction="column" gap="16px">
+    <Box display="flex" flexDirection="column" gap="16px">
+      <Text>Normal Input</Text>
       <Input {...args} />
+
+      <Text>Filled Input</Text>
       <Input {...args} value="John Doe|" />
+
+      <Text>Input with Error state</Text>
       <Input {...args} value="John Doe|" validationText="This is an error message" alwaysShowValidation={true} />
+
+      <Text>Disabled Input</Text>
       <Input {...args} value="John Doe|" disabled />
     </Box>
   );

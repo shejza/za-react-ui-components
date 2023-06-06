@@ -38,8 +38,8 @@ const MenuWrapper = styled.div`
 `;
 
 const Container = styled.div`
-  background-color: rgb(255, 255, 255);
-  color: rgba(76, 78, 100, 0.87);
+  background-color: ${({ theme }) => theme.colors["01Primary50"]};
+  color: ${({ theme }) => theme.colors["01Primary700"]};
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border-radius: 10px;
   box-shadow: rgb(76 78 100 / 20%) 0px 5px 5px -3px, rgb(76 78 100 / 14%) 0px 8px 10px 1px, rgb(76 78 100 / 12%) 0px 3px 14px 2px;
@@ -82,7 +82,7 @@ const Container = styled.div`
       font-size: 1rem;
       line-height: 1.5;
       letter-spacing: 0.15px;
-      color: rgba(76, 78, 100, 0.87);
+      color: ${({ theme }) => theme.colors["01Primary700"]};
       display: flex;
       -webkit-box-pack: start;
       justify-content: flex-start;

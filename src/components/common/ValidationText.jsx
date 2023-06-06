@@ -8,7 +8,7 @@ import Icon from "../Icon/Icon";
 
 const ValidationText = ({ showValidation, validationText, otherProps }) => {
   return (
-    <Box flex={+true} alignItems="center" gap="8px" color="error2" spacing="mt-2">
+    <Box display="flex" alignItems="center" gap="8px" color="error2" spacing="mt-2">
       <Icon width="14px" icon="BsFillExclamationTriangleFill" height="21px" />
       <ValidationTextWrapper {...otherProps} showValidation={showValidation}>
         {validationText}

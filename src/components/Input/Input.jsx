@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import propTypes from "prop-types";
 import Box from "../Box/Box";
@@ -131,10 +131,14 @@ const StyledInput = styled("input")`
  ${placeholderProps}
 
  &:focus {
-    background: transparent;
+    background: ${({ theme }) => theme.colors["01Primary50"]};
     border-color: ${({ theme }) => theme.colors["01Primary300"]};
   }
 
+  &:placeholder {
+   color: ${({ theme }) => theme.colors["01Primary700"]};
+  }
+  
   ${({ size }) =>
     size === "sm" &&
     `

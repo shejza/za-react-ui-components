@@ -28,7 +28,7 @@ Example.args = {
 };
 
 export const All = (args) => (
-  <Box flex maxWidth="700px" wrap>
+  <Box display="flex" maxWidth="700px" wrap>
     {keys.map((key) => (
       <Box spacing="p-4">
         <p>{key}</p>

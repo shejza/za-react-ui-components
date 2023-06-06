@@ -104,6 +104,7 @@ export const wordBreak = ({ wordBreak }) => wordBreak && `word-break: ${wordBrea
 export const wordSpacing = ({ wordSpacing }) => wordSpacing && `word-spacing: ${wordSpacing};`;
 export const wordWrap = ({ wordWrap }) => wordWrap && `word-wrap: ${wordWrap};`;
 export const zIndex = ({ zIndex }) => zIndex && `z-index: ${zIndex};`;
+export const disabledControl = ({ disabled }) => disabled && `opacity: 0.25; pointer-events: none;`;
 
 import styled from "styled-components";
 export const MainWrapper = styled.div`

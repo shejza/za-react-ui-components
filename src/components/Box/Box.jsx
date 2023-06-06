@@ -12,9 +12,4 @@ const Box = styled(
 )`
 `;
 
-Box.defaultProps = {
-  color: "01Primary700",
-  bgColor: "01Primary100"
-};
-
 export default Box;

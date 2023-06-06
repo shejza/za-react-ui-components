@@ -2,18 +2,14 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
-import ImagePlaceholder from "../../assets/placeholders/photo.png";
-import useClickOutsideCallback from "../hooks/useClickOutsideCallback";
-import Box from "../Box/Box";
 import Button from "../Button/Button";
 import Menu from "../Menu/Menu";
-import { MainWrapper, maxWidth, width } from "../properties";
+import { MainWrapper} from "../properties";
 
 const Card = ({
   children,
   active,
   hideAccordion,
-  disableOutsideClick,
   onToggle,
   image_url,
   title,
@@ -66,7 +62,7 @@ const Card = ({
   };
   const close = () => SetState(false);
   const iconName = isActive ? "MdKeyboardArrowUp" : "MdKeyboardArrowDown";
-  //const { isDesktop, isTablet, isMobile} = useMedias();
+
   const iconElement = ToggleTextIcon(toggle, iconName);
   const AccordionElement = hideAccordion ? iconElement : null;
   const cardDefault = {
@@ -124,8 +120,6 @@ const Card = ({
     _borderDetailsPartBottomLeftRadius,
     _borderDetailsPartBottomRightRadius,
   } = CONFIG[cardHorizontal ? "cardHorizontal" : "cardDefault"];
-
-  //useClickOutsideCallback(ref, disableOutsideClick ? () => {} : close);
 
   return (
     <MainWrapper {...props} maxWidth={_maxWidth} width={_width} ref={ref}>
@@ -227,7 +221,7 @@ const ToggleTextIcon = (toggle, iconName, text) => (
         {text}
       </Text>
     )}
-    <Icon color="accent450" icon={iconName} width={"21px"} />
+    <Icon color="01Primary700" icon={iconName} width={"21px"} />
   </WrapperTextAccordion>
 );
 
@@ -277,12 +271,12 @@ const Title = styled.h1`
   font-size: 20px;
   font-weight: bold;
   margin: 0;
-  color: ${({ theme }) => theme.colors.gray900};
+  color: ${({ theme }) => theme.colors["01Primary700"]};
 `;
 
 const SubTitle = styled.p`
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.gray700};
+  color: ${({ theme }) => theme.colors["01Primary700"]};
   margin: 0;
   line-height: 1.3;
   margin-top: 4px;
@@ -290,7 +284,7 @@ const SubTitle = styled.p`
 
 const Description = styled.p`
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.gray700};
+  color: ${({ theme }) => theme.colors["01Primary700"]};
   line-height: 1.3;
   margin-top: 8px;
 `;
@@ -298,10 +292,9 @@ const Description = styled.p`
 const CardWrapperInside = styled.div`
   box-sizing: border-box;
   border-radius: 12px;
-  background: ${({ theme }) => theme.colors.tertiary750};
+  background: ${({ theme }) => theme.colors["background"]};
   position: relative;
   z-index: 9;
-  background; white;
 `;
 
 const ContainerInside = styled.div`
@@ -311,7 +304,7 @@ const ContainerInside = styled.div`
 `;
 
 const BottomPart = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors["background"]};
   padding: 16px;
   width: ${(props) => props.widthBottomPart};
   border-top-left-radius: ${(props) => props.borderBottomPartTopLeftRadius};

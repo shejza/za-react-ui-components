@@ -48,5 +48,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   title: "Example one",
-  content: "this is a box"
+  content: "this is a box",
+  color: "01Primary700",
+  bgColor: "01Primary100"
 };

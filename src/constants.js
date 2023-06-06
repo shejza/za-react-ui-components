@@ -30,7 +30,7 @@ export const lightColors = {
   "03Primary150": "#DAF5DE",
   "03Primary140": "#DAF5DE",
   //Background
-  background: "#272732",
+  background: "#ffffff",
 
   //Green
   green100: "#C8E6C9",
@@ -93,6 +93,8 @@ export const lightColors = {
   orange3000: "#FF9100",
   orange4000: "#FF6D00",
 
+  error: "#E06363",
+  error2: "#C52D2D",
 };
 
 export const darkColors = {
@@ -127,7 +129,7 @@ export const darkColors = {
   "03Primary150": "#DAF5DE",
   "03Primary140": "#3B5277",
   //Background
-  background: "#ffffff",
+  background: "#272732",
 
   //Green
   green100: "#C8E6C9",
@@ -189,6 +191,9 @@ export const darkColors = {
   orange2000: "#FFAB40",
   orange3000: "#FF9100",
   orange4000: "#FF6D00",
+
+  error: "#E06363",
+  error2: "#C52D2D",
 };
 
 export const lightTheme = {

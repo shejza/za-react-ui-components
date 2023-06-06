@@ -133,7 +133,6 @@ const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidt
       setWidth(ref.current.getBoundingClientRect().width + "px");
     }
   }, [loading]);
-
   return (
     <button type="button" style={style} ref={ref} {...props}>
       {content}
@@ -244,24 +243,10 @@ const Button = styled(({ children, leftIcon, rightIcon, loading, color, iconWidt
   ${wordSpacing}
   ${wordWrap}
   ${zIndex}
-
-&&& {
-    ${({ theme, disabled }) =>
-    disabled &&
-      `
-    background:  ${theme.colors.gray100};
-    color: ${theme.colors.black};
-    cursor: default;
-    pointer-events: none;
-    border-color: ${theme.colors.gray100};
-`}
-  }
 `;
 
 Button.propTypes = {
-  /** Disable button */
   disabled: propTypes.bool,
-  /** Func to execute on click */
   onClick: propTypes.func,
 };
 
