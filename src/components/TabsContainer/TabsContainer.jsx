@@ -87,7 +87,7 @@ const TabsContainer = styled(
     }, [selectedIndex]);
 
     return (
-      <Box display="flex" flexDirection="row" className={className} {...props}>
+      <Box display="flex" flexDirection="row" bgColor={bgColor} className={className} {...props}>
         <BorderedBox  bgColorTab={bgColorTab}>
           {headerlist}
           {extraHeaderElement}
@@ -144,7 +144,8 @@ TabsContainer.defaultProps = {
   fontLineHeightTab: "1.5",
   displayTab: "inline-block",
   minWidthTab: "256px",
-  tabBorderColor: "tabBorderColor"
+  tabBorderColor: "tabBorderColor",
+  bgColor: "mainSurface"
 };
 
 TabsContainer.BorderedBox = BorderedBox;

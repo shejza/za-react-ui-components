@@ -311,11 +311,12 @@ export const lightColors = {
   blueGray800: "#37474F",
   blueGray900: "#263238",
 
-  tabActiveBgColor: "rgb(136 140 232)",
+  tabActiveBgColor: "rgb(84 193 161)",
   tabBgColor: "#f7f7f9",
   tabActiveColor: "#ffffff",
   tabColor: "rgb(72 74 91 / 87%)",
-  tabBorderColor: "#e3e3e9"
+  tabBorderColor: "#e3e3e9",
+  mainSurface: "#ffffff"
 };
 
 export const darkColors = {
@@ -634,7 +635,8 @@ export const darkColors = {
   tabBgColor: "#32323c",
   tabActiveColor: "#ffffff",
   tabColor: "#ffffff",
-  tabBorderColor: "rgba(50, 50, 60, 1)"
+  tabBorderColor: "rgba(50, 50, 60, 1)",
+  mainSurface: "rgb(40 40 50 / 98%)"
 };
 
 export const lightTheme = {
