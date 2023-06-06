@@ -316,7 +316,8 @@ export const lightColors = {
   tabActiveColor: "#ffffff",
   tabColor: "rgb(72 74 91 / 87%)",
   tabBorderColor: "#e3e3e9",
-  mainSurface: "#ffffff"
+  mainSurface: "#ffffff",
+  accentColor: "rgb(84 193 161)"
 };
 
 export const darkColors = {
@@ -636,7 +637,8 @@ export const darkColors = {
   tabActiveColor: "#ffffff",
   tabColor: "#ffffff",
   tabBorderColor: "rgba(50, 50, 60, 1)",
-  mainSurface: "rgb(40 40 50 / 98%)"
+  mainSurface: "rgb(40 40 50 / 98%)",
+  accentColor: "#ffffff"
 };
 
 export const lightTheme = {

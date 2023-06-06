@@ -229,9 +229,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid ${({ theme }) => theme.colors.gray200};
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.04);
-  background: ${({ theme }) => theme.colors.tertiary0};
+  background: ${({ theme }) => theme.colors["background"]}
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: ${(props) => props.borderBottomLeftRadius};
