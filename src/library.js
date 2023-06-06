@@ -5,7 +5,7 @@ import TabsContainer, { TabOption } from "./components/TabsContainer/TabsContain
 import Button from "./components/Button/Button";
 import Grid from "./components/Grid/Grid";
 import MarkdownText from "./components/MarkdownText/MarkdownText";
-import { theme } from "./constants";
+import { lightTheme, darkTheme } from "./constants";
 import Loader from "./components/Loader/Loader";
 import Highlighter from './components/Highlighter/Highlighter';
 import Alert from './components/Alert/Alert';
@@ -23,7 +23,8 @@ export {
   TabOption,
   TabsContainer,
   Text,
-  theme,
+  lightTheme,
+  darkTheme,
   MarkdownText,
   Highlighter,
   Alert,
