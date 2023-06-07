@@ -18,11 +18,29 @@ const Select = ({
   hideX,
   placeholder,
   showImage,
-  color = "01Primary700",
-  bgColor = "01Primary110",
-  optionsBgColor = "01Primary0",
-  hoverColor = optionsBgColor,
-  borderColor = "01Primary300",
+  color,
+  bgColor,
+  optionsBgColor,
+  hoverColor,
+  borderColor,
+  optionsBoxMaxHeight,
+  optionsBoxBorderRadius,
+  optionsBoxShadow,
+  optionHeight,
+  optionDisplay,
+  optionPadding,
+  optionGap,
+  topImageWidth,
+  topImageHeight,
+  topImageBorderRadius,
+  topImageMarginLeft,
+  topImageAlignSelf,
+  imageWidth,
+  imageHeight,
+  imageBorderRadius,
+  arrowBoxTop,
+  arrowBoxRight,
+  arrowBoxPointerEvents,
   ...props
 }) => {
   const ref = useRef(null);
@@ -76,7 +94,7 @@ const Select = ({
   return (
     <Box ref={ref} position="relative">
       <StyledBox spacing="px-2" bgColor={bgColor} open={open} display="flex" borderColor={borderColor}>
-        {showImage && !!selected && !!selected?.[image] && <TopImage src={selected[image]} />}
+        {showImage && !!selected && !!selected?.[image] && <TopImage src={selected[image]} topImageWidth={topImageWidth} topImageHeight={topImageHeight} topImageBorderRadius={topImageBorderRadius} topImageMarginLeft={topImageMarginLeft} topImageAlignSelf={topImageAlignSelf} />}
         <StyledInput
           value={search || placeholder}
           onChange={onSerchChange}
@@ -92,18 +110,26 @@ const Select = ({
         />
       </StyledBox>
       {hideClear && (
-        <ArrowBox>
-          <Icon color={color} icon={open ? "MdKeyboardArrowUp" : "MdKeyboardArrowDown"}  />
+        <ArrowBox arrowBoxTop={arrowBoxTop} arrowBoxRight={arrowBoxRight} arrowBoxPointerEvents={arrowBoxPointerEvents}>
+          <Icon color={color} icon={open ? "MdKeyboardArrowUp" : "MdKeyboardArrowDown"} width={imageWidth} />
         </ArrowBox>
       )}
       {open && (
-        <OptionsWrapper bgColor={optionsBgColor}>
+        <OptionsWrapper bgColor={optionsBgColor} optionsBoxMaxHeight={optionsBoxMaxHeight} optionsBoxBorderRadius={optionsBoxBorderRadius} optionsBoxShadow={optionsBoxShadow}>
           {filteredOptions.map((opt, index) => (
-            <Option key={index} onClick={() => onSelect(opt)} hoverColor={hoverColor}>
-              {!!image && <Box width="23px">{!!opt?.[image] && <Image src={opt[image]} />}</Box>}
+            <Option
+              key={index}
+              onClick={() => onSelect(opt)}
+              hoverColor={hoverColor}
+              optionHeight={optionHeight}
+              optionDisplay={optionDisplay}
+              optionPadding={optionPadding}
+              optionGap={optionGap}
+            >
+              {!!image && <Box width={imageWidth}><Image src={opt[image]} imageWidth={imageWidth} imageHeight={imageHeight} imageBorderRadius={imageBorderRadius} /></Box>}
               <Text color={color}>{opt?.[label]}</Text>
               {selected?.[valueKey] === opt?.[valueKey] && (
-                <Icon spacing="ml-a" icon="check" color="03Primary500" width="23px" />
+                <Icon spacing="ml-a" icon="check" color="03Primary500" width={imageWidth} />
               )}
             </Option>
           ))}
@@ -133,23 +159,23 @@ const StyledInput = styled(Input)`
 `;
 
 const OptionsWrapper = styled(Box)`
-  max-height: 180px;
+  max-height: ${({ optionsBoxMaxHeight }) => optionsBoxMaxHeight};
   overflow-y: scroll;
-  border-radius: 0 0 12px 12px;
+  border-radius: ${({ optionsBoxBorderRadius }) => optionsBoxBorderRadius};
   position: absolute;
   left: 0;
   right: 0;
   z-index: 99;
-  box-shadow: 0px 25px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: ${({ optionsBoxShadow }) => optionsBoxShadow}; 
 `;
 
 const Option = styled(Box)`
-  height: 56px;
-  display: flex;
+  height: ${({ optionHeight }) => optionHeight};
+  display: ${({ optionDisplay }) => optionDisplay};
   align-items: center;
-  padding: 0 1rem;
+  padding: ${({ optionPadding }) => optionPadding};
   cursor: pointer;
-  gap: 12px;
+  gap: ${({ optionGap }) => optionGap};
 
   ${({ hoverColor, theme }) =>
     hoverColor &&
@@ -164,29 +190,52 @@ const Option = styled(Box)`
 `;
 
 const Image = styled.img`
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
+  width: ${({ imageWidth }) => imageWidth};
+  height: ${({ imageHeight }) => imageHeight};
+  border-radius: ${({ imageBorderRadius }) => imageBorderRadius};
 `;
 
 const TopImage = styled.img`
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  margin-left: 8px;
-  align-self: center;
+  width: ${({ topImageWidth }) => topImageWidth};
+  height: ${({ topImageHeight }) => topImageHeight};
+  border-radius: ${({ topImageBorderRadius }) => topImageBorderRadius};
+  margin-left: ${({ topImageMarginLeft }) => topImageMarginLeft};
+  align-self: ${({ topImageAlignSelf }) => topImageAlignSelf};
 `;
 
 const ArrowBox = styled(Box)`
   position: absolute;
-  top: 18px;
-  right: 20px;
-  pointer-events: none;
+  top: ${({ arrowBoxTop }) => arrowBoxTop};
+  right: ${({ arrowBoxRight }) => arrowBoxRight};
+  pointer-events: ${({ arrowBoxPointerEvents }) => arrowBoxPointerEvents};
 `;
 
 Select.defaultProps = {
   autocomplete: true,
   valueKey: "id",
+  color: "01Primary700",
+  bgColor: "01Primary110",
+  optionsBgColor: "01Primary0",
+  hoverColor: "01Primary0",
+  borderColor: "01Primary300",
+  optionsBoxMaxHeight: "180px",
+  optionsBoxBorderRadius: "0 0 12px 12px",
+  optionsBoxShadow: "0px 25px 15px rgba(0, 0, 0, 0.15);",
+  optionHeight: "56px",
+  optionDisplay: "flex",
+  optionPadding: "0 1rem",
+  optionGap: "12px",
+  topImageWidth: "23px",
+  topImageHeight: "23px",
+  topImageBorderRadius: "50%",
+  topImageMarginLeft: "8px",
+  topImageAlignSelf: "center",
+  imageWidth: "23px",
+  imageHeight: "23px",
+  imageBorderRadius: "50%",
+  arrowBoxTop: "18px",
+  arrowBoxRight: "20px",
+  arrowBoxPointerEvents: "none",
 };
 
 export default Select;

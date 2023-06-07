@@ -80,4 +80,9 @@ Default.args = {
   image: "logo_url",
   placeholder: "Select",
   onChange,
+  color:"01Primary700",
+  bgColor: "01Primary110",
+  optionsBgColor: "01Primary0",
+  hoverColor: "01Primary0",
+  borderColor: "01Primary300",
 };
