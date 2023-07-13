@@ -6,11 +6,11 @@ import Text from "../Text/Text";
 import useClickOutsideCallback from "../hooks/useClickOutsideCallback";
 import { disabledControl } from "../properties";
 
-const listItems = (options, onItemClick, selectedOptions) => {
+const listItems = (options, onItemClick, selectedOptions, displayListItem) => {
   return options.map((option) => {
     const selected = selectedOptions.find((i) => i.value === option.value);
     return (
-      <ListItem type="button" key={option.value} onClick={(e) => onItemClick(option, e)}>
+      <ListItem type="button" key={option.value} displayListItem={displayListItem} onClick={(e) => onItemClick(option, e)}>
         <Box gap="12px" flex>
           {option.icon && <Icon icon={option.icon} width="23px" />}
           {option.url && <StyledImg src={option.url} />}
@@ -33,6 +33,7 @@ const MultiSelect = ({
   disabled,
   keepOpen,
   maxHeight,
+  displayListItem
 }) => {
   const ref = useRef();
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -55,7 +56,7 @@ const MultiSelect = ({
       {isMenuOpen && (
         <ListPositioner widthContainer={widthContainer}>
           <ListContainer $maxHeight={maxHeight} onClick={onClick}>
-            {listItems(options, onItemClick, selectedOptions)}
+            {listItems(options, onItemClick, selectedOptions, displayListItem)}
           </ListContainer>
         </ListPositioner>
       )}
@@ -68,7 +69,7 @@ MultiSelect.defaultProps = {
 };
 
 const ListItem = styled.button`
-  display: inline-flex;
+  display:  ${({ displayListItem }) => displayListItem || "flex"};
   justify-content: space-between;
   overflow: hidden;
   width: 100%;
@@ -125,7 +126,8 @@ const Header = styled.div`
 `;
 
 const Container = styled.div`
-  background: transparent;
+  background: ${({ theme }) => theme.colors["01Primary110"]};
+  border-radius: 8px;
   position: relative;
   display: inline-block;
   user-select: none;
@@ -156,6 +158,7 @@ MultiSelect.defaultProps = {
   widthContainer: "274px",
   keepOpen: false,
   maxHeight: 280,
+  displayListItem: "flex"
 };
 
 export default MultiSelect;
