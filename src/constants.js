@@ -633,7 +633,7 @@ export const darkColors = {
   blueGray800: "#37474F",
   blueGray900: "#263238",
   tabActiveBgColor: "#282832",
-  tabBgColor: "#0b111c",
+  tabBgColor: "#1C1C24",
   tabActiveColor: "#ffffff",
   tabColor: "#ffffff",
   tabBorderColor: "rgba(50, 50, 60, 1)",
