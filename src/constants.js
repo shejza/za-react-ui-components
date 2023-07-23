@@ -352,7 +352,7 @@ export const darkColors = {
   "03Primary150": "#DAF5DE",
   "03Primary140": "#3B5277",
   //Background
-  background: "#272732",
+  background: "#1c1c24",
 
   //Green
   green100: "#C8E6C9",
