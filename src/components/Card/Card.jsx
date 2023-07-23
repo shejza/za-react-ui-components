@@ -230,7 +230,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.04);
-  background: ${({ theme }) => theme.colors["background"]}
+  background: ${({ theme }) => theme.colors["backgroundCard"]}
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: ${(props) => props.borderBottomLeftRadius};

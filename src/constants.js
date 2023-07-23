@@ -30,7 +30,8 @@ export const lightColors = {
   "03Primary150": "#DAF5DE",
   "03Primary140": "#DAF5DE",
   //Background
-  background: "#ffffff",
+  background: "#f7f7f9",
+  backgroundCard: "#fff",
 
   //Green
   green100: "#C8E6C9",
@@ -353,6 +354,7 @@ export const darkColors = {
   "03Primary140": "#3B5277",
   //Background
   background: "#1c1c24",
+  backgroundCard: "#2c2c3c",
 
   //Green
   green100: "#C8E6C9",
