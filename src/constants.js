@@ -318,7 +318,8 @@ export const lightColors = {
   tabColor: "rgb(72 74 91 / 87%)",
   tabBorderColor: "#e3e3e9",
   mainSurface: "rgb(242, 244, 247)",
-  accentColor: "rgb(84 193 161)"
+  accentColor: "rgb(84 193 161)",
+  titles: "rgb(100, 103, 119)"
 };
 
 export const darkColors = {
@@ -640,7 +641,8 @@ export const darkColors = {
   tabColor: "#ffffff",
   tabBorderColor: "rgba(50, 50, 60, 1)",
   mainSurface: "rgb(40 40 50 / 98%)",
-  accentColor: "#ffffff"
+  accentColor: "#ffffff",
+  titles: "#fff"
 };
 
 export const lightTheme = {
