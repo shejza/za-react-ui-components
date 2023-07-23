@@ -353,7 +353,7 @@ export const darkColors = {
   "03Primary150": "#DAF5DE",
   "03Primary140": "#3B5277",
   //Background
-  background: "#1c1c24",
+  background: "#fff",
   backgroundCard: "#2c2c3c",
 
   //Green
@@ -635,7 +635,7 @@ export const darkColors = {
   blueGray800: "#37474F",
   blueGray900: "#263238",
   tabActiveBgColor: "#282832",
-  tabBgColor: "#1C1C24",
+  tabBgColor: "#fff",
   tabActiveColor: "#ffffff",
   tabColor: "#ffffff",
   tabBorderColor: "rgba(50, 50, 60, 1)",
