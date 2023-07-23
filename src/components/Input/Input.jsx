@@ -6,7 +6,7 @@ import Box from "../Box/Box";
 import Text from "../Text/Text";
 import Icon from "../Icon/Icon";
 import inputStates from "../../utils/input-states";
-import { background, bgColor, bold, color, disabledControl } from "../properties";
+import { background, bgColor, color, disabledControl } from "../properties";
 import placeholderProps from "../../utils/placeholder-props";
 import ValidationText from "../common/ValidationText";
 
@@ -123,7 +123,6 @@ const StyledInput = styled("input")`
   height: 56px;
   padding: 16px;
   ${inputStates}
-  ${bold}
   ${color}
   ${bgColor}
   ${background}
