@@ -317,7 +317,7 @@ export const lightColors = {
   tabActiveColor: "rgb(242, 244, 247)",
   tabColor: "rgb(72 74 91 / 87%)",
   tabBorderColor: "#e3e3e9",
-  mainSurface: "#ffffff",
+  mainSurface: "rgb(242, 244, 247)",
   accentColor: "rgb(84 193 161)"
 };
 
