@@ -30,7 +30,7 @@ export const lightColors = {
   "03Primary150": "#DAF5DE",
   "03Primary140": "#DAF5DE",
   //Background
-  background: "#f7f7f9",
+  background: "#fff",
   backgroundCard: "#fff",
 
   //Green
@@ -313,8 +313,8 @@ export const lightColors = {
   blueGray900: "#263238",
 
   tabActiveBgColor: "rgb(84 193 161)",
-  tabBgColor: "#f7f7f9",
-  tabActiveColor: "#ffffff",
+  tabBgColor: "#fff",
+  tabActiveColor: "rgb(242, 244, 247)",
   tabColor: "rgb(72 74 91 / 87%)",
   tabBorderColor: "#e3e3e9",
   mainSurface: "#ffffff",
@@ -353,7 +353,7 @@ export const darkColors = {
   "03Primary150": "#DAF5DE",
   "03Primary140": "#3B5277",
   //Background
-  background: "#fff",
+  background: "#1c1c24",
   backgroundCard: "#2c2c3c",
 
   //Green
@@ -635,7 +635,7 @@ export const darkColors = {
   blueGray800: "#37474F",
   blueGray900: "#263238",
   tabActiveBgColor: "#282832",
-  tabBgColor: "#fff",
+  tabBgColor: "#1C1C24",
   tabActiveColor: "#ffffff",
   tabColor: "#ffffff",
   tabBorderColor: "rgba(50, 50, 60, 1)",
