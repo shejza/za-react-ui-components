@@ -53,6 +53,7 @@ const Container = styled.div`
   outline: 0px;
   border-radius: 5px;
   transform-origin: 0px 0px;
+  z-index: 9;
   box-shadow: rgb(76 78 100 / 20%) 0px 5px 5px -3px, rgb(76 78 100 / 14%) 0px 8px 10px 1px, rgb(76 78 100 / 12%) 0px 3px 14px 2px;
   ${({ opacityContainer }) => opacityContainer && `opacity:  ${opacityContainer}`};
   ${({ transformContainer }) => transformContainer && `transform:  ${transformContainer}`};

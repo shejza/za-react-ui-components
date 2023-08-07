@@ -291,7 +291,7 @@ const Description = styled.p`
 const CardWrapperInside = styled.div`
   box-sizing: border-box;
   border-radius: 12px;
-  background: ${({ theme }) => theme.colors["background"]};
+  background: ${({ theme }) => theme.colors["backgroundCard"]};
   position: relative;
   z-index: 9;
 `;
@@ -303,7 +303,7 @@ const ContainerInside = styled.div`
 `;
 
 const BottomPart = styled.div`
-  background-color: ${({ theme }) => theme.colors["background"]};
+  background-color: ${({ theme }) => theme.colors["backgroundCard"]};
   padding: 16px;
   width: ${(props) => props.widthBottomPart};
   border-top-left-radius: ${(props) => props.borderBottomPartTopLeftRadius};
