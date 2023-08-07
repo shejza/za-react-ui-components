@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { breakpoints } from "../../constants";
 import Box from "../Box/Box";
 import Text from "../Text/Text";
 import { bgColor } from "../properties";

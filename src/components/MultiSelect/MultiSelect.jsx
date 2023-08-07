@@ -4,13 +4,19 @@ import Icon from "../Icon/Icon";
 import Box from "../Box/Box";
 import Text from "../Text/Text";
 import useClickOutsideCallback from "../hooks/useClickOutsideCallback";
-import { disabledControl } from "../properties";
+import { MainWrapper, disabledControl } from "../properties";
 
-const listItems = (options, onItemClick, selectedOptions, displayListItem) => {
+const listItems = (options, onItemClick, selectedOptions, displayListItem, ...props) => {
   return options.map((option) => {
     const selected = selectedOptions.find((i) => i.value === option.value);
     return (
-      <ListItem type="button" key={option.value} displayListItem={displayListItem} onClick={(e) => onItemClick(option, e)}>
+      <ListItem
+        type="button"
+        key={option.value}
+        displayListItem={displayListItem}
+        onClick={(e) => onItemClick(option, e)}
+        {...props}
+      >
         <Box gap="12px" flex>
           {option.icon && <Icon icon={option.icon} width="23px" />}
           {option.url && <StyledImg src={option.url} />}
@@ -25,7 +31,7 @@ const listItems = (options, onItemClick, selectedOptions, displayListItem) => {
 const MultiSelect = ({
   options,
   title,
-  minWidthHeader,
+  headerMinWidth,
   widthContainer,
   selectedOptions,
   onItemClick,
@@ -33,7 +39,8 @@ const MultiSelect = ({
   disabled,
   keepOpen,
   maxHeight,
-  displayListItem
+  displayListItem,
+  ...props
 }) => {
   const ref = useRef();
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -49,13 +56,18 @@ const MultiSelect = ({
 
   return (
     <Container ref={ref} disabled={disabled}>
-      <Header borderColor={hasSelection && "01Secondary500"} onClick={toggleMenu} minWidthHeader={minWidthHeader}>
+      <Header
+        borderColor={hasSelection && "01Secondary500"}
+        onClick={toggleMenu}
+        headerMinWidth={headerMinWidth}
+        {...props}
+      >
         <Text typography="body/small">{_title}</Text>
         <Icon icon={chevron} color="01Primary700" spacing="pr-2" />
       </Header>
       {isMenuOpen && (
-        <ListPositioner widthContainer={widthContainer}>
-          <ListContainer $maxHeight={maxHeight} onClick={onClick}>
+        <ListPositioner widthContainer={widthContainer} {...props}>
+          <ListContainer $maxHeight={maxHeight} onClick={onClick} {...props}>
             {listItems(options, onItemClick, selectedOptions, displayListItem)}
           </ListContainer>
         </ListPositioner>
@@ -65,28 +77,28 @@ const MultiSelect = ({
 };
 
 MultiSelect.defaultProps = {
-  selectedOptions: []
+  selectedOptions: [],
 };
 
 const ListItem = styled.button`
-  display:  ${({ displayListItem }) => displayListItem || "flex"};
-  justify-content: space-between;
-  overflow: hidden;
-  width: 100%;
-  padding: 16px;
-  line-height: 1.6rem;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  cursor: pointer;
-  margin: inherit;
-  border: none;
-  background: inherit;
-  font: inherit;
-  color: inherit;
-  text-align: inherit;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
+  display: ${({ listItemDisplay }) => listItemDisplay || "flex"};
+  justify-content: ${({ listItemJustifyContent }) => listItemJustifyContent || "space-between"};
+  overflow: ${({ listItemOverflow }) => listItemOverflow || "hidden"};
+  width: ${({ listItemWidth }) => listItemWidth || "100%"};
+  padding: ${({ listItemPadding }) => listItemPadding || "16px"};
+  line-height: ${({ listItemLineHeight }) => listItemLineHeight || "1.6rem"};
+  white-space: ${({ listItemWhiteSpace }) => listItemWhiteSpace || "nowrap"};
+  text-overflow: ${({ listItemTextOverflow }) => listItemTextOverflow || "ellipsis"};
+  cursor: ${({ listItemCursor }) => listItemCursor || "pointer"};
+  margin: ${({ listItemMargin }) => listItemMargin || "inherit"};
+  border: ${({ listItemBorder }) => listItemBorder || "none"};
+  background: ${({ listItemBackground }) => listItemBackground || "inherit"};
+  font: ${({ listItemFont }) => listItemFont || "inherit"};
+  color: ${({ listItemColor }) => listItemColor || "inherit"};
+  text-align: ${({ listItemTextAlign }) => listItemTextAlign || "inherit"};
+  font-weight: ${({ listItemFontWeight }) => listItemFontWeight || "600"};
+  font-size: ${({ listItemFontSize }) => listItemFontSize || "14px"};
+  line-height: ${({ listItemLineHeight }) => listItemLineHeight || "21px"};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors["01Primary300"]};
@@ -95,28 +107,28 @@ const ListItem = styled.button`
 
 const ListPositioner = styled.div`
   min-width: ${({ widthContainer }) => widthContainer && widthContainer};
-  overflow: hidden;
-  position: absolute;
-  z-index: 10;
+  overflow: ${({ ListPositionerOverflow }) => ListPositionerOverflow || "hidden"};
+  position: ${({ ListPositionerPosition }) => ListPositionerPosition || "absolute"};
+  z-index: ${({ ListPositionerZIndex }) => ListPositionerZIndex || "10"};
   background: ${({ theme }) => theme.colors["01Primary0"]};
-  box-shadow: 0px 25px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  top: 56px;
+  box-shadow: ${({ listPositionerBoxShadow }) => listPositionerBoxShadow || "0px 25px 15px rgba(0, 0, 0, 0.15))"};
+  border-radius: ${({ ListPositionerBorderRadius }) => ListPositionerBorderRadius || "12px"};
+  top: ${({ ListPositionerTop }) => ListPositionerTop || "56px"};
 `;
 
 const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  color: ${({ theme }) => theme.colors["01Primary700"]};
-  padding: 10px 16px;
+  display: ${({ headerDisplay }) => headerDisplay && headerDisplay};
+  align-items: ${({ headerAlignItems }) => headerAlignItems && headerAlignItems};
+  justify-content: ${({ headerJustifyContent }) => headerJustifyContent && headerJustifyContent};
+  position: ${({ headerPosition }) => headerPosition && headerPosition};
+  color: ${({ theme, headerColor }) => theme.colors[headerColor]};
+  padding: ${({ headerPadding }) => headerPadding && headerPadding};
   border: 1px solid ${({ theme }) => theme.colors["01Primary200"]};
-  border-radius: 8px;
-  background: transparent;
-  min-width: ${({ minWidthHeader }) => minWidthHeader && minWidthHeader};
-  cursor: pointer;
-  border-color: ${({ theme, borderColor }) => theme.colors[borderColor]};
+  border-radius: ${({ headerBorderRadius }) => headerBorderRadius && headerBorderRadius};
+  background: ${({ headerBackground }) => headerBackground && headerBackground};
+  min-width: ${({ headerMinWidth }) => headerMinWidth && headerMinWidth};
+  cursor: ${({ headerCursor }) => headerCursor && headerCursor};
+  border-color: ${({ theme, headerBorderColor }) => theme.colors[headerBorderColor]};
   & > div {
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -125,7 +137,7 @@ const Header = styled.div`
   }
 `;
 
-const Container = styled.div`
+const Container = styled(MainWrapper)`
   background: ${({ theme }) => theme.colors["01Primary110"]};
   border-radius: 8px;
   position: relative;
@@ -136,7 +148,7 @@ const Container = styled.div`
 
 const ListContainer = styled.div`
   overflow-y: auto;
-  max-height: ${({ $maxHeight }) => $maxHeight + "px" };
+  max-height: ${({ $maxHeight }) => $maxHeight + "px"};
   color: ${({ theme }) => theme.colors["01Primary700"]};
   button:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors["01Primary200"]};
@@ -154,11 +166,21 @@ MultiSelect.defaultProps = {
   arrowUpIcon: null,
   arrowDownIcon: null,
   checkIcon: null,
-  minWidthHeader: "237px",
+  headerDisplay: "flex",
+  headerAlignItems: "center",
+  headerJustifyContent: "space-between",
+  headerPosition: "relative",
+  headerColor: "01Primary700",
+  headerPadding: "10px 16px",
+  headerBorderRadius: "8px",
+  headerBackground: "transparent",
+  headerMinWidth: "237px",
+  headerCursor: "pointer",
+
   widthContainer: "274px",
   keepOpen: false,
   maxHeight: 280,
-  displayListItem: "flex"
+  listItemDisplay: "flex",
 };
 
 export default MultiSelect;
