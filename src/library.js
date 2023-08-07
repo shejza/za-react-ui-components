@@ -14,6 +14,7 @@ import Carousel from './components/Carousel/Carousel';
 import Menu from './components/Menu/Menu';
 import Card from './components/Card/Card';
 import Select from "./components/Select/Select";
+import MultiSelect from "./components/MultiSelect/MultiSelect";
 
 export {
   Box,
@@ -33,5 +34,6 @@ export {
   Carousel,
   Menu,
   Card,
-  Select
+  Select,
+  MultiSelect
 };
