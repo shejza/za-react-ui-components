@@ -1,6 +1,22 @@
-# thc-ui-components
+## ZA React UI Components
 
-This project was bootstrapped with [Storybook](https://storybook.js.org/).
+A comprehensive React UI component library built with **styled-components** and **Storybook**. This library provides a collection of reusable, customizable UI components designed for modern web applications.
+
+### �� **What it does:**
+- **Component Library**: Offers 15+ pre-built React components including Button, Card, Grid, Icon, Alert, Accordion, Carousel, Menu, Select, MultiSelect, and more
+- **Icon System**: Includes 100+ custom SVG icons and supports multiple icon libraries (Feather, Heroicons, Material Design, etc.)
+- **Theme Support**: Built-in light and dark theme support
+- **Storybook Integration**: Complete documentation and interactive component playground
+- **TypeScript Ready**: Components are designed to work with TypeScript projects
+- **Customizable**: All components are highly customizable through props and styled-components
+
+### �� **Key Features:**
+- **Modern Stack**: React 17, styled-components, Storybook
+- **Build System**: Rollup configuration for multiple output formats (CJS, ESM, UMD)
+- **Development Tools**: ESLint, testing setup, component generation scripts
+- **Deployment Ready**: Netlify deployment configuration for Storybook docs
+
+Perfect for developers who want to quickly bootstrap consistent UI components in their React projects or create their own design system foundation.
 
 ## Getting started
 
